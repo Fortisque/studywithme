@@ -372,6 +372,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = studywithmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/studywithme.app/studywithme";
@@ -387,6 +388,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = studywithmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/studywithme.app/studywithme";
@@ -412,6 +414,7 @@
 				9960558819FC2003001216B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9960558919FC2003001216B9 /* Build configuration list for PBXNativeTarget "studywithmeTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +423,7 @@
 				9960558B19FC2003001216B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
