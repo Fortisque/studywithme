@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"%@", @"hi");
+    
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
@@ -25,10 +27,12 @@
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
         _myCourses = [result getResult];
+        NSLog(@"%@", _myCourses);
         [self.tableView reloadData];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
     }];
 
     
@@ -65,7 +69,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:courseCellIdentifier];
     }
     
-    cell.textLabel.text = [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@%@", [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"name"], [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"course_number"]];
     
     return cell;
 }

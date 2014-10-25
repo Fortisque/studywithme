@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Built initializeWithApiKey:@"studywithme" andUid:@"blte1163927e03db5d1"];
+    [Built initializeWithApiKey:@"blte1163927e03db5d1" andUid:@"studywithme"];
     return YES;
 }
 
