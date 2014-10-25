@@ -10,12 +10,18 @@
 
 @interface CoursesViewController ()
 
+@property (strong, nonatomic) NSMutableArray *courses;
+@property (strong, nonatomic) NSMutableArray *displayCourses;
 @end
 
 @implementation CoursesViewController
+@synthesize courses;
+@synthesize displayCourses;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS170", @"ENGLISH122", @"GermanR5B", nil];
     
     // Do any additional setup after loading the view.
 }
@@ -34,5 +40,38 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [displayCourses count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"courseCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Display recipe in the table cell
+    
+    cell.textLabel.text = [displayCourses objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    displayCourses = [[NSMutableArray alloc] init];
+    
+    NSPredicate *sPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", searchString];
+    
+    displayCourses = [[courses filteredArrayUsingPredicate:sPredicate] mutableCopy];
+    return true;
+}
 
 @end

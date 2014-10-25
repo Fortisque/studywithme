@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CoursesViewController : UIViewController <UISearchBarDelegate>
+@interface CoursesViewController : UIViewController <UISearchDisplayDelegate>
 
 @end
