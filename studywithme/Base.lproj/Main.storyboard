@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -121,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="1535" y="1028"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller - Item 2-->
         <scene sceneID="E4u-T0-Fc0">
             <objects>
                 <viewController id="PYc-rG-CuT" sceneMemberID="viewController">
@@ -140,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="2103" y="1542"/>
         </scene>
-        <!--Create Study Group Controller-->
+        <!--Create Study Group View Controller-->
         <scene sceneID="JHO-Po-qHP">
             <objects>
-                <viewController id="PQJ-5r-QDG" customClass="CreateStudyGroupController" sceneMemberID="viewController">
+                <viewController id="PQJ-5r-QDG" customClass="CreateStudyGroupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7GC-hG-t4d"/>
                         <viewControllerLayoutGuide type="bottom" id="2CV-1h-WDt"/>
@@ -176,25 +175,41 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWC-IT-L0l">
-                                <rect key="frame" x="0.0" y="194" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="P3v-NA-Cmn">
                                 <rect key="frame" x="0.0" y="318" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="435955772.342408">
                                     <!--2014-10-25 18:49:32 +0000-->
                                 </date>
                             </datePicker>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BW2-7l-EDI">
+                                <rect key="frame" x="0.0" y="194" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PQJ-5r-QDG" id="xRP-lb-3Q0"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="0LF-2h-Rbs" id="OsN-so-AJg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0b-1N-jGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="0LF-2h-Rbs">
+                    <connections>
+                        <outlet property="delegate" destination="PQJ-5r-QDG" id="xnQ-uh-0tS"/>
+                        <outlet property="searchBar" destination="BW2-7l-EDI" id="CN0-3U-zpT"/>
+                        <outlet property="searchContentsController" destination="PQJ-5r-QDG" id="YQB-Dn-uxu"/>
+                        <outlet property="searchResultsDataSource" destination="PQJ-5r-QDG" id="1d9-ll-w9s"/>
+                        <outlet property="searchResultsDelegate" destination="PQJ-5r-QDG" id="ILw-mW-hb6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1545" y="300"/>
         </scene>
-        <!--Item-->
+        <!--View Study Groups Table View Controller - Item-->
         <scene sceneID="7iD-Pf-lAR">
             <objects>
                 <tableViewController id="4Km-lY-gTr" customClass="ViewStudyGroupsTableViewController" sceneMemberID="viewController">
@@ -224,7 +239,7 @@
             </objects>
             <point key="canvasLocation" x="2098" y="847"/>
         </scene>
-        <!--Title-->
+        <!--My Courses View Controller - Title-->
         <scene sceneID="O2m-ld-o9U">
             <objects>
                 <tableViewController id="lv7-rd-35b" customClass="MyCoursesViewController" sceneMemberID="viewController">
@@ -233,7 +248,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="q14-vr-wTx">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="add" id="4aE-Hr-fz1">
@@ -245,8 +260,10 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pkl-K3-Hwb">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pkl-K3-Hwb" id="hpO-e3-6ei">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

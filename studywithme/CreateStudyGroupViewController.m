@@ -7,8 +7,10 @@
 //
 
 #import "CreateStudyGroupViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface CreateStudyGroupViewController ()
+@property (strong, nonatomic) NSArray *courses;
 
 @end
 
@@ -17,6 +19,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        _courses = [result getResult];
+        
+        NSLog(@"%d", [_courses count]);
+        
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
