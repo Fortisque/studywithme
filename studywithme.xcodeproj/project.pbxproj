@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		70D8511219FC2AA4005BDE91 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */; };
+		70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */; };
+		70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */; };
+		70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */; };
 		9960556919FC2003001216B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556819FC2003001216B9 /* main.m */; };
 		9960556C19FC2003001216B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556B19FC2003001216B9 /* AppDelegate.m */; };
 		9960556F19FC2003001216B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556E19FC2003001216B9 /* ViewController.m */; };
@@ -33,6 +36,11 @@
 
 /* Begin PBXFileReference section */
 		70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStudyGroupsTableViewController.h; sourceTree = "<group>"; };
+		70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupsTableViewController.m; sourceTree = "<group>"; };
+		70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyGroupsTableViewCell.h; sourceTree = "<group>"; };
+		70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyGroupsTableViewCell.m; sourceTree = "<group>"; };
+		70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyGroupCell.xib; sourceTree = "<group>"; };
 		9960556319FC2003001216B9 /* studywithme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = studywithme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9960556719FC2003001216B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9960556819FC2003001216B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +109,11 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
+				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
+				70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */,
+				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
+				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
 				9960559B19FC27B9001216B9 /* CoursesViewController.h */,
 				9960559C19FC27B9001216B9 /* CoursesViewController.m */,
 				9960559519FC23F6001216B9 /* LoginViewController.h */,
@@ -225,6 +238,7 @@
 				9960557219FC2003001216B9 /* Main.storyboard in Resources */,
 				70D8511219FC2AA4005BDE91 /* Default-568h@2x.png in Resources */,
 				9960557719FC2003001216B9 /* LaunchScreen.xib in Resources */,
+				70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */,
 				9960557419FC2003001216B9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +263,9 @@
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
+				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,
+				70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
