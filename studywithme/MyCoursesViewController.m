@@ -20,8 +20,8 @@
     
     [self builtUpdateTable];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    self.tableView.allowsSelectionDuringEditing = true;
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,6 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self setEditing:false];
     [super viewWillAppear:animated];
     
     [self builtUpdateTable];
@@ -97,17 +98,39 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        BuiltQuery *query = [BuiltQuery queryWithClassUID:@"project"];
+        BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
         
-        [query whereKey:@"uid"
-                equalTo:@"bltf4fbbc94e8c851db"];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSString *cellText = cell.textLabel.text;
+        
+        [query whereKey:@"name"
+                equalTo:cellText];
         [query exec:^(QueryResult *result, ResponseType type) {
-            // the query has executed successfully.
-            // [result getResult] will contain a list of objects that satisfy the conditions
+            BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
+            [obj setUid:[[[result getResult] objectAtIndex:0] objectForKey:@"uid"]];
+            
+            [obj destroyOnSuccess:^{
+                NSLog(@"delete");
+                [self builtUpdateTable];
+            } onError:^(NSError *error) {
+                // there was an error in deleting the object
+                // error.userinfo contains more details regarding the same
+                NSLog(@"%@", error.userInfo);
+            }];
+            
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
+            NSLog(@"%@", error.userInfo);
         }];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView isEditing]) {
+        [tableView setEditing:false];
+    } else {
+        [tableView setEditing:true];
     }
 }
 
