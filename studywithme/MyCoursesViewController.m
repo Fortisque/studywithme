@@ -7,15 +7,30 @@
 //
 
 #import "MyCoursesViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface MyCoursesViewController ()
-
+@property (strong, nonatomic) NSArray *myCourses;
 @end
 
 @implementation MyCoursesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        _myCourses = [result getResult];
+        [self.tableView reloadData];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+    }];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -37,20 +52,23 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_myCourses count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *courseCellIdentifier = @"course";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:courseCellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:courseCellIdentifier];
+    }
+    
+    cell.textLabel.text = [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"name"];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
