@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS170", @"ENGLISH122", @"GermanR5B", nil];
+    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS61B", @"CS61C", @"CS170", @"ENGLISH122", @"GermanR5B", nil];
     
     // Do any additional setup after loading the view.
 }
@@ -43,6 +43,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    CGRect rect = CGRectMake(0, 44, 350, 200);
+    [self.searchDisplayController.searchResultsTableView setFrame:rect];
     return [displayCourses count];
 }
 
@@ -61,6 +63,15 @@
     cell.textLabel.text = [displayCourses objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"select");
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller
