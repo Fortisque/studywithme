@@ -11,6 +11,7 @@
 
 @interface CreateStudyGroupViewController ()
 @property (strong, nonatomic) NSArray *courses;
+@property (strong, nonatomic) NSMutableArray *coursesArray;
 
 @end
 
@@ -28,7 +29,15 @@
         // here's the object we just created
         _courses = [result getResult];
         
-        NSLog(@"%d", [_courses count]);
+        _coursesArray = [[NSMutableArray alloc] init];
+
+        for (int i = 0; i < [_courses count]; i++) {
+            [_coursesArray addObject:[[_courses objectAtIndex:i] objectForKey:@"name"]];
+        }
+        
+        NSLog(@"courses:%@", _coursesArray);
+        
+        [_classPicker reloadAllComponents];
         
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
@@ -41,6 +50,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    NSLog(@"%d", [_coursesArray count]);
+    return [_coursesArray count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
+{
+    NSLog(@"%@", _coursesArray);
+    return [_coursesArray objectAtIndex:row];
+    
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
+{
+     NSLog(@"Selected Row %d", row);
 }
 
 /*

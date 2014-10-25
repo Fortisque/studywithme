@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateStudyGroupViewController : UIViewController
+@interface CreateStudyGroupViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (strong, nonatomic) IBOutlet UIPickerView *classPicker;
 
 @end
