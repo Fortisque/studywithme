@@ -14,6 +14,10 @@
 		9960557419FC2003001216B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9960557319FC2003001216B9 /* Images.xcassets */; };
 		9960557719FC2003001216B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9960557519FC2003001216B9 /* LaunchScreen.xib */; };
 		9960558319FC2003001216B9 /* studywithmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960558219FC2003001216B9 /* studywithmeTests.m */; };
+		9960558E19FC225A001216B9 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960558D19FC225A001216B9 /* LandingViewController.m */; };
+		9960559419FC2293001216B9 /* CreateStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960559319FC2293001216B9 /* CreateStudyGroupViewController.m */; };
+		9960559719FC23F6001216B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960559619FC23F6001216B9 /* LoginViewController.m */; };
+		9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960559C19FC27B9001216B9 /* CoursesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,14 @@
 		9960557C19FC2003001216B9 /* studywithmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = studywithmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9960558119FC2003001216B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9960558219FC2003001216B9 /* studywithmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studywithmeTests.m; sourceTree = "<group>"; };
+		9960558C19FC225A001216B9 /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
+		9960558D19FC225A001216B9 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
+		9960559219FC2293001216B9 /* CreateStudyGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStudyGroupViewController.h; sourceTree = "<group>"; };
+		9960559319FC2293001216B9 /* CreateStudyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStudyGroupViewController.m; sourceTree = "<group>"; };
+		9960559519FC23F6001216B9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9960559619FC23F6001216B9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9960559B19FC27B9001216B9 /* CoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoursesViewController.h; sourceTree = "<group>"; };
+		9960559C19FC27B9001216B9 /* CoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoursesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,14 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				9960559B19FC27B9001216B9 /* CoursesViewController.h */,
+				9960559C19FC27B9001216B9 /* CoursesViewController.m */,
+				9960559519FC23F6001216B9 /* LoginViewController.h */,
+				9960559619FC23F6001216B9 /* LoginViewController.m */,
+				9960559219FC2293001216B9 /* CreateStudyGroupViewController.h */,
+				9960559319FC2293001216B9 /* CreateStudyGroupViewController.m */,
+				9960558C19FC225A001216B9 /* LandingViewController.h */,
+				9960558D19FC225A001216B9 /* LandingViewController.m */,
 				9960557319FC2003001216B9 /* Images.xcassets */,
 				9960557519FC2003001216B9 /* LaunchScreen.xib */,
 				9960556619FC2003001216B9 /* Supporting Files */,
@@ -219,8 +239,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9960559419FC2293001216B9 /* CreateStudyGroupViewController.m in Sources */,
+				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
 				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
+				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
+				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = studywithme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -354,6 +379,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = studywithme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
