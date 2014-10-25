@@ -236,24 +236,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69E-DM-jLL">
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdz-R5-Mbs">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8je-5d-NbY" id="adv-7D-fQi"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="es6-Ha-zfR" id="ZuM-Jv-xa3"/>
+                        <outlet property="searchDisplayController" destination="SMn-a0-4de" id="fW3-Qx-bb1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59k-gm-Skc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="es6-Ha-zfR">
+                <searchDisplayController id="SMn-a0-4de">
                     <connections>
-                        <outlet property="delegate" destination="8je-5d-NbY" id="oA9-gW-PCZ"/>
-                        <outlet property="searchContentsController" destination="8je-5d-NbY" id="bVv-i2-2Vn"/>
-                        <outlet property="searchResultsDataSource" destination="8je-5d-NbY" id="Rcl-WM-m31"/>
-                        <outlet property="searchResultsDelegate" destination="8je-5d-NbY" id="fGd-qf-Lyt"/>
+                        <outlet property="delegate" destination="8je-5d-NbY" id="fQT-dX-rle"/>
+                        <outlet property="searchBar" destination="Jdz-R5-Mbs" id="bj2-Y7-qTZ"/>
+                        <outlet property="searchContentsController" destination="8je-5d-NbY" id="u3W-FZ-dOM"/>
+                        <outlet property="searchResultsDataSource" destination="8je-5d-NbY" id="Z1q-MV-3s9"/>
+                        <outlet property="searchResultsDelegate" destination="8je-5d-NbY" id="3zi-O6-9B7"/>
                     </connections>
                 </searchDisplayController>
             </objects>
