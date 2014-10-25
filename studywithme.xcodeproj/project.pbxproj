@@ -35,6 +35,8 @@
 		996055CF19FC3FAB001216B9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055CE19FC3FAB001216B9 /* Social.framework */; };
 		996055D119FC3FB1001216B9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055D019FC3FB1001216B9 /* Accounts.framework */; };
 		996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D319FC404C001216B9 /* MyCoursesViewController.m */; };
+		996055D619FC53E6001216B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055D519FC53E6001216B9 /* MapKit.framework */; };
+		996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D819FC5449001216B9 /* MapStudyGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,9 @@
 		996055D019FC3FB1001216B9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		996055D219FC404C001216B9 /* MyCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCoursesViewController.h; sourceTree = "<group>"; };
 		996055D319FC404C001216B9 /* MyCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCoursesViewController.m; sourceTree = "<group>"; };
+		996055D519FC53E6001216B9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		996055D719FC5449001216B9 /* MapStudyGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStudyGroupViewController.h; sourceTree = "<group>"; };
+		996055D819FC5449001216B9 /* MapStudyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStudyGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996055D619FC53E6001216B9 /* MapKit.framework in Frameworks */,
 				996055D119FC3FB1001216B9 /* Accounts.framework in Frameworks */,
 				996055CF19FC3FAB001216B9 /* Social.framework in Frameworks */,
 				996055CD19FC3FA6001216B9 /* Twitter.framework in Frameworks */,
@@ -123,6 +129,7 @@
 		9960555A19FC2003001216B9 = {
 			isa = PBXGroup;
 			children = (
+				996055D519FC53E6001216B9 /* MapKit.framework */,
 				996055D019FC3FB1001216B9 /* Accounts.framework */,
 				996055CE19FC3FAB001216B9 /* Social.framework */,
 				996055CC19FC3FA6001216B9 /* Twitter.framework */,
@@ -159,6 +166,8 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
+				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
 				996055D219FC404C001216B9 /* MyCoursesViewController.h */,
 				996055D319FC404C001216B9 /* MyCoursesViewController.m */,
 				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
@@ -312,6 +321,7 @@
 			files = (
 				9960559419FC2293001216B9 /* CreateStudyGroupViewController.m in Sources */,
 				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
+				996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */,
 				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
 				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
