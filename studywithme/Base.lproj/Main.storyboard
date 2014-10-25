@@ -274,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1436" y="-350"/>
         </scene>
-        <!--Courses View Controller-->
+        <!--Add Course-->
         <scene sceneID="hvh-VX-kMk">
             <objects>
                 <viewController id="8je-5d-NbY" customClass="CoursesViewController" sceneMemberID="viewController">
@@ -296,7 +296,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="G5I-4h-qDc"/>
+                    <navigationItem key="navigationItem" title="Add Course" id="G5I-4h-qDc"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="SMn-a0-4de" id="fW3-Qx-bb1"/>
                     </connections>
