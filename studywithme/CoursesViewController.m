@@ -7,6 +7,7 @@
 //
 
 #import "CoursesViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface CoursesViewController ()
 
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS61B", @"CS61C", @"CS170", @"ENGLISH122", @"GermanR5B", nil];
+    courses = [[NSMutableArray alloc] initWithObjects:@"CS 61A", @"CS 61B", @"CS 61C", @"CS 170", @"ENGLISH 122", @"GERMAN R5B", nil];
     
     // Do any additional setup after loading the view.
 }
@@ -43,6 +44,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    CGRect rect = CGRectMake(0, 44, 400, 400);
+    [tableView setFrame:rect];
     return [displayCourses count];
 }
 
@@ -69,7 +72,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"select");
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = cell.textLabel.text;
+    
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
+    [obj setObject:cellText
+            forKey:@"name"];
+
+    [obj saveOnSuccess:^{
+        NSLog(@"saved course to built");
+        [self.navigationController popViewControllerAnimated:YES];
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller

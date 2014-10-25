@@ -232,6 +232,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="q14-vr-wTx">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="add" id="4aE-Hr-fz1">
+                                    <connections>
+                                        <segue destination="8je-5d-NbY" kind="push" id="GaN-X4-cWu"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pkl-K3-Hwb">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -245,13 +256,7 @@
                             <outlet property="delegate" destination="lv7-rd-35b" id="XQ0-HW-xhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="GzT-0c-z8K">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4aE-Hr-fz1">
-                            <connections>
-                                <segue destination="8je-5d-NbY" kind="push" id="GaN-X4-cWu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="GzT-0c-z8K"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gz1-9I-axm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
