@@ -51,7 +51,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study With Me!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yD-nQV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study
+With
+Me!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yD-nQV">
                                 <rect key="frame" x="77" y="85" width="166" height="155"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="43"/>
                                 <color key="textColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,7 +125,7 @@
         <!--View Controller - Item 2-->
         <scene sceneID="E4u-T0-Fc0">
             <objects>
-                <viewController id="PYc-rG-CuT" sceneMemberID="viewController">
+                <viewController id="PYc-rG-CuT" customClass="MapStudyGroupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2t4-iU-H1O"/>
                         <viewControllerLayoutGuide type="bottom" id="b1h-rs-XrX"/>
@@ -131,9 +133,17 @@
                     <view key="view" contentMode="scaleToFill" id="WPy-kd-vZF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-i2-xCc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="07D-2K-vV0"/>
+                    <connections>
+                        <outlet property="mapView" destination="5Rc-i2-xCc" id="MnJ-um-Ko5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyJ-Lt-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
