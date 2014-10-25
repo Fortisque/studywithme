@@ -7,12 +7,13 @@
 //
 
 #import "MapStudyGroupViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 #define METERS_PER_MILE 1609.344
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface MapStudyGroupViewController ()
-
+@property (nonatomic, strong) NSArray *result;
 @end
 
 @implementation MapStudyGroupViewController
@@ -30,6 +31,75 @@
     [locationManager startUpdatingLocation];
     
     _mapView.showsUserLocation = YES;
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
+    
+    _mapView.delegate = self;
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        _result = [result getResult];
+        
+        for (int i = 0; i < [_result count]; i++) {
+            NSDictionary *data = [_result objectAtIndex:i];
+            
+            NSLog(@"%@", data);
+    
+
+            CLLocationCoordinate2D location;
+            
+            location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
+            location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
+            
+            //[[CLLocation alloc] initWithLatitude:[data objectForKey:@"latitude"] longitude:[data objectForKey:@"longitude"]];
+            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+            
+            point.coordinate = location;
+            point.title = [NSString stringWithFormat:@"%@, %@ max", [data objectForKey:@"course"], [data objectForKey:@"size"]];
+            point.subtitle = [data objectForKey:@"time"];
+            
+//            MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:point reuseIdentifier:@"hello"];
+//
+//            pin.canShowCallout = YES;
+//            pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            
+            [_mapView addAnnotation:point];
+            
+        }
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    //if annotation is the user location, return nil to get default blue-dot...
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    //create purple pin view for all other annotations...
+    static NSString *reuseId = @"hello";
+    
+    MKPinAnnotationView *myPersonalView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    if (myPersonalView == nil)
+    {
+        myPersonalView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        myPersonalView.pinColor = MKPinAnnotationColorPurple;
+        myPersonalView.canShowCallout = YES;
+        myPersonalView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    }
+    else
+    {
+        //if re-using view from another annotation, point view to current annotation...
+        myPersonalView.annotation = annotation;
+    }
+    
+    return myPersonalView;
 }
 
 - (void)didReceiveMemoryWarning {
