@@ -43,8 +43,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    CGRect rect = CGRectMake(0, 44, 350, 200);
-    [self.searchDisplayController.searchResultsTableView setFrame:rect];
     return [displayCourses count];
 }
 

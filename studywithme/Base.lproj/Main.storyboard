@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -87,7 +88,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8je-5d-NbY" kind="push" id="jEO-3x-FkO"/>
+                                    <segue destination="lv7-rd-35b" kind="push" id="Zxr-uN-4Y6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -120,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="1535" y="1028"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--Item 2-->
         <scene sceneID="E4u-T0-Fc0">
             <objects>
                 <viewController id="PYc-rG-CuT" sceneMemberID="viewController">
@@ -193,7 +194,7 @@
             </objects>
             <point key="canvasLocation" x="1545" y="300"/>
         </scene>
-        <!--View Study Groups Table View Controller - Item-->
+        <!--Item-->
         <scene sceneID="7iD-Pf-lAR">
             <objects>
                 <tableViewController id="4Km-lY-gTr" customClass="ViewStudyGroupsTableViewController" sceneMemberID="viewController">
@@ -223,6 +224,39 @@
             </objects>
             <point key="canvasLocation" x="2098" y="847"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="O2m-ld-o9U">
+            <objects>
+                <tableViewController id="lv7-rd-35b" customClass="MyCoursesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iIP-TS-PWz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pkl-K3-Hwb">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pkl-K3-Hwb" id="hpO-e3-6ei">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lv7-rd-35b" id="c4P-ON-982"/>
+                            <outlet property="delegate" destination="lv7-rd-35b" id="XQ0-HW-xhf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="GzT-0c-z8K">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4aE-Hr-fz1">
+                            <connections>
+                                <segue destination="8je-5d-NbY" kind="push" id="GaN-X4-cWu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gz1-9I-axm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1436" y="-350"/>
+        </scene>
         <!--Courses View Controller-->
         <scene sceneID="hvh-VX-kMk">
             <objects>
@@ -245,6 +279,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="G5I-4h-qDc"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="SMn-a0-4de" id="fW3-Qx-bb1"/>
                     </connections>
@@ -260,7 +295,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1545" y="-350"/>
+            <point key="canvasLocation" x="1952" y="-362"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

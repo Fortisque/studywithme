@@ -34,6 +34,7 @@
 		996055CD19FC3FA6001216B9 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055CC19FC3FA6001216B9 /* Twitter.framework */; };
 		996055CF19FC3FAB001216B9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055CE19FC3FAB001216B9 /* Social.framework */; };
 		996055D119FC3FB1001216B9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055D019FC3FB1001216B9 /* Accounts.framework */; };
+		996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D319FC404C001216B9 /* MyCoursesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		996055CC19FC3FA6001216B9 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		996055CE19FC3FAB001216B9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		996055D019FC3FB1001216B9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		996055D219FC404C001216B9 /* MyCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCoursesViewController.h; sourceTree = "<group>"; };
+		996055D319FC404C001216B9 /* MyCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCoursesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				996055D219FC404C001216B9 /* MyCoursesViewController.h */,
+				996055D319FC404C001216B9 /* MyCoursesViewController.m */,
 				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
 				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
 				70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */,
@@ -308,6 +313,7 @@
 				9960559419FC2293001216B9 /* CreateStudyGroupViewController.m in Sources */,
 				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
 				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
+				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
