@@ -25,7 +25,7 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    [locationManager requestAlwaysAuthorization];
+    //[locationManager requestAlwaysAuthorization];
     
     [locationManager startUpdatingLocation];
     
