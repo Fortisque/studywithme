@@ -47,6 +47,12 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    _locationLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -84,4 +90,34 @@
 }
 */
 
+- (IBAction)submit:(id)sender {
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
+    
+    // create a location object
+    BuiltLocation *loc = [BuiltLocation locationWithLongitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"] doubleValue]
+                                                  andLatitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"latitude"] doubleValue]];
+    
+    [obj setLocation: loc];
+    
+    [obj setObject:[_coursesArray objectAtIndex:[_classPicker selectedRowInComponent:0]]
+            forKey:@"course"];
+    
+    [obj setObject:_locationLabel.text
+            forKey:@"location"];
+    
+    [obj setObject:[NSString stringWithFormat:@"%@ - %@", _startTime.text, _endTime.text]
+            forKey:@"time"];
+    
+    [obj setObject:_maxSize.text
+            forKey:@"size"];
+    
+    [obj saveOnSuccess:^{
+        NSLog(@"Successfully saved study group!");
+        [self.navigationController popViewControllerAnimated:YES];
+    } onError:^(NSError *error) {
+        // there was an error in updating the object
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
+}
 @end

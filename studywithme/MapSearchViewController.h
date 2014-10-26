@@ -1,5 +1,5 @@
 //
-//  MapStudyGroupViewController.h
+//  MapSearchViewController.h
 //  studywithme
 //
 //  Created by Kevin Casey on 10/25/14.
@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
 
-@interface MapStudyGroupViewController : ViewController <CLLocationManagerDelegate, MKMapViewDelegate> {
+@interface MapSearchViewController : ViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate> {
     CLLocationManager *locationManager;
 }
 
+@property (strong, nonatomic) IBOutlet UISearchBar *search;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)done:(id)sender;
 
 @end

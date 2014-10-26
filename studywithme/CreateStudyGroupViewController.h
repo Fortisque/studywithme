@@ -10,5 +10,10 @@
 
 @interface CreateStudyGroupViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView *classPicker;
+@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
+- (IBAction)submit:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *startTime;
+@property (strong, nonatomic) IBOutlet UITextField *endTime;
+@property (strong, nonatomic) IBOutlet UITextField *maxSize;
 
 @end

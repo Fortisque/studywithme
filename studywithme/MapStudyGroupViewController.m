@@ -10,7 +10,6 @@
 #import <BuiltIO/BuiltIO.h>
 
 #define METERS_PER_MILE 1609.344
-#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface MapStudyGroupViewController ()
 @property (nonatomic, strong) NSArray *result;
@@ -32,9 +31,9 @@
     
     _mapView.showsUserLocation = YES;
     
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
-    
     _mapView.delegate = self;
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
@@ -59,11 +58,6 @@
             point.coordinate = location;
             point.title = [NSString stringWithFormat:@"%@, %@ max", [data objectForKey:@"course"], [data objectForKey:@"size"]];
             point.subtitle = [data objectForKey:@"time"];
-            
-//            MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:point reuseIdentifier:@"hello"];
-//
-//            pin.canShowCallout = YES;
-//            pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             
             [_mapView addAnnotation:point];
             

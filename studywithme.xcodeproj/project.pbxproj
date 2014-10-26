@@ -37,6 +37,8 @@
 		996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D319FC404C001216B9 /* MyCoursesViewController.m */; };
 		996055D619FC53E6001216B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055D519FC53E6001216B9 /* MapKit.framework */; };
 		996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D819FC5449001216B9 /* MapStudyGroupViewController.m */; };
+		996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055DB19FC786E001216B9 /* MapSearchViewController.m */; };
+		996055DE19FC8573001216B9 /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 996055DD19FC8573001216B9 /* table.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		996055D519FC53E6001216B9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		996055D719FC5449001216B9 /* MapStudyGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStudyGroupViewController.h; sourceTree = "<group>"; };
 		996055D819FC5449001216B9 /* MapStudyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStudyGroupViewController.m; sourceTree = "<group>"; };
+		996055DA19FC786E001216B9 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
+		996055DB19FC786E001216B9 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
+		996055DD19FC8573001216B9 /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +164,7 @@
 		9960556519FC2003001216B9 /* studywithme */ = {
 			isa = PBXGroup;
 			children = (
+				996055DD19FC8573001216B9 /* table.png */,
 				996055BA19FC3F55001216B9 /* BuiltIO.bundle */,
 				996055BB19FC3F55001216B9 /* BuiltIO.framework */,
 				9960556A19FC2003001216B9 /* AppDelegate.h */,
@@ -166,6 +172,8 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				996055DA19FC786E001216B9 /* MapSearchViewController.h */,
+				996055DB19FC786E001216B9 /* MapSearchViewController.m */,
 				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
 				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
 				996055D219FC404C001216B9 /* MyCoursesViewController.h */,
@@ -302,6 +310,7 @@
 				9960557719FC2003001216B9 /* LaunchScreen.xib in Resources */,
 				70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */,
 				9960557419FC2003001216B9 /* Images.xcassets in Resources */,
+				996055DE19FC8573001216B9 /* table.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +335,7 @@
 				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
+				996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */,
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
 				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,

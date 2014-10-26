@@ -8,10 +8,10 @@
 
 #import "ViewStudyGroupsTableViewController.h"
 #import "StudyGroupsTableViewCell.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray* tableData;
-
 @end
 
 @implementation ViewStudyGroupsTableViewController
@@ -35,12 +35,31 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-
-
-    NSDictionary *dict1 = [NSDictionary dictionaryWithObjects: @[@"CS61A", @"Bechtel", @"2-5PM", @"2"] forKeys:@[@"class", @"location", @"time", @"size"]];
     
-    _tableData = @[dict1, dict1];
+    [self updateBuiltQuery];
     
+}
+
+- (void)updateBuiltQuery
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        _tableData = [result getResult];
+        NSLog(@"%@", _tableData);
+        NSLog(@"%d", [_tableData count]);
+        
+        [self.tableView reloadData];
+
+        //[self.tableView reloadData];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    NSLog(@"%d", [_tableData count]);
     return [_tableData count];
 }
 
@@ -78,8 +98,7 @@
     
     NSDictionary *data = [_tableData objectAtIndex:indexPath.row];
     
-    NSLog(@"%@", data);
-    cell.classNameLabel.text = [data objectForKey:@"class"];
+    cell.classNameLabel.text = [data objectForKey:@"course"];
     cell.locationLabel.text = [data objectForKey:@"location"];
     cell.timeLabel.text = [data objectForKey:@"time"];
     cell.sizeLabel.text = [data objectForKey:@"size"];
