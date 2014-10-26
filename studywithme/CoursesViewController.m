@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS61B", @"CS61C", @"CS170", @"ENGLISH122", @"GERMANR5B", @"MATH54", @"MATH53", nil];
+    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS61B", @"CS61C", @"CS161", @"CS169", @"CS170", @"CS188", @"ENGLISH122", @"GERMANR5B", @"MATH54", @"MATH53", nil];
     
     // Do any additional setup after loading the view.
 }

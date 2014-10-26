@@ -103,7 +103,7 @@
 {
     
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"message"];
-    [obj setObject:@"Kevin"
+    [obj setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]
             forKey:@"from"];
     [obj setObject:_inputField.text
             forKey:@"message"];
