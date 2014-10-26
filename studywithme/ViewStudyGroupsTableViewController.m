@@ -111,6 +111,10 @@
     return 150;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier: @"message" sender: self];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

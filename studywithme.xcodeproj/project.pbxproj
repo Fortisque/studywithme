@@ -39,6 +39,8 @@
 		996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D819FC5449001216B9 /* MapStudyGroupViewController.m */; };
 		996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055DB19FC786E001216B9 /* MapSearchViewController.m */; };
 		996055DE19FC8573001216B9 /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 996055DD19FC8573001216B9 /* table.png */; };
+		996055E119FC89BC001216B9 /* MessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055E019FC89BC001216B9 /* MessagingViewController.m */; };
+		996055E419FC8B6F001216B9 /* MessagingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055E319FC8B6F001216B9 /* MessagingTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,10 @@
 		996055DA19FC786E001216B9 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
 		996055DB19FC786E001216B9 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
 		996055DD19FC8573001216B9 /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
+		996055DF19FC89BC001216B9 /* MessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingViewController.h; sourceTree = "<group>"; };
+		996055E019FC89BC001216B9 /* MessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingViewController.m; sourceTree = "<group>"; };
+		996055E219FC8B6F001216B9 /* MessagingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingTableViewController.h; sourceTree = "<group>"; };
+		996055E319FC8B6F001216B9 /* MessagingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +178,10 @@
 				9960556D19FC2003001216B9 /* ViewController.h */,
 				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				996055E219FC8B6F001216B9 /* MessagingTableViewController.h */,
+				996055E319FC8B6F001216B9 /* MessagingTableViewController.m */,
+				996055DF19FC89BC001216B9 /* MessagingViewController.h */,
+				996055E019FC89BC001216B9 /* MessagingViewController.m */,
 				996055DA19FC786E001216B9 /* MapSearchViewController.h */,
 				996055DB19FC786E001216B9 /* MapSearchViewController.m */,
 				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
@@ -329,10 +339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9960559419FC2293001216B9 /* CreateStudyGroupViewController.m in Sources */,
+				996055E119FC89BC001216B9 /* MessagingViewController.m in Sources */,
 				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
 				996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */,
 				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
 				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
+				996055E419FC8B6F001216B9 /* MessagingTableViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
 				996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */,
