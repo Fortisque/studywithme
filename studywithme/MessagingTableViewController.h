@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessagingTableViewController : UITableViewController
+@interface MessagingTableViewController : UITableViewController <UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *inputField;
 
 @end

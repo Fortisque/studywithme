@@ -24,6 +24,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [self builtUpdate];
+}
+
+- (void)builtUpdate
+{
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"message"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
@@ -37,6 +42,9 @@
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", error.userInfo);
     }];
+    
+    _inputField.delegate = self;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +82,40 @@
     return cell;
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // enter closes the keyboard
+    if ([string isEqualToString:@"\n"])
+    {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"message"];
+    [obj setObject:@"Kevin"
+            forKey:@"from"];
+    [obj setObject:_inputField.text
+            forKey:@"message"];
+    [obj saveOnSuccess:^{
+        [self builtUpdate];
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+    }];
+    
+    _inputField.text = @"";
+}
 
 /*
 // Override to support conditional editing of the table view.
