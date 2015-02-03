@@ -11,6 +11,11 @@
 		70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */; };
 		70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */; };
 		70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */; };
+		84D7B3E81A8022D800983028 /* Economica-Bold-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */; };
+		84D7B3E91A8022D800983028 /* Economica-BoldItalic-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */; };
+		84D7B3EA1A8022D800983028 /* Economica-Italic-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E51A8022D800983028 /* Economica-Italic-OTF.otf */; };
+		84D7B3EB1A8022D800983028 /* Economica-Regular-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E61A8022D800983028 /* Economica-Regular-OTF.otf */; };
+		84D7B3EC1A8022D800983028 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E71A8022D800983028 /* SIL Open Font License.txt */; };
 		9960556919FC2003001216B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556819FC2003001216B9 /* main.m */; };
 		9960556C19FC2003001216B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556B19FC2003001216B9 /* AppDelegate.m */; };
 		9960556F19FC2003001216B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556E19FC2003001216B9 /* ViewController.m */; };
@@ -60,6 +65,11 @@
 		70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyGroupsTableViewCell.h; sourceTree = "<group>"; };
 		70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyGroupsTableViewCell.m; sourceTree = "<group>"; };
 		70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyGroupCell.xib; sourceTree = "<group>"; };
+		84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Bold-OTF.otf"; sourceTree = "<group>"; };
+		84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-BoldItalic-OTF.otf"; sourceTree = "<group>"; };
+		84D7B3E51A8022D800983028 /* Economica-Italic-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Italic-OTF.otf"; sourceTree = "<group>"; };
+		84D7B3E61A8022D800983028 /* Economica-Regular-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Regular-OTF.otf"; sourceTree = "<group>"; };
+		84D7B3E71A8022D800983028 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		9960556319FC2003001216B9 /* studywithme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = studywithme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9960556719FC2003001216B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9960556819FC2003001216B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -137,6 +147,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84D7B3E21A8022D800983028 /* economica */ = {
+			isa = PBXGroup;
+			children = (
+				84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */,
+				84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */,
+				84D7B3E51A8022D800983028 /* Economica-Italic-OTF.otf */,
+				84D7B3E61A8022D800983028 /* Economica-Regular-OTF.otf */,
+				84D7B3E71A8022D800983028 /* SIL Open Font License.txt */,
+			);
+			path = economica;
+			sourceTree = "<group>";
+		};
 		9960555A19FC2003001216B9 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +233,7 @@
 		9960556619FC2003001216B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84D7B3E21A8022D800983028 /* economica */,
 				9960556719FC2003001216B9 /* Info.plist */,
 				9960556819FC2003001216B9 /* main.m */,
 			);
@@ -314,13 +337,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D7B3EA1A8022D800983028 /* Economica-Italic-OTF.otf in Resources */,
 				996055BC19FC3F55001216B9 /* BuiltIO.bundle in Resources */,
 				9960557219FC2003001216B9 /* Main.storyboard in Resources */,
+				84D7B3EC1A8022D800983028 /* SIL Open Font License.txt in Resources */,
+				84D7B3EB1A8022D800983028 /* Economica-Regular-OTF.otf in Resources */,
 				70D8511219FC2AA4005BDE91 /* Default-568h@2x.png in Resources */,
 				9960557719FC2003001216B9 /* LaunchScreen.xib in Resources */,
 				70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */,
+				84D7B3E91A8022D800983028 /* Economica-BoldItalic-OTF.otf in Resources */,
 				9960557419FC2003001216B9 /* Images.xcassets in Resources */,
 				996055DE19FC8573001216B9 /* table.png in Resources */,
+				84D7B3E81A8022D800983028 /* Economica-Bold-OTF.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
