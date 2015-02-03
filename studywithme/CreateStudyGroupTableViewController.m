@@ -174,12 +174,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
+    
     [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"start_date"];
     
-    [obj setObject:_startTime.date
+    [obj setObject:[timeFormatter stringFromDate:_startTime.date]
             forKey:@"start_time"];
     
-    [obj setObject:_endTime.date
+    [obj setObject:[timeFormatter stringFromDate:_endTime.date]
             forKey:@"duration"];
     
     [obj saveOnSuccess:^{

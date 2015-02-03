@@ -394,7 +394,7 @@ Me!</string>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
                                                     <rect key="frame" x="97" y="-31" width="278" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="444687407.278566">
                                                         <!--2015-02-03 20:16:47 +0000-->
@@ -409,7 +409,7 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-WY-HWo" id="Z3w-oO-z3t">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2WK-g3-7sM">
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2WK-g3-7sM">
                                                     <rect key="frame" x="97" y="-29" width="278" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="444687535.05695403">
                                                         <!--2015-02-03 20:18:55 +0000-->
