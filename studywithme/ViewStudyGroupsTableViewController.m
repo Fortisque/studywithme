@@ -12,6 +12,7 @@
 
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray* tableData;
+@property (strong, nonatomic) NSMutableArray *courses;
 @end
 
 @implementation ViewStudyGroupsTableViewController
@@ -35,26 +36,48 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    _courses = [[NSMutableArray alloc] init];
+    [self setCourses];
     
-    [self updateBuiltQuery];
+}
+
+- (void)setCourses
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        NSArray *res = [result getResult];
+        
+        
+        for (int i = 0; i < [res count]; i++) {
+            [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
+        }
+        
+        [self updateBuiltQuery];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 - (void)updateBuiltQuery
 {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
     
+    [query whereKey:@"course"
+        containedIn:_courses];
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
         _tableData = [result getResult];
-        NSLog(@"%@", _tableData);
-        NSLog(@"%d", [_tableData count]);
         
         [self.tableView reloadData];
 
-        //[self.tableView reloadData];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
@@ -79,7 +102,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"%d", [_tableData count]);
     return [_tableData count];
 }
 
