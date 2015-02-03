@@ -11,8 +11,8 @@
 @interface CreateStudyGroupTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UIButton *location;
-@property (strong, nonatomic) IBOutlet UITextField *startTime;
-@property (strong, nonatomic) IBOutlet UITextField *duration;
+@property (strong, nonatomic) IBOutlet UIDatePicker *startTime;
+@property (strong, nonatomic) IBOutlet UIDatePicker *endTime;
 - (IBAction)done:(id)sender;
 - (IBAction)enter_location:(id)sender;
 

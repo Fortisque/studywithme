@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -11,8 +11,6 @@
             <string>Economica-Bold</string>
         </mutableArray>
         <mutableArray key="Economica-Regular-OTF.otf">
-            <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
@@ -347,7 +345,7 @@ Me!</string>
                                                     </connections>
                                                 </pickerView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
-                                                    <rect key="frame" x="8" y="64" width="55" height="21"/>
+                                                    <rect key="frame" x="8" y="70" width="55" height="21"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -391,16 +389,17 @@ Me!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
-                                                    <rect key="frame" x="8" y="36" width="81" height="29"/>
+                                                    <rect key="frame" x="8" y="35" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 15:30" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-pm-JtC">
-                                                    <rect key="frame" x="112" y="35" width="125" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
+                                                    <rect key="frame" x="97" y="-31" width="278" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="444687407.278566">
+                                                        <!--2015-02-03 20:16:47 +0000-->
+                                                    </date>
+                                                </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -410,17 +409,18 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-WY-HWo" id="Z3w-oO-z3t">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2WK-g3-7sM">
+                                                    <rect key="frame" x="97" y="-29" width="278" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="444687535.05695403">
+                                                        <!--2015-02-03 20:18:55 +0000-->
+                                                    </date>
+                                                </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
                                                     <rect key="frame" x="8" y="35" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 19:00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTX-vF-vHX">
-                                                    <rect key="frame" x="107" y="35" width="125" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -456,15 +456,16 @@ Me!</string>
                     <navigationItem key="navigationItem" id="fPW-xH-gZT"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="duration" destination="WTX-vF-vHX" id="Rd7-vy-RAa"/>
+                        <outlet property="duration" destination="2WK-g3-7sM" id="3hQ-7f-7Ft"/>
+                        <outlet property="endTime" destination="2WK-g3-7sM" id="b54-qk-6s0"/>
                         <outlet property="location" destination="3Nd-sd-P0l" id="ZJ5-yg-Kqm"/>
                         <outlet property="picker" destination="zxs-3B-ZY4" id="vs1-L0-DX5"/>
-                        <outlet property="startTime" destination="KRy-pm-JtC" id="5E5-x0-tui"/>
+                        <outlet property="startTime" destination="tdC-6c-m9i" id="68f-WM-Z2h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TY1-4g-6Vh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443.5" y="393.5"/>
+            <point key="canvasLocation" x="1443.5" y="389.5"/>
         </scene>
         <!--Map Search View Controller-->
         <scene sceneID="db8-92-gb5">
