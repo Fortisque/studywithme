@@ -180,7 +180,7 @@
             forKey:@"start_time"];
     
     [obj setObject:_duration.text
-            forKey:@"duration"];
+            forKey:@"end_time"];
     
     [obj saveOnSuccess:^{
         NSLog(@"Successfully saved study group!");

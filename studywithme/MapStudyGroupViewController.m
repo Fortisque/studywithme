@@ -102,7 +102,7 @@ BOOL zoomed;
             MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
             
             point.coordinate = location;
-            point.title = [NSString stringWithFormat:@"%@, %@ max", [data objectForKey:@"course"], [data objectForKey:@"size"]];
+            point.title = [NSString stringWithFormat:@"%@, %@", [data objectForKey:@"course"], [data objectForKey:@"location"]];
             point.subtitle = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
             
             [_mapView addAnnotation:point];
