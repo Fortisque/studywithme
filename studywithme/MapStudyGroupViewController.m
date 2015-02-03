@@ -13,6 +13,7 @@
 
 @interface MapStudyGroupViewController ()
 @property (nonatomic, strong) NSArray *result;
+@property (nonatomic, strong) NSMutableArray *courses;
 @end
 
 BOOL zoomed;
@@ -43,7 +44,42 @@ BOOL zoomed;
         
     _mapView.delegate = self;
     
+    _courses = [[NSMutableArray alloc] init];
+    
+    [self setCourses];
+}
+
+- (void)setCourses
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        NSArray *res = [result getResult];
+        
+        
+        for (int i = 0; i < [res count]; i++) {
+            [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
+        }
+        
+        [self updateBuiltQuery];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
+}
+
+- (void)updateBuiltQuery
+{
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
+    
+    [query whereKey:@"course"
+        containedIn:_courses];
+    
+    NSLog(@"%@", _courses);
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
@@ -55,8 +91,8 @@ BOOL zoomed;
             NSDictionary *data = [_result objectAtIndex:i];
             
             NSLog(@"%@", data);
-    
-
+            
+            
             CLLocationCoordinate2D location;
             
             location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
@@ -123,8 +159,9 @@ calloutAccessoryControlTapped:(UIControl *)control
     if (!zoomed) {
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
         [_mapView setRegion:viewRegion animated:YES];
+        zoomed = true;
     }
-    zoomed = true;
+    [locationManager stopUpdatingLocation];
 }
 
 /*

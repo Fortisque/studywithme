@@ -76,6 +76,7 @@ BOOL zoomed;
         [_mapView setRegion:viewRegion animated:YES];
         zoomed = true;
     }
+    [locationManager stopUpdatingLocation];
 }
 
 /*

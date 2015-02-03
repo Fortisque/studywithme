@@ -70,7 +70,6 @@
     
     [query whereKey:@"course"
         containedIn:_courses];
-    NSLog(@"%@", _courses);
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
