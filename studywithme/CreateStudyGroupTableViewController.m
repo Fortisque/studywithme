@@ -176,10 +176,10 @@
     
     [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"start_date"];
     
-    [obj setObject:_startTime.text
+    [obj setObject:_startTime.date
             forKey:@"start_time"];
     
-    [obj setObject:_duration.text
+    [obj setObject:_endTime.date
             forKey:@"duration"];
     
     [obj saveOnSuccess:^{
