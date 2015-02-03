@@ -15,22 +15,32 @@
 @property (nonatomic, strong) NSArray *result;
 @end
 
+BOOL zoomed;
+
 @implementation MapStudyGroupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    zoomed = false;
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+    [locationManager requestWhenInUseAuthorization];
     
-    //[locationManager requestAlwaysAuthorization];
+    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
     
-    [locationManager startUpdatingLocation];
-    
-    _mapView.showsUserLocation = YES;
-    
+    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        [locationManager startUpdatingLocation];
+        _mapView.showsUserLocation = YES;
+        
+    }
+        
     _mapView.delegate = self;
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
@@ -110,9 +120,11 @@ calloutAccessoryControlTapped:(UIControl *)control
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
     NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
-    [locationManager stopUpdatingLocation];
+    if (!zoomed) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+        [_mapView setRegion:viewRegion animated:YES];
+    }
+    zoomed = true;
 }
 
 /*

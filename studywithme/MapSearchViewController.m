@@ -15,8 +15,11 @@
 
 @implementation MapSearchViewController
 
+BOOL zoomed;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    zoomed = false;
 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -24,8 +27,6 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [locationManager requestWhenInUseAuthorization];
-    
-    [locationManager startUpdatingLocation];
     
     CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
     
@@ -70,9 +71,11 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
     NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
-    [locationManager stopUpdatingLocation];
+    if (!zoomed) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+        [_mapView setRegion:viewRegion animated:YES];
+        zoomed = true;
+    }
 }
 
 /*
