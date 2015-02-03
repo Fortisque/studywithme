@@ -38,8 +38,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="classNameLabel" destination="RFy-nb-Vo5" id="yNq-s7-nDy"/>
+                <outlet property="endLabel" destination="uZS-zr-u0x" id="jd6-Z0-thD"/>
                 <outlet property="locationLabel" destination="NA1-DH-pP2" id="TxQ-RX-WGY"/>
-                <outlet property="sizeLabel" destination="uZS-zr-u0x" id="t3M-yC-y5Q"/>
                 <outlet property="timeLabel" destination="47i-8M-yjX" id="fQn-fQ-P5y"/>
             </connections>
         </tableViewCell>

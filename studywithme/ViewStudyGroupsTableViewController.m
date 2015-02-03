@@ -122,8 +122,9 @@
     
     cell.classNameLabel.text = [data objectForKey:@"course"];
     cell.locationLabel.text = [data objectForKey:@"location"];
-    cell.timeLabel.text = [data objectForKey:@"time"];
-    cell.sizeLabel.text = [data objectForKey:@"size"];
+    cell.timeLabel.text = [NSString stringWithFormat:@"From: %@", [data objectForKey:@"start_time"]];
+    
+    cell.endLabel.text = [NSString stringWithFormat:@"Ending at: %@", [data objectForKey:@"end_time"]];
     
     return cell;
 }

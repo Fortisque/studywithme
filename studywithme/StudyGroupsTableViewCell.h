@@ -12,6 +12,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *classNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
-@property (nonatomic, weak) IBOutlet UILabel *sizeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endLabel;
 
 @end

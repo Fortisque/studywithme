@@ -16,10 +16,13 @@
 @implementation MapSearchViewController
 
 BOOL zoomed;
+CLLocation *myLocation;
+BOOL done;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     zoomed = false;
+    done = false;
 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -60,7 +63,6 @@ BOOL zoomed;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +72,7 @@ BOOL zoomed;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
+    myLocation = newLocation;
     NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     if (!zoomed) {
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
@@ -90,7 +93,11 @@ BOOL zoomed;
 */
 
 - (IBAction)done:(id)sender {
-    [self finish];
+    done = true;
+    if (false) {
+        [self addPinToMapGivenCoordinate:myLocation];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
@@ -100,12 +107,9 @@ BOOL zoomed;
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    [self geocode];
-}
-
-- (void) finish
-{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (!done) {
+        [self geocode];
+    }
 }
 
 - (void)geocode

@@ -103,7 +103,7 @@ BOOL zoomed;
             
             point.coordinate = location;
             point.title = [NSString stringWithFormat:@"%@, %@ max", [data objectForKey:@"course"], [data objectForKey:@"size"]];
-            point.subtitle = [data objectForKey:@"time"];
+            point.subtitle = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
             
             [_mapView addAnnotation:point];
             

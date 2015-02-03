@@ -12,7 +12,7 @@
 @synthesize classNameLabel = _classNameLabel;
 @synthesize locationLabel = _locationLabel;
 @synthesize timeLabel = _timeLabel;
-@synthesize sizeLabel = _sizeLabel;
+@synthesize endLabel = _endLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
