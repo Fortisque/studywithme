@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *search;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) MKPointAnnotation *pin;
 - (IBAction)done:(id)sender;
 
 @end

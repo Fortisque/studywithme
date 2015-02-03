@@ -23,20 +23,43 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    //[locationManager requestAlwaysAuthorization];
+    [locationManager requestWhenInUseAuthorization];
     
     [locationManager startUpdatingLocation];
     
-    _mapView.showsUserLocation = YES;
+    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
+    
+    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        [locationManager startUpdatingLocation];
+        _mapView.showsUserLocation = YES;
+        
+    }
     
     _mapView.delegate = self;
     
     _search.delegate = self;
+    
+    _pin = [[MKPointAnnotation alloc] init];
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0; //user needs to press for 1 seconds
+    [self.mapView addGestureRecognizer:lpgr];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     NSLog(@"%@", searchText);
+    [[NSUserDefaults standardUserDefaults] setObject:_search.text forKey:@"location"];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,27 +94,51 @@
     return YES;
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    [self finish];
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self geocode];
 }
 
 - (void) finish
 {
-    [[NSUserDefaults standardUserDefaults] setObject:_search.text forKey:@"location"];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)geocode
+{
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
     [geocoder geocodeAddressString:_search.text completionHandler:^(NSArray* placemarks, NSError* error){
         for (CLPlacemark* aPlacemark in placemarks)
         {
+            NSLog(@"%@", aPlacemark);
             // Process the placemark.
-            NSString *latDest1 = [NSString stringWithFormat:@"%.8f",aPlacemark.location.coordinate.latitude];
-            NSString *lngDest1 = [NSString stringWithFormat:@"%.8f",aPlacemark.location.coordinate.longitude];
-            
-            [[NSUserDefaults standardUserDefaults] setObject:latDest1 forKey:@"latitude"];
-            [[NSUserDefaults standardUserDefaults] setObject:lngDest1 forKey:@"longitude"];
+            [self addPinToMapGivenCoordinate:aPlacemark.location.coordinate];
         }
     }];
+}
+
+- (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    _pin.coordinate = coordinate;
+    NSString *lat = [NSString stringWithFormat:@"%.8f", coordinate.latitude];
+    NSString *lng = [NSString stringWithFormat:@"%.8f", coordinate.longitude];
+    [[NSUserDefaults standardUserDefaults] setObject:lat forKey:@"latitude"];
+    [[NSUserDefaults standardUserDefaults] setObject:lng forKey:@"longitude"];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    [_mapView setRegion:viewRegion animated:YES];
+    [_mapView addAnnotation:_pin];
+}
+
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    [self addPinToMapGivenCoordinate:touchMapCoordinate];
 }
 @end
