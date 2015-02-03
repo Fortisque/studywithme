@@ -42,6 +42,13 @@
              andPassword:_passwordField.text
                OnSuccess:^{
                    // user has logged in successfully
+                   BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+                   [installation setObject:user.uid forKey:@"app_user_object_uid"];
+                   [installation updateInstallationOnSuccess:^{
+                       
+                   }                                 onError:^(NSError *error) {
+                       
+                   }];
                    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
                    [self performSegueWithIdentifier:@"success" sender:self];
                    [[NSUserDefaults standardUserDefaults] setObject:_usernameField.text forKey:@"username"];
