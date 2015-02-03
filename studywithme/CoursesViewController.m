@@ -44,8 +44,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    CGRect rect = CGRectMake(0, 44, 400, 400);
-    [tableView setFrame:rect];
     return [displayCourses count];
 }
 
