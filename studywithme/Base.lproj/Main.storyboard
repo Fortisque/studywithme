@@ -294,6 +294,7 @@
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="4Km-lY-gTr" kind="relationship" relationship="viewControllers" id="S46-9D-rU5"/>
@@ -302,9 +303,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjm-mj-rlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="1028"/>
+            <point key="canvasLocation" x="1435.5" y="1193.5"/>
         </scene>
-        <!--Map Study Group View Controller-->
+        <!--map-->
         <scene sceneID="E4u-T0-Fc0">
             <objects>
                 <viewController id="PYc-rG-CuT" customClass="MapStudyGroupViewController" sceneMemberID="viewController">
@@ -317,12 +318,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-i2-xCc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="07D-2K-vV0"/>
+                    <tabBarItem key="tabBarItem" title="map" image="map" id="07D-2K-vV0"/>
                     <connections>
                         <outlet property="mapView" destination="5Rc-i2-xCc" id="MnJ-um-Ko5"/>
                         <segue destination="Okh-w1-o9x" kind="push" identifier="message" id="Hak-wA-Fro"/>
@@ -330,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyJ-Lt-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="1560"/>
+            <point key="canvasLocation" x="1951.5" y="1849.5"/>
         </scene>
         <!--Create Study Group-->
         <scene sceneID="JHO-Po-qHP">
@@ -462,15 +463,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esr-rm-n0i">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esr-rm-n0i">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-Xd-t9Y">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-Xd-t9Y">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nTh-Xd-t9Y" firstAttribute="trailing" secondItem="esr-rm-n0i" secondAttribute="trailing" id="1al-1v-FfD"/>
+                            <constraint firstItem="esr-rm-n0i" firstAttribute="top" secondItem="nTh-Xd-t9Y" secondAttribute="bottom" id="1g1-kA-n9M"/>
+                            <constraint firstAttribute="trailing" secondItem="nTh-Xd-t9Y" secondAttribute="trailing" id="Bpd-Ee-81T"/>
+                            <constraint firstItem="nTh-Xd-t9Y" firstAttribute="leading" secondItem="esr-rm-n0i" secondAttribute="leading" id="Dzp-CL-BGp"/>
+                            <constraint firstItem="nTh-Xd-t9Y" firstAttribute="leading" secondItem="5og-dQ-9dy" secondAttribute="leading" id="RlQ-se-f9s"/>
+                            <constraint firstItem="esr-rm-n0i" firstAttribute="bottom" secondItem="ETH-2s-9ON" secondAttribute="top" id="XSz-V5-VhH"/>
+                            <constraint firstItem="nTh-Xd-t9Y" firstAttribute="top" secondItem="Bhr-fj-28M" secondAttribute="bottom" id="ino-zU-zM5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6HD-Sb-r19">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="jOy-R0-ngB">
@@ -486,9 +496,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJV-fq-5bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014.5" y="259.5"/>
+            <point key="canvasLocation" x="1951.5" y="361.5"/>
         </scene>
-        <!--View Study Groups Table View Controller-->
+        <!--list-->
         <scene sceneID="7iD-Pf-lAR">
             <objects>
                 <tableViewController id="4Km-lY-gTr" customClass="ViewStudyGroupsTableViewController" sceneMemberID="viewController">
@@ -504,7 +514,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -512,7 +522,9 @@
                             <outlet property="delegate" destination="4Km-lY-gTr" id="FIj-43-62O"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" systemItem="search" id="5mB-rV-tTJ"/>
+                    <tabBarItem key="tabBarItem" title="list" image="list" id="5mB-rV-tTJ">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="yhY-s3-j95"/>
                     <connections>
                         <segue destination="Okh-w1-o9x" kind="push" identifier="message" id="t3L-EN-vno"/>
@@ -520,7 +532,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRU-p4-fGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2098" y="847"/>
+            <point key="canvasLocation" x="1951.5" y="1088.5"/>
         </scene>
         <!--Messaging Table View Controller-->
         <scene sceneID="cBY-OS-gUz">
@@ -556,7 +568,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4z-tY-bH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663" y="916"/>
+            <point key="canvasLocation" x="2659.5" y="1193.5"/>
         </scene>
         <!--Messaging View Controller-->
         <scene sceneID="nW6-qa-FLz">
@@ -657,6 +669,8 @@
     </scenes>
     <resources>
         <image name="glasses" width="186" height="70"/>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
         <image name="smile" width="159" height="61"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
