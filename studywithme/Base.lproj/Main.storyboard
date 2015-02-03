@@ -27,6 +27,7 @@
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
+            <string>Economica-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -190,9 +191,6 @@ Me!</string>
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="PQJ-5r-QDG" kind="push" id="f2E-qc-O1Q"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c05-bV-5c8">
                                         <rect key="frame" x="37" y="189" width="300" height="60"/>
@@ -293,7 +291,7 @@ Me!</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjm-mj-rlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435.5" y="1193.5"/>
+            <point key="canvasLocation" x="1435.5" y="1504.5"/>
         </scene>
         <!--map-->
         <scene sceneID="E4u-T0-Fc0">
@@ -323,123 +321,151 @@ Me!</string>
             </objects>
             <point key="canvasLocation" x="1951.5" y="1849.5"/>
         </scene>
-        <!--Create Study Group-->
-        <scene sceneID="JHO-Po-qHP">
+        <!--Table View Controller-->
+        <scene sceneID="EnX-v0-8uY">
             <objects>
-                <viewController id="PQJ-5r-QDG" customClass="CreateStudyGroupViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7GC-hG-t4d"/>
-                        <viewControllerLayoutGuide type="bottom" id="2CV-1h-WDt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SrA-Y6-zBz">
+                <tableViewController id="OgH-D6-9he" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XKb-st-mxk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ey-Iq-B7s">
-                                <rect key="frame" x="7" y="235" width="62" height="21"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="At:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-Fv-sPS">
-                                <rect key="frame" x="7" y="170" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASB-ik-Bf2">
-                                <rect key="frame" x="7" y="71" width="55" height="21"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEZ-ra-txU">
-                                <rect key="frame" x="47" y="0.0" width="320" height="162"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="PQJ-5r-QDG" id="eAH-dd-cC2"/>
-                                    <outlet property="delegate" destination="PQJ-5r-QDG" id="o1P-Tg-alF"/>
-                                </connections>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="Gj7-Tb-fKJ">
-                                <rect key="frame" x="47" y="152" width="175" height="57"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 15:30" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7c-Q0-yD4">
-                                <rect key="frame" x="7" y="264" width="125" height="30"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maximum # of People" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8j-Ml-q9D">
-                                <rect key="frame" x="7" y="316" width="201" height="21"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCA-aJ-buL">
-                                <rect key="frame" x="104" y="572" width="167" height="51"/>
-                                <color key="backgroundColor" red="0.32549019607843138" green="0.51372549019607838" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="30"/>
-                                <state key="normal" title="Go!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submit:" destination="PQJ-5r-QDG" eventType="touchUpInside" id="NKb-70-amY"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6e0-48-tk1">
-                                <rect key="frame" x="7" y="345" width="97" height="30"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QdK-0b-iRW">
-                                <rect key="frame" x="313" y="154" width="68" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="VbF-Kw-1k2" kind="push" id="tKi-El-h5B"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Until:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRT-PP-c8x">
-                                <rect key="frame" x="200" y="235" width="62" height="21"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 16:30" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpp-68-QWn">
-                                <rect key="frame" x="200" y="264" width="125" height="30"/>
-                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Create Study Group" id="hTu-H5-7Ef"/>
-                    <connections>
-                        <outlet property="classPicker" destination="NEZ-ra-txU" id="i6j-LP-8Sk"/>
-                        <outlet property="endTime" destination="mpp-68-QWn" id="PbA-YL-5Er"/>
-                        <outlet property="locationLabel" destination="Gj7-Tb-fKJ" id="rer-fA-ol5"/>
-                        <outlet property="maxSize" destination="6e0-48-tk1" id="Z6Z-e4-qp9"/>
-                        <outlet property="searchDisplayController" destination="0LF-2h-Rbs" id="OsN-so-AJg"/>
-                        <outlet property="startTime" destination="b7c-Q0-yD4" id="8Ov-li-G1q"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b0b-1N-jGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="0LF-2h-Rbs">
-                    <connections>
-                        <outlet property="delegate" destination="PQJ-5r-QDG" id="xnQ-uh-0tS"/>
-                        <outlet property="searchContentsController" destination="PQJ-5r-QDG" id="YQB-Dn-uxu"/>
-                        <outlet property="searchResultsDataSource" destination="PQJ-5r-QDG" id="1d9-ll-w9s"/>
-                        <outlet property="searchResultsDelegate" destination="PQJ-5r-QDG" id="ILw-mW-hb6"/>
-                    </connections>
-                </searchDisplayController>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="xGg-Ct-rOp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGg-Ct-rOp" id="aIc-Tm-0qH">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxs-3B-ZY4">
+                                            <rect key="frame" x="41" y="0.0" width="375" height="162"/>
+                                        </pickerView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
+                                            <rect key="frame" x="8" y="64" width="55" height="21"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="s17-Yc-Iaq">
+                                <rect key="frame" x="0.0" y="183" width="375" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s17-Yc-Iaq" id="hs9-sm-ijc">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="Eyc-an-F5h">
+                                            <rect key="frame" x="45" y="28" width="230" height="57"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="At:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-ux-MUo">
+                                            <rect key="frame" x="8" y="40" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-sd-P0l">
+                                            <rect key="frame" x="29" y="26" width="190" height="48"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <state key="normal" title="Enter Location">
+                                                <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="9XN-6M-uR8">
+                                <rect key="frame" x="0.0" y="267" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9XN-6M-uR8" id="6gQ-kX-nYL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
+                                            <rect key="frame" x="8" y="36" width="81" height="29"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 15:30" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-pm-JtC">
+                                            <rect key="frame" x="112" y="35" width="125" height="30"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="WQl-WY-HWo">
+                                <rect key="frame" x="0.0" y="386" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-WY-HWo" id="Z3w-oO-z3t">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
+                                            <rect key="frame" x="8" y="35" width="81" height="29"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 2" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTX-vF-vHX">
+                                            <rect key="frame" x="107" y="35" width="125" height="30"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="kyb-Mw-0uR">
+                                <rect key="frame" x="0.0" y="505" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kyb-Mw-0uR" id="y20-ac-Qe6">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maximum # of People:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qae-qF-HO2">
+                                            <rect key="frame" x="8" y="37" width="201" height="29"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-Tw-x6H">
+                                            <rect key="frame" x="224" y="33" width="97" height="30"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="121" id="e5I-Tz-bx6">
+                                <rect key="frame" x="0.0" y="624" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e5I-Tz-bx6" id="0WG-8A-dWO">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEk-UE-oZk">
+                                            <rect key="frame" x="104" y="34" width="167" height="51"/>
+                                            <color key="backgroundColor" red="0.32549019610000002" green="0.51372549020000002" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="30"/>
+                                            <state key="normal" title="Go!">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OgH-D6-9he" id="A1j-kf-c0u"/>
+                            <outlet property="delegate" destination="OgH-D6-9he" id="jYA-JO-M6r"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TY1-4g-6Vh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435.5" y="368.5"/>
+            <point key="canvasLocation" x="1465.5" y="543.5"/>
         </scene>
         <!--Map Search View Controller-->
         <scene sceneID="db8-92-gb5">
@@ -450,14 +476,14 @@ Me!</string>
                         <viewControllerLayoutGuide type="bottom" id="ETH-2s-9ON"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5og-dQ-9dy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esr-rm-n0i">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esr-rm-n0i">
+                                <rect key="frame" x="0.0" y="108" width="320" height="559"/>
                             </mapView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-Xd-t9Y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-Xd-t9Y">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -486,7 +512,7 @@ Me!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJV-fq-5bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951.5" y="361.5"/>
+            <point key="canvasLocation" x="2206.5" y="353.5"/>
         </scene>
         <!--list-->
         <scene sceneID="7iD-Pf-lAR">
