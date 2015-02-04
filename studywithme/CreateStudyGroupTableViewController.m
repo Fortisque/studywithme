@@ -152,7 +152,7 @@
         return;
     }
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
-    
+        
     // create a location object
     BuiltLocation *loc = [BuiltLocation locationWithLongitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"] doubleValue]
                                                   andLatitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"latitude"] doubleValue]];
