@@ -40,7 +40,6 @@
             [_coursesArray addObject:[[_courses objectAtIndex:i] objectForKey:@"name"]];
         }
         
-        NSLog(@"courses:%@", _coursesArray);
         
         [_picker reloadAllComponents];
         
@@ -68,19 +67,13 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSLog(@"%d", [_coursesArray count]);
     return [_coursesArray count];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
-    NSLog(@"%@", _coursesArray);
     return [_coursesArray objectAtIndex:row];
     
-}
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
-{
-    NSLog(@"Selected Row %d", row);
 }
 
 - (void)didReceiveMemoryWarning {
