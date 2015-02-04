@@ -36,6 +36,10 @@
 */
 
 - (IBAction)login:(id)sender {
+    if (![self verifyBerkeleyEmailUsername]) {
+        [self alertWithMessage:@"Berkeley email required"];
+        return;
+    }
     BuiltUser *user = [BuiltUser user];
     
     [user loginWithEmail:_usernameField.text
@@ -56,11 +60,15 @@
                    // login failed
                    // error.userinfo contains more details regarding the same
                    NSLog(@"%@", error.userInfo);
-                   _welcomeLabel.text = [error.userInfo valueForKey:@"error_message"];
+                   [self alertWithMessage:[error.userInfo valueForKey:@"error_message"]];
                }];
 }
 
 - (IBAction)register:(id)sender {
+    if (![self verifyBerkeleyEmailUsername]) {
+        [self alertWithMessage:@"Berkeley email required"];
+        return;
+    }
     BuiltUser *user = [BuiltUser user];
     user.email = _usernameField.text;
     user.password = _passwordField.text;
@@ -71,8 +79,30 @@
         // there was an error in signing up the user
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", error.userInfo);
-        _welcomeLabel.text = [error.userInfo valueForKey:@"error_message"];
+        [self alertWithMessage:[error.userInfo valueForKey:@"error_message"]];
     }];
+}
+
+- (BOOL)verifyBerkeleyEmailUsername
+{
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(.*)@berkeley.edu$" options:0 error:NULL];
+    NSString *str = _usernameField.text;
+    NSTextCheckingResult *match = [regex firstMatchInString:str options:0 range:NSMakeRange(0, [str length])];
+    NSString *res = [str substringWithRange:[match rangeAtIndex:1]];
+    return [res length] != 0;
+}
+
+- (void)alertWithMessage:(NSString *)message
+{
+    if ([message length] == 0) {
+        message = @"Please check your internet";
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Something went wrong!"
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

@@ -122,7 +122,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-8B-BRp">
                                 <rect key="frame" x="-17" y="86" width="408" height="280"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-zn-9DE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-zn-9DE" userLabel="Study With Me!">
                                 <rect key="frame" x="43" y="126" width="288" height="212"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="CbY-IH-D9u"/>
@@ -457,6 +457,7 @@ Me!</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="endTime" destination="2WK-g3-7sM" id="b54-qk-6s0"/>
+                        <outlet property="goButton" destination="zEk-UE-oZk" id="wx2-wm-crk"/>
                         <outlet property="location" destination="3Nd-sd-P0l" id="ZJ5-yg-Kqm"/>
                         <outlet property="picker" destination="zxs-3B-ZY4" id="vs1-L0-DX5"/>
                         <outlet property="startTime" destination="tdC-6c-m9i" id="68f-WM-Z2h"/>

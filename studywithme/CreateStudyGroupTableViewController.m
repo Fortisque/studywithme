@@ -149,6 +149,7 @@
     
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"]) {
         [self alertWithMessage:@"Please set a location for your study group"];
+        return;
     }
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
     
@@ -178,14 +179,18 @@
     [obj setObject:[timeFormatter stringFromDate:_endTime.date]
             forKey:@"end_time"];
     
+    
+    [_goButton setEnabled:NO];
     [obj saveOnSuccess:^{
         NSLog(@"Successfully saved study group!");
+        [_goButton setEnabled:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } onError:^(NSError *error) {
         // there was an error in updating the object
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", error.userInfo);
         [self alertWithMessage:@"Couldn't save, make sure all fields are filled"];
+        [_goButton setEnabled:YES];
     }];
 }
 

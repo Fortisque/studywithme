@@ -94,7 +94,7 @@ BOOL done;
 
 - (IBAction)done:(id)sender {
     done = true;
-    if ([_mapView.annotations count] == 0) {
+    if (_pin.coordinate.latitude == 0) {
         [self addPinToMapGivenCoordinate:myLocation.coordinate];
     }
     [self.navigationController popViewControllerAnimated:YES];
