@@ -12,7 +12,9 @@
 #import "ViewStudyGroupTabViewController.h"
 
 @interface ViewStudyGroupsTableViewController ()
-@property (strong, nonatomic) NSArray *tableData;
+@property (strong, nonatomic) NSArray *otherStudyGroups;
+@property (strong, nonatomic) NSArray *myStudyGroups;
+
 @end
 
 @implementation ViewStudyGroupsTableViewController
@@ -54,7 +56,8 @@
 - (void)setUpData:(NSNotification *)notification
 {
     ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
-    _tableData = tabVC.data;
+    _otherStudyGroups = tabVC.otherStudyGroups;
+    _myStudyGroups = tabVC.myStudyGroups;
     [self.tableView reloadData];
 }
 
@@ -69,13 +72,16 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_tableData count];
+    if (section == 0) {
+        return [_myStudyGroups count];
+    }
+    return [_otherStudyGroups count];
 }
 
 
@@ -85,13 +91,18 @@
     
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
     
-    if (cell == nil)
-    {
+    if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:studyGroupCellIdentifier owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    NSDictionary *data = [_tableData objectAtIndex:indexPath.row];
+    NSDictionary *data;
+    
+    if (indexPath.section == 0) {
+        data = [_myStudyGroups objectAtIndex:indexPath.row];
+    } else {
+        data = [_otherStudyGroups objectAtIndex:indexPath.row];
+    }
     
     if (indexPath.row %2 == 0) {
         cell.classNameLabel.backgroundColor = [UIColor colorWithRed:1 green:0.8 blue:0.43 alpha:1.0];
@@ -115,6 +126,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier: @"message" sender: self];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return @"My study groups";
+    } else {
+        return @"Other study groups";
+    }
 }
 
 

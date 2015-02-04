@@ -20,9 +20,10 @@
     // Do any additional setup after loading the view.
     
     _courses = [NSMutableArray array];
-    _data = [NSArray array];
-    [self setCourses];
+    _myStudyGroups = [NSArray array];
+    _otherStudyGroups = [NSArray array];
     
+    [self setCourses];
 }
 
 - (void)setCourses
@@ -34,7 +35,6 @@
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
         NSArray *res = [result getResult];
-        
         
         for (int i = 0; i < [res count]; i++) {
             [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
@@ -51,14 +51,17 @@
 - (void)updateBuiltQuery
 {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
+    
+    // query for my study groups
 
+    // change this to query for other study groups
     [query whereKey:@"course"
         containedIn:_courses];
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
-        _data = [result getResult];
+        _otherStudyGroups = [result getResult];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
         

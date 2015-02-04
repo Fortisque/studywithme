@@ -10,7 +10,8 @@
 
 @interface ViewStudyGroupTabViewController : UITabBarController
 
-@property (strong, nonatomic) NSArray* data;
+@property (strong, nonatomic) NSArray* myStudyGroups;
+@property (strong, nonatomic) NSArray* otherStudyGroups;
 @property (strong, nonatomic) NSMutableArray* courses;
 
 @end

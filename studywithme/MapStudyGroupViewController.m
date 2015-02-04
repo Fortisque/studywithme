@@ -13,7 +13,8 @@
 #define METERS_PER_MILE 1609.344
 
 @interface MapStudyGroupViewController ()
-@property (nonatomic, strong) NSArray *result;
+@property (nonatomic, strong) NSArray *otherStudyGroups;
+@property (nonatomic, strong) NSArray *myStudyGroups;
 @end
 
 BOOL zoomed;
@@ -62,9 +63,11 @@ BOOL zoomed;
 - (void)updateMap:(NSNotification *)notification
 {
     ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
-    _result = tabVC.data;
-    for (int i = 0; i < [_result count]; i++) {
-        NSDictionary *data = [_result objectAtIndex:i];
+    
+    _otherStudyGroups = tabVC.otherStudyGroups;
+    _myStudyGroups = tabVC.myStudyGroups;
+    for (int i = 0; i < [_otherStudyGroups count]; i++) {
+        NSDictionary *data = [_otherStudyGroups objectAtIndex:i];
             
         CLLocationCoordinate2D location;
             
@@ -78,7 +81,23 @@ BOOL zoomed;
         point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
             
         [_mapView addAnnotation:point];
-            
+    }
+    
+    for (int i = 0; i < [_myStudyGroups count]; i++) {
+        NSDictionary *data = [_myStudyGroups objectAtIndex:i];
+        
+        CLLocationCoordinate2D location;
+        
+        location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
+        location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
+        
+        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        
+        point.coordinate = location;
+        point.title = [NSString stringWithFormat:@"%@ (%@ - %@)", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
+        
+        [_mapView addAnnotation:point];
     }
 }
 
