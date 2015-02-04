@@ -709,7 +709,7 @@ Me!</string>
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Jdz-R5-Mbs" secondAttribute="trailing" id="5fL-zS-Gif"/>
                             <constraint firstItem="Jdz-R5-Mbs" firstAttribute="top" secondItem="khE-nf-Uo1" secondAttribute="bottom" id="Cds-07-0Q8"/>
