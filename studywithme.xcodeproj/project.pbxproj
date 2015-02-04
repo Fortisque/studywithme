@@ -220,11 +220,11 @@
 				9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */,
 				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
 				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
+				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
+				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
 				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
 				70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */,
 				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
-				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
-				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
 			);
 			name = ViewStudyGroup;
 			sourceTree = "<group>";

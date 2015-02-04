@@ -10,6 +10,7 @@
 
 @interface ViewStudyGroupTabViewController : UITabBarController
 
-@property (nonatomic, strong) NSArray *arr;
+@property (strong, nonatomic) NSArray* data;
+@property (strong, nonatomic) NSMutableArray* courses;
 
 @end

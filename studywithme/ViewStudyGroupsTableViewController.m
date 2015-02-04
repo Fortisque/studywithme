@@ -12,8 +12,7 @@
 #import "ViewStudyGroupTabViewController.h"
 
 @interface ViewStudyGroupsTableViewController ()
-@property (strong, nonatomic) NSArray* tableData;
-@property (strong, nonatomic) NSMutableArray *courses;
+@property (strong, nonatomic) NSArray *tableData;
 @end
 
 @implementation ViewStudyGroupsTableViewController
@@ -30,63 +29,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
-    NSLog(@"%@", tabVC.arr);
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _courses = [[NSMutableArray alloc] init];
-    [self setCourses];
-    
+    [self setUpData:nil];
 }
 
-- (void)setCourses
-{
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
-    
-    [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        // here's the object we just created
-        NSArray *res = [result getResult];
-        
-        
-        for (int i = 0; i < [res count]; i++) {
-            [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
-        }
-        
-        [self updateBuiltQuery];
-    } onError:^(NSError *error, ResponseType type) {
-        // query execution failed.
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", error.userInfo);
-    }];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // subscribe to a specific notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData:) name:@"MyDataChangedNotification" object:nil];
 }
 
-- (void)updateBuiltQuery
-{
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
-    
-    [query whereKey:@"course"
-        containedIn:_courses];
-    [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        // here's the object we just created
-        _tableData = [result getResult];
-        
-        [self.tableView reloadData];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // do not forget to unsubscribe the observer, or you may experience crashes towards a deallocated observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
-    } onError:^(NSError *error, ResponseType type) {
-        // query execution failed.
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", error.userInfo);
-    }];
+- (void)setUpData:(NSNotification *)notification
+{
+    ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
+    _tableData = tabVC.data;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

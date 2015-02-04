@@ -8,12 +8,12 @@
 
 #import "MapStudyGroupViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import "ViewStudyGroupTabViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
 @interface MapStudyGroupViewController ()
 @property (nonatomic, strong) NSArray *result;
-@property (nonatomic, strong) NSMutableArray *courses;
 @end
 
 BOOL zoomed;
@@ -44,75 +44,42 @@ BOOL zoomed;
         
     _mapView.delegate = self;
     
-    _courses = [[NSMutableArray alloc] init];
-    
-    [self setCourses];
+    [self updateMap:nil];
 }
 
-- (void)setCourses
-{
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
-    
-    [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        // here's the object we just created
-        NSArray *res = [result getResult];
-        
-        
-        for (int i = 0; i < [res count]; i++) {
-            [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
-        }
-        
-        [self updateBuiltQuery];
-    } onError:^(NSError *error, ResponseType type) {
-        // query execution failed.
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", error.userInfo);
-    }];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // subscribe to a specific notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMap:) name:@"MyDataChangedNotification" object:nil];
 }
 
-- (void)updateBuiltQuery
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // do not forget to unsubscribe the observer, or you may experience crashes towards a deallocated observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updateMap:(NSNotification *)notification
 {
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
-    
-    [query whereKey:@"course"
-        containedIn:_courses];
-    
-    NSLog(@"%@", _courses);
-    
-    [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        // here's the object we just created
-        _result = [result getResult];
-        
-        for (int i = 0; i < [_result count]; i++) {
-            NSDictionary *data = [_result objectAtIndex:i];
+    ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
+    _result = tabVC.data;
+    for (int i = 0; i < [_result count]; i++) {
+        NSDictionary *data = [_result objectAtIndex:i];
             
-            NSLog(@"%@", data);
+        CLLocationCoordinate2D location;
             
+        location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
+        location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
             
-            CLLocationCoordinate2D location;
+        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
             
-            location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
-            location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
+        point.coordinate = location;
+        point.title = [NSString stringWithFormat:@"%@, %@", [data objectForKey:@"course"], [data objectForKey:@"location"]];
+        point.subtitle = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
             
-            //[[CLLocation alloc] initWithLatitude:[data objectForKey:@"latitude"] longitude:[data objectForKey:@"longitude"]];
-            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        [_mapView addAnnotation:point];
             
-            point.coordinate = location;
-            point.title = [NSString stringWithFormat:@"%@, %@", [data objectForKey:@"course"], [data objectForKey:@"location"]];
-            point.subtitle = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
-            
-            [_mapView addAnnotation:point];
-            
-        }
-    } onError:^(NSError *error, ResponseType type) {
-        // query execution failed.
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", error.userInfo);
-    }];
+    }
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation

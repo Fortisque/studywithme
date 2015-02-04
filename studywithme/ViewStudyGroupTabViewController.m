@@ -7,6 +7,7 @@
 //
 
 #import "ViewStudyGroupTabViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface ViewStudyGroupTabViewController ()
 
@@ -17,7 +18,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _arr = [[NSArray alloc] initWithObjects:@"SWAG", nil];
+    
+    _courses = [NSMutableArray array];
+    _data = [NSArray array];
+    [self setCourses];
+    
+}
+
+- (void)setCourses
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        NSArray *res = [result getResult];
+        
+        
+        for (int i = 0; i < [res count]; i++) {
+            [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
+        }
+        
+        [self updateBuiltQuery];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
+}
+
+- (void)updateBuiltQuery
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
+
+    [query whereKey:@"course"
+        containedIn:_courses];
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        _data = [result getResult];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
+        
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
