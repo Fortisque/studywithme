@@ -18,41 +18,43 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudyGroupCell" rowHeight="120" id="rzH-Fq-Pu4" customClass="StudyGroupsTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="364" height="169"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rzH-Fq-Pu4" id="uCC-3w-5eb">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bechtel Libraray" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-DH-pP2">
-                        <rect key="frame" x="117" y="21" width="227" height="88"/>
+                        <rect key="frame" x="117" y="22" width="248" height="88"/>
                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NE STUD169" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-nb-Vo5">
-                        <rect key="frame" x="0.0" y="-1" width="109" height="170"/>
+                        <rect key="frame" x="0.0" y="1" width="109" height="168"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="109" id="Iza-Bl-Cqn"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00-11:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47i-8M-yjX">
-                        <rect key="frame" x="117" y="59" width="228" height="84"/>
+                        <rect key="frame" x="117" y="59" width="248" height="84"/>
                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="47i-8M-yjX" secondAttribute="bottom" constant="17" id="3Ga-vT-LAB"/>
-                    <constraint firstItem="47i-8M-yjX" firstAttribute="leading" secondItem="RFy-nb-Vo5" secondAttribute="trailing" constant="8" id="I6r-7K-vDP"/>
-                    <constraint firstItem="NA1-DH-pP2" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="13" id="InI-Eq-fdF"/>
-                    <constraint firstItem="RFy-nb-Vo5" firstAttribute="leading" secondItem="uCC-3w-5eb" secondAttribute="leadingMargin" constant="-8" id="OUO-2U-nnf"/>
-                    <constraint firstAttribute="centerX" secondItem="RFy-nb-Vo5" secondAttribute="centerX" constant="127.5" id="Vt9-L9-eub"/>
-                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="51" id="Wm2-1a-5yP"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="NA1-DH-pP2" secondAttribute="trailing" constant="12" id="cpv-EY-2nl"/>
-                    <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="RFy-nb-Vo5" secondAttribute="trailing" constant="8" symbolic="YES" id="dG3-yZ-3EF"/>
-                    <constraint firstItem="RFy-nb-Vo5" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="top" constant="-1" id="fnj-zj-0Ml"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="NA1-DH-pP2" secondAttribute="bottom" constant="51" id="iJK-Al-ct0"/>
-                    <constraint firstAttribute="bottom" secondItem="RFy-nb-Vo5" secondAttribute="bottom" constant="-1" id="rKq-zw-anL"/>
-                    <constraint firstAttribute="trailing" secondItem="47i-8M-yjX" secondAttribute="trailing" constant="19" id="tEm-s8-TZK"/>
+                    <constraint firstItem="RFy-nb-Vo5" firstAttribute="leading" secondItem="uCC-3w-5eb" secondAttribute="leading" id="0Pm-pS-bYr"/>
+                    <constraint firstItem="RFy-nb-Vo5" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="-7" id="2lK-SM-ta3"/>
+                    <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="RFy-nb-Vo5" secondAttribute="trailing" constant="8" symbolic="YES" id="A0H-Em-zTB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RFy-nb-Vo5" secondAttribute="bottom" constant="-9" id="Dts-lB-Vf4"/>
+                    <constraint firstAttribute="trailing" secondItem="NA1-DH-pP2" secondAttribute="trailing" id="QeU-8a-t0H"/>
+                    <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="47i-8M-yjX" secondAttribute="leading" id="WzA-do-ut3"/>
+                    <constraint firstItem="NA1-DH-pP2" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="14" id="fbj-s7-bB4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="47i-8M-yjX" secondAttribute="bottom" constant="17" id="gIv-LY-a1U"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="NA1-DH-pP2" secondAttribute="bottom" constant="50" id="lmQ-h2-Keg"/>
+                    <constraint firstItem="NA1-DH-pP2" firstAttribute="trailing" secondItem="47i-8M-yjX" secondAttribute="trailing" id="pdy-QC-N9S"/>
+                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="51" id="sOS-17-TBI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -60,7 +62,7 @@
                 <outlet property="locationLabel" destination="NA1-DH-pP2" id="TxQ-RX-WGY"/>
                 <outlet property="timeLabel" destination="47i-8M-yjX" id="fQn-fQ-P5y"/>
             </connections>
-            <point key="canvasLocation" x="292" y="143"/>
+            <point key="canvasLocation" x="292.5" y="139.5"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
