@@ -107,9 +107,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="DXW-6X-6cP" firstAttribute="top" secondItem="a6Q-0G-fMr" secondAttribute="bottom" constant="27" id="5OY-Cs-Pgl"/>
                                     <constraint firstItem="SCk-XL-w2y" firstAttribute="top" secondItem="DXW-6X-6cP" secondAttribute="bottom" constant="15" id="SNZ-B7-xxF"/>
                                     <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="jP4-aJ-UrU" secondAttribute="width" id="WpQ-yM-c6S"/>
+                                    <constraint firstItem="DXW-6X-6cP" firstAttribute="top" secondItem="a6Q-0G-fMr" secondAttribute="bottom" constant="27" id="ZlI-dE-tNQ"/>
                                     <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="DXW-6X-6cP" secondAttribute="width" id="a27-92-Tht"/>
                                     <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="SCk-XL-w2y" secondAttribute="width" id="dHY-5y-0I8"/>
                                     <constraint firstItem="a6Q-0G-fMr" firstAttribute="top" secondItem="jP4-aJ-UrU" secondAttribute="bottom" constant="8" symbolic="YES" id="jvr-dx-JiJ"/>
@@ -119,6 +119,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-8B-BRp">
                                 <rect key="frame" x="-17" y="72" width="408" height="280"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="3oY-QA-Nnb"/>
                                     <constraint firstAttribute="width" constant="408" id="NdO-fm-8wL"/>
@@ -418,8 +419,8 @@ Me!</string>
                                                         <!--2015-02-03 20:16:47 +0000-->
                                                     </date>
                                                 </datePicker>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
-                                                    <rect key="frame" x="8" y="60" width="81" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
+                                                    <rect key="frame" x="8" y="75" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -440,8 +441,8 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-WY-HWo" id="Z3w-oO-z3t">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
-                                                    <rect key="frame" x="8" y="60" width="73" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
+                                                    <rect key="frame" x="8" y="75" width="73" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -744,6 +745,6 @@ Me!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Hak-wA-Fro"/>
+        <segue reference="t3L-EN-vno"/>
     </inferredMetricsTieBreakers>
 </document>

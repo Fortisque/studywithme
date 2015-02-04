@@ -93,18 +93,23 @@
     
     NSDictionary *data = [_tableData objectAtIndex:indexPath.row];
     
+    if (indexPath.row %2 == 0) {
+        cell.classNameLabel.backgroundColor = [UIColor colorWithRed:1 green:0.8 blue:0.43 alpha:1.0];
+    } else {
+        cell.classNameLabel.backgroundColor = [UIColor colorWithRed:0.35 green:0.54 blue:0.83 alpha:1.0];
+        cell.classNameLabel.textColor = [UIColor whiteColor];
+    }
+    
     cell.classNameLabel.text = [data objectForKey:@"course"];
     cell.locationLabel.text = [data objectForKey:@"location"];
-    cell.timeLabel.text = [NSString stringWithFormat:@"From: %@", [data objectForKey:@"start_time"]];
-    
-    cell.endLabel.text = [NSString stringWithFormat:@"Ending at: %@", [data objectForKey:@"end_time"]];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 120;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
