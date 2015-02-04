@@ -57,6 +57,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"Installed for remote notification");
+    NSLog(@"%@", deviceToken);
     BuiltInstallation *installation = [BuiltInstallation installation];
     [installation createInstallationWithDeviceToken:deviceToken
                             andSubscriptionChannels:nil

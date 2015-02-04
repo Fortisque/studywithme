@@ -86,7 +86,7 @@
                    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
                    [installation setObject:user.uid forKey:@"app_user_object_uid"];
                    [installation updateInstallationOnSuccess:^{
-                       
+                       NSLog(@"install update");
                    }                                 onError:^(NSError *error) {
                        
                    }];
