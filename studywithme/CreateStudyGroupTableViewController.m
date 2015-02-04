@@ -93,13 +93,6 @@
     return 5;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 200;
-    }
-    return 100;
-}
-
 
 /*
 // Override to support conditional editing of the table view.
