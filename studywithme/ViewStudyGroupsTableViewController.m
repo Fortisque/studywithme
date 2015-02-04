@@ -9,6 +9,7 @@
 #import "ViewStudyGroupsTableViewController.h"
 #import "StudyGroupsTableViewCell.h"
 #import <BuiltIO/BuiltIO.h>
+#import "ViewStudyGroupTabViewController.h"
 
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray* tableData;
@@ -29,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
+    NSLog(@"%@", tabVC.arr);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
