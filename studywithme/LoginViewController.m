@@ -93,6 +93,7 @@
                    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
                    [self performSegueWithIdentifier:@"success" sender:self];
                    [[NSUserDefaults standardUserDefaults] setObject:_usernameField.text forKey:@"username"];
+                   [[NSUserDefaults standardUserDefaults] setObject:user.uid forKey:@"uid"];
                } onError:^(NSError *error) {
                    // login failed
                    // error.userinfo contains more details regarding the same

@@ -20,7 +20,6 @@
     // Do any additional setup after loading the view.
     
     _courses = [NSMutableArray array];
-    _myStudyGroups = [NSArray array];
     
     [self setCourses];
 }
@@ -56,6 +55,20 @@
     // change this to query for other study groups
     [query whereKey:@"course"
         containedIn:_courses];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
+    
+    NSDateComponents *dateComponents = [NSDateComponents new];
+    dateComponents.day = 1;
+    NSDate *tomorrow = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
+                                                                    toDate:[NSDate date]
+                                                                   options:0];
+    
+    [query whereKey:@"start_date" containedIn:@[[dateFormatter stringFromDate:[NSDate date]], [dateFormatter stringFromDate:tomorrow]]];
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
@@ -65,35 +78,37 @@
         NSMutableArray *myStudyGroups = [[NSMutableArray alloc] init];
         NSMutableArray *otherStudyGroups = [[NSMutableArray alloc] init];
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        
-        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-        [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
-        
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *studyGroup = [results objectAtIndex:i];
-
-            // TODO: check for who created it
+            BOOL isMine = false;
             
-            NSDateComponents *dateComponents = [NSDateComponents new];
-            dateComponents.day = 1;
-            NSDate *tomorrow = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
-                                                                           toDate:[NSDate date]
-                                                                          options:0];
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] isEqualToString:[studyGroup objectForKey:@"app_user_object_uid"]]) {
+                isMine = true;
+            }
             
-            NSTimeInterval distanceBetweenDates = [[timeFormatter dateFromString:[studyGroup objectForKey:@"end_time"]] timeIntervalSinceDate:[timeFormatter dateFromString:[studyGroup objectForKey:@"start_time"]]];
+            NSTimeInterval distanceBetweenDates = [[timeFormatter dateFromString:[studyGroup objectForKey:@"end_time"]] timeIntervalSinceDate:[NSDate date]];
+            
+            NSLog(@"%@", studyGroup);
 
             if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                [otherStudyGroups addObject:studyGroup];
+                if (isMine) {
+                    [myStudyGroups addObject:studyGroup];
+                } else {
+                    [otherStudyGroups addObject:studyGroup];
+                }
             } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
                 if (distanceBetweenDates > 0) {
-                    [otherStudyGroups addObject:studyGroup];
+                    if (isMine) {
+                        [myStudyGroups addObject:studyGroup];
+                    } else {
+                        [otherStudyGroups addObject:studyGroup];
+                    }
                 }
             }
         }
         
-       _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
+        _myStudyGroups = [[NSArray alloc] initWithArray:myStudyGroups];
+        _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
         
