@@ -100,8 +100,10 @@
     
     if (indexPath.section == 0) {
         data = [_myStudyGroups objectAtIndex:indexPath.row];
+        cell.editButton.hidden = NO;
     } else {
         data = [_otherStudyGroups objectAtIndex:indexPath.row];
+        cell.editButton.hidden = YES;
     }
     
     if (indexPath.row %2 == 0) {
@@ -114,7 +116,6 @@
     
     cell.classNameLabel.text = [data objectForKey:@"course"];
     cell.locationLabel.text = [data objectForKey:@"location"];
-    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
