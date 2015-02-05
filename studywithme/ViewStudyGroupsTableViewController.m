@@ -36,18 +36,14 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     [self setUpData:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    // subscribe to a specific notification
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData:) name:@"MyDataChangedNotification" object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    // do not forget to unsubscribe the observer, or you may experience crashes towards a deallocated observer
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"table not listening");
 }
 
 - (void)setUpData:(NSNotification *)notification
