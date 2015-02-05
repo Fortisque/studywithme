@@ -31,18 +31,10 @@ BOOL zoomed;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         
     [locationManager requestWhenInUseAuthorization];
+        
+    [locationManager startUpdatingLocation];
+    _mapView.showsUserLocation = YES;
     
-    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
-    
-    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        [locationManager startUpdatingLocation];
-        _mapView.showsUserLocation = YES;
-        
-    }
-        
     _mapView.delegate = self;
     
     [self updateMap:nil];

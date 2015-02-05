@@ -30,17 +30,9 @@ BOOL done;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [locationManager requestWhenInUseAuthorization];
-    
-    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
-    
-    if (authorizationStatus == kCLAuthorizationStatusAuthorized ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        [locationManager startUpdatingLocation];
-        _mapView.showsUserLocation = YES;
-        
-    }
+            
+    [locationManager startUpdatingLocation];
+    _mapView.showsUserLocation = YES;
     
     _mapView.delegate = self;
     
