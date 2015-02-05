@@ -14,4 +14,6 @@
 @property (strong, nonatomic) NSArray* otherStudyGroups;
 @property (strong, nonatomic) NSMutableArray* courses;
 
+- (void)updateBuiltQuery;
+
 @end
