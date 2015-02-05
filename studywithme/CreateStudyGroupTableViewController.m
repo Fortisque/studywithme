@@ -165,13 +165,24 @@
     [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
     
     [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"start_date"];
-    
+
     [obj setObject:[timeFormatter stringFromDate:_startTime.date]
             forKey:@"start_time"];
     
     [obj setObject:[timeFormatter stringFromDate:_endTime.date]
             forKey:@"end_time"];
     
+    // if studying past midnight
+    if ([_endTime.date timeIntervalSinceDate:_startTime.date] > 0) {
+        [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"end_date"];
+    } else {
+        NSDateComponents *dateComponents = [NSDateComponents new];
+        dateComponents.day = 1;
+        NSDate *newDate = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
+                                                                       toDate:[NSDate date]
+                                                                      options:0];
+        [obj setObject:[dateFormatter stringFromDate:newDate] forKey:@"end_date"];
+    }
     
     [_goButton setEnabled:NO];
     [obj saveOnSuccess:^{

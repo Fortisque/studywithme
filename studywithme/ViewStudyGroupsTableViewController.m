@@ -114,7 +114,11 @@
     
     cell.classNameLabel.text = [data objectForKey:@"course"];
     cell.locationLabel.text = [data objectForKey:@"location"];
-    cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+    if ([data objectForKey:@"start_time"] > [data objectForKey:@"end_time"]) {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@ (+1)", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+    } else {
+        cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+    }
     
     return cell;
 }

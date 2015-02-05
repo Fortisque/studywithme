@@ -73,12 +73,15 @@
         
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *studyGroup = [results objectAtIndex:i];
-            
-            NSString *today = [dateFormatter stringFromDate:[NSDate date]];
-            
-            if ([today isEqualToString:[studyGroup objectForKey:@"start_date"]]) {
-                // TODO: check for who created it
+
+            // TODO: check for who created it
+
+            if ([dateFormatter stringFromDate:[NSDate date]] < [studyGroup objectForKey:@"end_date"]) {
                 [otherStudyGroups addObject:studyGroup];
+            } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
+                if ([timeFormatter stringFromDate:[NSDate date]] < [studyGroup objectForKey:@"end_time"]) {
+                    [otherStudyGroups addObject:studyGroup];
+                }
             }
         }
         
