@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewStudyGroupsTableViewController.h"
+#import "ViewStudyGroupTabViewController.h"
 
 @interface CreateStudyGroupTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UIButton *location;
 @property (strong, nonatomic) IBOutlet UIDatePicker *startTime;
 @property (strong, nonatomic) IBOutlet UIDatePicker *endTime;
+@property (strong, nonatomic) IBOutlet UIButton *goButton;
+
+@property (strong, nonatomic) NSDictionary *studyGroup;
+@property (weak, atomic) ViewStudyGroupsTableViewController *presenter;
+
 - (IBAction)done:(id)sender;
 - (IBAction)enter_location:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *goButton;
-@property (strong, nonatomic) NSDictionary *studyGroup;
 
 @end

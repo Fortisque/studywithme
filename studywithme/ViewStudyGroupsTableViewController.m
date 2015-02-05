@@ -35,9 +35,6 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [self setUpData:nil];
 }
 
@@ -75,8 +72,6 @@
     }
     return NO;
 }
-
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,6 +180,7 @@
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
         
+        vc.presenter = self;
         if (indexPath.section == 0) {
             vc.studyGroup = [_myStudyGroups objectAtIndex:indexPath.row];
         } else {
@@ -195,6 +191,11 @@
 
 - (void)editButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"create" sender:sender];
+}
+
+
+- (void)addButtonPressed:(id)sender {
+    
 }
 
 /*

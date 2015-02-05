@@ -50,9 +50,6 @@
 {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
     
-    // query for my study groups
-
-    // change this to query for other study groups
     [query whereKey:@"course"
         containedIn:_courses];
     

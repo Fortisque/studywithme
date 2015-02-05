@@ -519,7 +519,7 @@ Me!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TY1-4g-6Vh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965.5" y="391.5"/>
+            <point key="canvasLocation" x="1879.5" y="658.5"/>
         </scene>
         <!--Map Search View Controller-->
         <scene sceneID="db8-92-gb5">
@@ -603,7 +603,7 @@ Me!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRU-p4-fGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1389.5" y="1244.5"/>
+            <point key="canvasLocation" x="1377.5" y="1080.5"/>
         </scene>
         <!--Messages View Controller-->
         <scene sceneID="0ZD-dP-OCq">
@@ -622,7 +622,7 @@ Me!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVJ-FA-29F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871" y="1436"/>
+            <point key="canvasLocation" x="1914.5" y="1444.5"/>
         </scene>
         <!--My Courses-->
         <scene sceneID="O2m-ld-o9U">

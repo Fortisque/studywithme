@@ -23,9 +23,10 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    [self queryCourses];
+}
+
+- (void)queryCourses {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
@@ -47,16 +48,39 @@
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", error.userInfo);
     }];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
-    
-    if (str) {
-        [_location setTitle:str forState:UIControlStateNormal];
+    if (_studyGroup) {
+        [self updateViewWithStudyGroupInfo];
+    } else {
+        NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+        
+        if (str) {
+            [_location setTitle:str forState:UIControlStateNormal];
+        }
     }
+}
+
+- (void)updateViewWithStudyGroupInfo {
+    for (int i = 0; i < [_coursesArray count]; i++) {
+        NSString *course = [_studyGroup objectForKey:@"course"];
+        if ([[_coursesArray objectAtIndex:i] isEqualToString: course]) {
+            [_picker selectRow:i inComponent:0 animated:YES];
+        }
+    }
+    
+    [_location setTitle:[_studyGroup objectForKey:@"location"] forState:UIControlStateNormal];
+    
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
+    [_startTime setDate:[timeFormatter dateFromString:[_studyGroup objectForKey:@"start_time"]] animated:YES];
+    [_endTime setDate:[timeFormatter dateFromString:[_studyGroup objectForKey:@"end_time"]] animated:YES];
+    
+    [_goButton setTitle:@"Update!" forState:UIControlStateNormal];
 }
 
 // returns the number of 'columns' to display.
@@ -147,6 +171,10 @@
     // create a location object
     BuiltLocation *loc = [BuiltLocation locationWithLongitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"] doubleValue]
                                                   andLatitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"latitude"] doubleValue]];
+    if (_studyGroup != nil) {
+        [obj setUid: [_studyGroup objectForKey:@"uid"]];
+        NSLog(@"updaing object with uid: %@", [_studyGroup objectForKey:@"uid"]);
+    }
     
     [obj setLocation: loc];
     
@@ -187,6 +215,9 @@
         NSLog(@"Successfully saved study group!");
         [_goButton setEnabled:YES];
         [self.navigationController popViewControllerAnimated:YES];
+        ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)_presenter.tabBarController;
+        [tabVC updateBuiltQuery];
+        [self.tableView reloadData];
     } onError:^(NSError *error) {
         // there was an error in updating the object
         // error.userinfo contains more details regarding the same
@@ -209,4 +240,5 @@
                                           otherButtonTitles:nil];
     [alert show];
 }
+
 @end
