@@ -1,27 +1,7 @@
 var config = require('./config.js');
 Built.initialize('blte1163927e03db5d1', 'studywithme');
 
-Built.Extension.define('invite', function(request, response) {
-  var invitees = Built.Object.extend('invitees');
-  var invitee = new invitees();
-  invitee.set({
-    email: request.params.email
-  });
-  invitee.save({
-    onSuccess: function(data, res) {
-      // object creation is successful
-      return response.success(request.params.email);
-    },
-    onError: function(err) {
-      // some error has occurred
-      // refer to the "error" object for more details
-      console.log(err);
-    }
-  });
-});
-
 Built.Extension.beforeSave('study_group', function(request, response) {
-  console.log(request);
 
   var creator_uid = request.object.get('app_user_object_uid');
   var courseName = request.object.get('course');
@@ -45,9 +25,11 @@ Built.Extension.beforeSave('study_group', function(request, response) {
         course_query.exec({
           onSuccess: function(data) {
             console.log('course query done');
+            console.log(data);
             var user_uids = [];
 
-            for (i = 0; i < data.length; i++) { 
+            for (i = 0; i < data.length; i++) {
+              console.log(data[i]);
               user_uids.push(data[i].get('app_user_object_uid'));
             }
 
