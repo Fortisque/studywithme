@@ -44,11 +44,10 @@
 		996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D819FC5449001216B9 /* MapStudyGroupViewController.m */; };
 		996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055DB19FC786E001216B9 /* MapSearchViewController.m */; };
 		996055DE19FC8573001216B9 /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 996055DD19FC8573001216B9 /* table.png */; };
-		996055E119FC89BC001216B9 /* MessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055E019FC89BC001216B9 /* MessagingViewController.m */; };
-		996055E419FC8B6F001216B9 /* MessagingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055E319FC8B6F001216B9 /* MessagingTableViewController.m */; };
 		9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */; };
 		999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */; };
 		99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BDACB11A83E678003209F7 /* MessagesViewController.m */; };
+		99C332391A83EC8800750A31 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C332381A83EC8800750A31 /* Messages.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,16 +113,14 @@
 		996055DA19FC786E001216B9 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
 		996055DB19FC786E001216B9 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
 		996055DD19FC8573001216B9 /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
-		996055DF19FC89BC001216B9 /* MessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingViewController.h; sourceTree = "<group>"; };
-		996055E019FC89BC001216B9 /* MessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingViewController.m; sourceTree = "<group>"; };
-		996055E219FC8B6F001216B9 /* MessagingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingTableViewController.h; sourceTree = "<group>"; };
-		996055E319FC8B6F001216B9 /* MessagingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingTableViewController.m; sourceTree = "<group>"; };
 		9976D7E81A81BFB80068490C /* ViewStudyGroupTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStudyGroupTabViewController.h; sourceTree = "<group>"; };
 		9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupTabViewController.m; sourceTree = "<group>"; };
 		999057051A815646003A45B1 /* CreateStudyGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStudyGroupTableViewController.h; sourceTree = "<group>"; };
 		999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStudyGroupTableViewController.m; sourceTree = "<group>"; };
 		99BDACB01A83E678003209F7 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		99BDACB11A83E678003209F7 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		99C332371A83EC8800750A31 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		99C332381A83EC8800750A31 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
 		C839625EF062CE4DAAB1EDE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,12 +178,10 @@
 		9934EC311A80A4A2003BEC97 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
-				996055E219FC8B6F001216B9 /* MessagingTableViewController.h */,
-				996055E319FC8B6F001216B9 /* MessagingTableViewController.m */,
-				996055DF19FC89BC001216B9 /* MessagingViewController.h */,
-				996055E019FC89BC001216B9 /* MessagingViewController.m */,
 				99BDACB01A83E678003209F7 /* MessagesViewController.h */,
 				99BDACB11A83E678003209F7 /* MessagesViewController.m */,
+				99C332371A83EC8800750A31 /* Messages.h */,
+				99C332381A83EC8800750A31 /* Messages.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -485,12 +480,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */,
-				996055E119FC89BC001216B9 /* MessagingViewController.m in Sources */,
 				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
 				996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */,
 				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
 				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
-				996055E419FC8B6F001216B9 /* MessagingTableViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
@@ -499,6 +492,7 @@
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
 				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,
+				99C332391A83EC8800750A31 /* Messages.m in Sources */,
 				70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -82,18 +82,7 @@
     [user loginWithEmail:_usernameField.text
              andPassword:_passwordField.text
                OnSuccess:^{
-                   // user has logged in successfully
-                   BuiltInstallation *installation = [BuiltInstallation currentInstallation];
-                   [installation setObject:user.uid forKey:@"app_user_object_uid"];
-                   [installation updateInstallationOnSuccess:^{
-                       NSLog(@"install update");
-                   }                                 onError:^(NSError *error) {
-                       
-                   }];
-                   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
-                   [self performSegueWithIdentifier:@"success" sender:self];
-                   [[NSUserDefaults standardUserDefaults] setObject:_usernameField.text forKey:@"username"];
-                   [[NSUserDefaults standardUserDefaults] setObject:user.uid forKey:@"uid"];
+                   [self successfullyLoggedIn:user];
                } onError:^(NSError *error) {
                    // login failed
                    // error.userinfo contains more details regarding the same
@@ -112,7 +101,7 @@
     user.password = _passwordField.text;
     user.confirmPassword = _passwordField.text;
     [user signUpOnSuccess:^{
-        _welcomeLabel.text = [NSString stringWithFormat:@"Yay, %@ is signed up!", user.email];
+        [self successfullyLoggedIn:user];
     } onError:^(NSError *error) {
         // there was an error in signing up the user
         // error.userinfo contains more details regarding the same
@@ -128,6 +117,24 @@
     NSTextCheckingResult *match = [regex firstMatchInString:str options:0 range:NSMakeRange(0, [str length])];
     NSString *res = [str substringWithRange:[match rangeAtIndex:1]];
     return [res length] != 0;
+}
+
+- (void)successfullyLoggedIn:(BuiltUser *)user
+{
+    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+    [installation setObject:user.uid forKey:@"app_user_object_uid"];
+    [installation setObject:[NSNumber numberWithInt:0]
+                     forKey:@"badge"];
+    [installation updateInstallationOnSuccess:^{
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        NSLog(@"cleared badge");
+    }                                 onError:^(NSError *error) {
+        
+    }];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self performSegueWithIdentifier:@"success" sender:self];
+    [[NSUserDefaults standardUserDefaults] setObject:_usernameField.text forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setObject:user.uid forKey:@"uid"];
 }
 
 - (void)alertWithMessage:(NSString *)message
