@@ -343,7 +343,7 @@ Me!</string>
             <objects>
                 <tableViewController id="OgH-D6-9he" customClass="CreateStudyGroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XKb-st-mxk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.97254901959999995" green="0.76470588240000004" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -529,11 +529,11 @@ Me!</string>
                         <viewControllerLayoutGuide type="bottom" id="ETH-2s-9ON"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5og-dQ-9dy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esr-rm-n0i">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                             </mapView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-Xd-t9Y">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
@@ -595,6 +595,9 @@ Me!</string>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="yhY-s3-j95"/>
+                    <connections>
+                        <segue destination="OgH-D6-9he" kind="push" identifier="create" id="7pa-Cp-AYZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRU-p4-fGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -694,4 +697,7 @@ Me!</string>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="7pa-Cp-AYZ"/>
+    </inferredMetricsTieBreakers>
 </document>

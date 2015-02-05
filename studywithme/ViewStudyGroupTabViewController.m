@@ -86,9 +86,7 @@
                 isMine = true;
             }
             
-            NSTimeInterval distanceBetweenDates = [[timeFormatter dateFromString:[studyGroup objectForKey:@"end_time"]] timeIntervalSinceDate:[NSDate date]];
-            
-            NSLog(@"%@", studyGroup);
+            NSComparisonResult result = [(NSString *)[studyGroup objectForKey:@"end_time"] compare:[timeFormatter stringFromDate:[NSDate date]]];
 
             if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
                 if (isMine) {
@@ -97,7 +95,7 @@
                     [otherStudyGroups addObject:studyGroup];
                 }
             } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                if (distanceBetweenDates > 0) {
+                if (result == NSOrderedDescending) {
                     if (isMine) {
                         [myStudyGroups addObject:studyGroup];
                     } else {

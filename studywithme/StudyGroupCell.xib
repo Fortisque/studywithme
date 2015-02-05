@@ -50,9 +50,6 @@
                         <state key="normal" backgroundImage="pen">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <connections>
-                            <action selector="editButtonPressed:" destination="rzH-Fq-Pu4" eventType="touchUpInside" id="8NI-Yr-Ivz"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>

@@ -101,6 +101,7 @@
     if (indexPath.section == 0) {
         data = [_myStudyGroups objectAtIndex:indexPath.row];
         cell.editButton.hidden = NO;
+        [cell.editButton addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         data = [_otherStudyGroups objectAtIndex:indexPath.row];
         cell.editButton.hidden = YES;
@@ -147,6 +148,23 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"create"]) {
+        CreateStudyGroupTableViewController *vc = [segue destinationViewController];
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        
+        if (indexPath.section == 0) {
+            vc.studyGroup = [_myStudyGroups objectAtIndex:indexPath.row];
+        } else {
+            vc.studyGroup = [_otherStudyGroups objectAtIndex:indexPath.row];
+        }
+    }
+}
+
+- (void)editButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"create" sender:sender];
+}
 
 /*
 // Override to support conditional editing of the table view.

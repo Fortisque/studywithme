@@ -16,5 +16,6 @@
 - (IBAction)done:(id)sender;
 - (IBAction)enter_location:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
+@property (strong, nonatomic) NSDictionary *studyGroup;
 
 @end
