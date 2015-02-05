@@ -40,7 +40,6 @@
             [_coursesArray addObject:[[_courses objectAtIndex:i] objectForKey:@"name"]];
         }
         
-        
         [_picker reloadAllComponents];
         
     } onError:^(NSError *error, ResponseType type) {
@@ -73,7 +72,6 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
     return [_coursesArray objectAtIndex:row];
-    
 }
 
 - (void)didReceiveMemoryWarning {

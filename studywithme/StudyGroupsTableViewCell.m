@@ -9,9 +9,6 @@
 #import "StudyGroupsTableViewCell.h"
 
 @implementation StudyGroupsTableViewCell
-@synthesize classNameLabel = _classNameLabel;
-@synthesize locationLabel = _locationLabel;
-@synthesize timeLabel = _timeLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
