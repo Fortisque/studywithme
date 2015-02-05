@@ -123,8 +123,11 @@
 {
     BuiltInstallation *installation = [BuiltInstallation currentInstallation];
     [installation setObject:user.uid forKey:@"app_user_object_uid"];
+    [installation setObject:[NSNumber numberWithInt:0]
+                     forKey:@"badge"];
     [installation updateInstallationOnSuccess:^{
-        NSLog(@"install update");
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        NSLog(@"cleared badge");
     }                                 onError:^(NSError *error) {
         
     }];
