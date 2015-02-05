@@ -68,7 +68,7 @@
                                                                     toDate:[NSDate date]
                                                                    options:0];
     
-    [query whereKey:@"start_date" containedIn:@[[dateFormatter stringFromDate:[NSDate date]], [dateFormatter stringFromDate:tomorrow]]];
+    [query whereKey:@"end_date" containedIn:@[[dateFormatter stringFromDate:[NSDate date]], [dateFormatter stringFromDate:tomorrow]]];
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
