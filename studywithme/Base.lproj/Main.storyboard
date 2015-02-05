@@ -332,6 +332,7 @@ Me!</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="5Rc-i2-xCc" id="MnJ-um-Ko5"/>
+                        <segue destination="I64-Kx-v7h" kind="push" identifier="messages" id="d72-o7-zzf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyJ-Lt-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -597,11 +598,31 @@ Me!</string>
                     <navigationItem key="navigationItem" id="yhY-s3-j95"/>
                     <connections>
                         <segue destination="OgH-D6-9he" kind="push" identifier="create" id="7pa-Cp-AYZ"/>
+                        <segue destination="I64-Kx-v7h" kind="push" identifier="messages" id="0eT-vd-tEx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRU-p4-fGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1389.5" y="1244.5"/>
+        </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="0ZD-dP-OCq">
+            <objects>
+                <viewController id="I64-Kx-v7h" customClass="MessagesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jvo-z3-rEd"/>
+                        <viewControllerLayoutGuide type="bottom" id="P1R-EO-RDH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KDw-F4-mSD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L0d-lS-Ucj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVJ-FA-29F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871" y="1436"/>
         </scene>
         <!--My Courses-->
         <scene sceneID="O2m-ld-o9U">
@@ -699,5 +720,6 @@ Me!</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7pa-Cp-AYZ"/>
+        <segue reference="0eT-vd-tEx"/>
     </inferredMetricsTieBreakers>
 </document>

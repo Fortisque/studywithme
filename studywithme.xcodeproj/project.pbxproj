@@ -48,6 +48,7 @@
 		996055E419FC8B6F001216B9 /* MessagingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055E319FC8B6F001216B9 /* MessagingTableViewController.m */; };
 		9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */; };
 		999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */; };
+		99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BDACB11A83E678003209F7 /* MessagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupTabViewController.m; sourceTree = "<group>"; };
 		999057051A815646003A45B1 /* CreateStudyGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStudyGroupTableViewController.h; sourceTree = "<group>"; };
 		999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStudyGroupTableViewController.m; sourceTree = "<group>"; };
+		99BDACB01A83E678003209F7 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		99BDACB11A83E678003209F7 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		C839625EF062CE4DAAB1EDE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +185,8 @@
 				996055E319FC8B6F001216B9 /* MessagingTableViewController.m */,
 				996055DF19FC89BC001216B9 /* MessagingViewController.h */,
 				996055E019FC89BC001216B9 /* MessagingViewController.m */,
+				99BDACB01A83E678003209F7 /* MessagesViewController.h */,
+				99BDACB11A83E678003209F7 /* MessagesViewController.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
 				9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
+				99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */,
 				996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */,
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
 				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
@@ -624,7 +630,6 @@
 				INFOPLIST_FILE = studywithme/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -642,7 +647,6 @@
 				INFOPLIST_FILE = studywithme/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
