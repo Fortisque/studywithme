@@ -54,6 +54,7 @@ BOOL zoomed;
 
 - (void)updateMap:(NSNotification *)notification
 {
+    NSLog(@"update map");
     ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
     
     _otherStudyGroups = tabVC.otherStudyGroups;

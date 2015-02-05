@@ -24,6 +24,10 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     [self queryCourses];
+    
+    if (_studyGroup) {
+        [self updateViewWithStudyGroupInfo];
+    }
 }
 
 - (void)queryCourses {
@@ -53,15 +57,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if (_studyGroup) {
-        [self updateViewWithStudyGroupInfo];
-    } else {
-        NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+    NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
         
-        if (str) {
-            [_location setTitle:str forState:UIControlStateNormal];
-        }
+    if (str) {
+        [_location setTitle:str forState:UIControlStateNormal];
     }
 }
 
@@ -73,8 +72,13 @@
         }
     }
     
+    [[NSUserDefaults standardUserDefaults] setObject:[_studyGroup objectForKey:@"location"] forKey:@"location"];
+    
     [_location setTitle:[_studyGroup objectForKey:@"location"] forState:UIControlStateNormal];
     
+    [[NSUserDefaults standardUserDefaults] setObject:[[_studyGroup objectForKey:@"__loc"] objectAtIndex:0] forKey:@"longitude"];
+    [[NSUserDefaults standardUserDefaults] setObject:[[_studyGroup objectForKey:@"__loc"] objectAtIndex:1] forKey:@"latitude"];
+        
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
     [_startTime setDate:[timeFormatter dateFromString:[_studyGroup objectForKey:@"start_time"]] animated:YES];
@@ -217,7 +221,6 @@
         [self.navigationController popViewControllerAnimated:YES];
         ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)_presenter.tabBarController;
         [tabVC updateBuiltQuery];
-        [self.tableView reloadData];
     } onError:^(NSError *error) {
         // there was an error in updating the object
         // error.userinfo contains more details regarding the same

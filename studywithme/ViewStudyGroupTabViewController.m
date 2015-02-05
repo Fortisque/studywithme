@@ -105,6 +105,7 @@
         _myStudyGroups = [[NSArray alloc] initWithArray:myStudyGroups];
         _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
         
+        NSLog(@"send notification");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
         
     } onError:^(NSError *error, ResponseType type) {
