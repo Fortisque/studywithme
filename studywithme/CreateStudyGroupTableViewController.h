@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewStudyGroupsTableViewController.h"
 #import "ViewStudyGroupTabViewController.h"
 
 @interface CreateStudyGroupTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -18,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
 
 @property (strong, nonatomic) NSDictionary *studyGroup;
-@property (weak, atomic) ViewStudyGroupsTableViewController *presenter;
+@property (weak, atomic) ViewStudyGroupTabViewController *presenter;
 
 - (IBAction)done:(id)sender;
 - (IBAction)enter_location:(id)sender;

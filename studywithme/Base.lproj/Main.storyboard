@@ -289,7 +289,7 @@ Me!</string>
                     <navigationItem key="navigationItem" title="Study Groups" id="sFy-Gz-DMx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6f6-tN-i3j">
                             <connections>
-                                <segue destination="OgH-D6-9he" kind="push" id="fGq-ad-0gF"/>
+                                <action selector="addButtonPressed:" destination="bIK-ME-p3s" id="8gA-Wu-E3H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -302,8 +302,10 @@ Me!</string>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addButton" destination="6f6-tN-i3j" id="ruh-3E-N8e"/>
                         <segue destination="4Km-lY-gTr" kind="relationship" relationship="viewControllers" id="S46-9D-rU5"/>
                         <segue destination="PYc-rG-CuT" kind="relationship" relationship="viewControllers" id="TXf-Hm-W19"/>
+                        <segue destination="OgH-D6-9he" kind="push" identifier="addStudyGroup" id="Nhk-pe-3sd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjm-mj-rlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -725,7 +727,7 @@ Me!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fGq-ad-0gF"/>
+        <segue reference="Nhk-pe-3sd"/>
         <segue reference="0eT-vd-tEx"/>
     </inferredMetricsTieBreakers>
 </document>

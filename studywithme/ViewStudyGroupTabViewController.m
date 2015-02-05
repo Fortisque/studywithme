@@ -7,6 +7,7 @@
 //
 
 #import "ViewStudyGroupTabViewController.h"
+#import "CreateStudyGroupTableViewController.h"
 #import <BuiltIO/BuiltIO.h>
 
 @interface ViewStudyGroupTabViewController ()
@@ -44,6 +45,17 @@
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", error.userInfo);
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"addStudyGroup"]) {
+        CreateStudyGroupTableViewController *vc = [segue destinationViewController];
+        vc.presenter = self;
+    }
+}
+
+- (IBAction)addButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"addStudyGroup" sender:sender];
 }
 
 - (void)updateBuiltQuery

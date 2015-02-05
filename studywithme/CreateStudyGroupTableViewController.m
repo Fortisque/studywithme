@@ -217,8 +217,7 @@
         NSLog(@"Successfully saved study group!");
         [_goButton setEnabled:YES];
         [self.navigationController popViewControllerAnimated:YES];
-        ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)_presenter.tabBarController;
-        [tabVC updateBuiltQuery];
+        [(ViewStudyGroupTabViewController *)_presenter updateBuiltQuery];
     } onError:^(NSError *error) {
         // there was an error in updating the object
         // error.userinfo contains more details regarding the same

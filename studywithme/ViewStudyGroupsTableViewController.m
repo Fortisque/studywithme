@@ -190,7 +190,7 @@
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
         
-        vc.presenter = self;
+        vc.presenter = (ViewStudyGroupTabViewController *)self.tabBarController;
         if (indexPath.section == 0) {
             vc.studyGroup = [_myStudyGroups objectAtIndex:indexPath.row];
         } else {
@@ -201,11 +201,6 @@
 
 - (void)editButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"create" sender:sender];
-}
-
-
-- (void)addButtonPressed:(id)sender {
-    
 }
 
 /*
