@@ -38,22 +38,28 @@ BOOL zoomed;
     _mapView.delegate = self;
     
     [self updateMap:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    // subscribe to a specific notification
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMap:) name:@"MyDataChangedNotification" object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    // do not forget to unsubscribe the observer, or you may experience crashes towards a deallocated observer
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"map not listening");
 }
 
 - (void)updateMap:(NSNotification *)notification
 {
+    // Purge old pins
+    id userLocation = [self.mapView userLocation];
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.mapView annotations]];
+    if ( userLocation != nil ) {
+        [pins removeObject:userLocation]; // avoid removing user location off the map
+    }
+    
+    [self.mapView removeAnnotations:pins];
+    pins = nil;
+    
     ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
     
     _otherStudyGroups = tabVC.otherStudyGroups;
