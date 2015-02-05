@@ -43,7 +43,7 @@ Built.Extension.beforeSave('study_group', function(request, response) {
             var notification = new Built.Notification();
             notification.addUsers(user_uids);
 
-            var message = "New study group for " + courseName + " at " + location + " from " + start_time + " to " + end_time + "."
+            var message = "There is a new study group for " + courseName + " from " + start_time + " to " + end_time + " at " + location + "!"
             notification.setMessage(message);
             console.log('about to send');
             console.log(message);
