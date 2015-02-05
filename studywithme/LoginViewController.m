@@ -123,7 +123,7 @@
 
 - (BOOL)verifyBerkeleyEmailUsername
 {
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(.*)@berkeley.edu$" options:0 error:NULL];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(.*)@berkeley.edu$" options:NSRegularExpressionCaseInsensitive error:NULL];
     NSString *str = _usernameField.text;
     NSTextCheckingResult *match = [regex firstMatchInString:str options:0 range:NSMakeRange(0, [str length])];
     NSString *res = [str substringWithRange:[match rangeAtIndex:1]];

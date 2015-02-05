@@ -67,6 +67,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    if(indexPath.section == 0) {
+        return YES;
+    }
+    return NO;
+}
+
+
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+
+        BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
+        [obj setUid:[[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"]];
+        
+        [obj destroyOnSuccess:^{
+            NSLog(@"delete");
+            ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
+            [tabVC updateBuiltQuery];
+        } onError:^(NSError *error) {
+            // there was an error in deleting the object
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
