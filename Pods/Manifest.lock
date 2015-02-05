@@ -10,4 +10,4 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
   JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.35.0
