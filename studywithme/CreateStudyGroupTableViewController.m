@@ -217,7 +217,6 @@
         [self.navigationController popViewControllerAnimated:YES];
         ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)_presenter.tabBarController;
         [tabVC updateBuiltQuery];
-        [self.tableView reloadData];
     } onError:^(NSError *error) {
         // there was an error in updating the object
         // error.userinfo contains more details regarding the same
