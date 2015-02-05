@@ -49,6 +49,7 @@
 		9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */; };
 		999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */; };
 		99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BDACB11A83E678003209F7 /* MessagesViewController.m */; };
+		99C332391A83EC8800750A31 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C332381A83EC8800750A31 /* Messages.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStudyGroupTableViewController.m; sourceTree = "<group>"; };
 		99BDACB01A83E678003209F7 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		99BDACB11A83E678003209F7 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		99C332371A83EC8800750A31 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		99C332381A83EC8800750A31 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
 		C839625EF062CE4DAAB1EDE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +190,8 @@
 				996055E019FC89BC001216B9 /* MessagingViewController.m */,
 				99BDACB01A83E678003209F7 /* MessagesViewController.h */,
 				99BDACB11A83E678003209F7 /* MessagesViewController.m */,
+				99C332371A83EC8800750A31 /* Messages.h */,
+				99C332381A83EC8800750A31 /* Messages.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
 				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,
+				99C332391A83EC8800750A31 /* Messages.m in Sources */,
 				70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

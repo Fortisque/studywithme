@@ -7,7 +7,10 @@
 //
 
 #import "JSQMessages.h"
+#import "Messages.h"
 
-@interface MessagesViewController : JSQMessagesViewController
+@interface MessagesViewController : JSQMessagesViewController <UIActionSheetDelegate>
+
+@property (strong, nonatomic) Messages *data;
 
 @end

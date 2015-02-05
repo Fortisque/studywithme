@@ -167,7 +167,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier: @"message" sender: self];
+    StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *description = [NSString stringWithFormat:@"%@ - %@", cell.classNameLabel.text, cell.timeLabel.text];
+    [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
+    NSString *uid;
+    if (indexPath.section == 0) {
+        uid = [[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
+    } else {
+        uid = [[_otherStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"study_group_uid"];
+    [self performSegueWithIdentifier: @"messages" sender: self];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
