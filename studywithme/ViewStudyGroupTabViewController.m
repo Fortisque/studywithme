@@ -21,7 +21,6 @@
     
     _courses = [NSMutableArray array];
     _myStudyGroups = [NSArray array];
-    _otherStudyGroups = [NSArray array];
     
     [self setCourses];
 }
@@ -61,7 +60,29 @@
         // the query has executed successfully.
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
-        _otherStudyGroups = [result getResult];
+        NSArray *results = [result getResult];
+        
+        NSMutableArray *myStudyGroups = [[NSMutableArray alloc] init];
+        NSMutableArray *otherStudyGroups = [[NSMutableArray alloc] init];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        
+        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+        [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
+        
+        for (int i = 0; i < [results count]; i++) {
+            NSDictionary *studyGroup = [results objectAtIndex:i];
+            
+            NSString *today = [dateFormatter stringFromDate:[NSDate date]];
+            
+            if ([today isEqualToString:[studyGroup objectForKey:@"start_date"]]) {
+                // TODO: check for who created it
+                [otherStudyGroups addObject:studyGroup];
+            }
+        }
+        
+       _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
         

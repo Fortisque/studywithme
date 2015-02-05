@@ -600,24 +600,6 @@ Me!</string>
             </objects>
             <point key="canvasLocation" x="1389.5" y="1244.5"/>
         </scene>
-        <!--Messaging View Controller-->
-        <scene sceneID="nW6-qa-FLz">
-            <objects>
-                <viewController id="Wq0-Cd-kPy" customClass="MessagingViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Olg-4M-2k7"/>
-                        <viewControllerLayoutGuide type="bottom" id="h5G-kY-134"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="adV-bD-hen">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duq-ju-SNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3219" y="1112"/>
-        </scene>
         <!--My Courses-->
         <scene sceneID="O2m-ld-o9U">
             <objects>
