@@ -75,11 +75,19 @@
             NSDictionary *studyGroup = [results objectAtIndex:i];
 
             // TODO: check for who created it
+            
+            NSDateComponents *dateComponents = [NSDateComponents new];
+            dateComponents.day = 1;
+            NSDate *tomorrow = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
+                                                                           toDate:[NSDate date]
+                                                                          options:0];
+            
+            NSTimeInterval distanceBetweenDates = [[timeFormatter dateFromString:[studyGroup objectForKey:@"end_time"]] timeIntervalSinceDate:[timeFormatter dateFromString:[studyGroup objectForKey:@"start_time"]]];
 
-            if ([dateFormatter stringFromDate:[NSDate date]] < [studyGroup objectForKey:@"end_date"]) {
+            if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
                 [otherStudyGroups addObject:studyGroup];
             } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                if ([timeFormatter stringFromDate:[NSDate date]] < [studyGroup objectForKey:@"end_time"]) {
+                if (distanceBetweenDates > 0) {
                     [otherStudyGroups addObject:studyGroup];
                 }
             }
