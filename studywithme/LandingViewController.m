@@ -8,6 +8,7 @@
 
 #import "LandingViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface LandingViewController ()
 
@@ -18,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

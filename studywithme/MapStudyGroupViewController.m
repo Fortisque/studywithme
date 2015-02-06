@@ -9,6 +9,7 @@
 #import "MapStudyGroupViewController.h"
 #import <BuiltIO/BuiltIO.h>
 #import "ViewStudyGroupTabViewController.h"
+#import "PinAnnotationPoint.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -29,9 +30,7 @@ BOOL zoomed;
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        
-    [locationManager requestWhenInUseAuthorization];
-        
+
     [locationManager startUpdatingLocation];
     _mapView.showsUserLocation = YES;
     
@@ -45,7 +44,6 @@ BOOL zoomed;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"map not listening");
 }
 
 - (void)updateMap:(NSNotification *)notification
@@ -72,12 +70,13 @@ BOOL zoomed;
         location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
         location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
             
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        PinAnnotationPoint *point = [[PinAnnotationPoint alloc] init];
             
         point.coordinate = location;
         point.title = [NSString stringWithFormat:@"%@ (%@ - %@)", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
         point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
-            
+        point.uid = [data objectForKey:@"uid"];
+        
         [_mapView addAnnotation:point];
     }
     
@@ -89,11 +88,12 @@ BOOL zoomed;
         location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
         location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
         
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        PinAnnotationPoint *point = [[PinAnnotationPoint alloc] init];
         
         point.coordinate = location;
         point.title = [NSString stringWithFormat:@"%@ (%@ - %@)", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
         point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
+        point.uid = [data objectForKey:@"uid"];
         
         [_mapView addAnnotation:point];
     }
@@ -129,7 +129,12 @@ BOOL zoomed;
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control
 {
-    [self performSegueWithIdentifier:@"message" sender:self];
+    PinAnnotationPoint *pin = (PinAnnotationPoint *)view.annotation;
+    
+    [self performSegueWithIdentifier:@"messages" sender:self];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:pin.title forKey:@"study_group_title"];
+    [[NSUserDefaults standardUserDefaults] setObject:pin.uid forKey:@"study_group_uid"];
 }
 
 - (void)didReceiveMemoryWarning {

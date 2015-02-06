@@ -80,4 +80,18 @@
     [application registerForRemoteNotifications];
 }
 
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    if (application.applicationState != UIApplicationStateActive) {
+        // app opened by push notification
+        BuiltEvent *appOpenOnNotification = [[BuiltEvent alloc] init];
+        [appOpenOnNotification setEventUid:@"appOpenedOnReceivingNotification"];
+        
+        // you can set a property wasInactive to YES to differentiate if app was brought to foreground by notification
+        [appOpenOnNotification setProperties:@{@"wasInactive": @"YES"}];
+        
+        BuiltAnalytics *analyticsInstance = [BuiltAnalytics sharedInstance];
+        [analyticsInstance trigger:appOpenOnNotification];
+    }
+}
+
 @end
