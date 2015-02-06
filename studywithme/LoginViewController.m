@@ -24,6 +24,8 @@
     
     _usernameField.delegate = self;
     _passwordField.delegate = self;
+    
+    _usernameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

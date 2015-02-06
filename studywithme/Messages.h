@@ -27,6 +27,6 @@
 
 @property (weak, atomic) MessagesViewController *presenter;
 
-- (void)loadMessages;
+- (void)reloadMessages;
 
 @end
