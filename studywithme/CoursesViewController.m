@@ -29,7 +29,6 @@ BOOL newCourse = false;
 
 - (void)setCourses
 {
-    courses = [NSMutableArray array];
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
@@ -37,10 +36,13 @@ BOOL newCourse = false;
         // [result getResult] will contain a list of objects that satisfy the conditions
         // here's the object we just created
         NSArray *res = [result getResult];
+        NSMutableSet *set = [[NSMutableSet alloc] init];
         
         for (int i = 0; i < [res count]; i++) {
-            [courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
+            [set addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
         }
+        
+        courses = [NSMutableArray arrayWithArray:[set allObjects]];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
