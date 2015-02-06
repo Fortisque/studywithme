@@ -19,8 +19,6 @@
 @synthesize courses;
 @synthesize displayCourses;
 
-BOOL newCourse = false;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -93,21 +91,25 @@ BOOL newCourse = false;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellText = cell.textLabel.text;
-    
-    if (newCourse) {
-        BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
-        [obj setObject:cellText forKey:@"name"];
-        [obj setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] forKey:@"user"];
 
-        [obj saveOnSuccess:^{
-            NSLog(@"saved course to built");
-        } onError:^(NSError *error) {
-            // there was an error in creating the object
-            // error.userinfo contains more details regarding the same
-            NSLog(@"%@", error.userInfo);
-        }];
-    }
-    [self.navigationController popViewControllerAnimated:YES];
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
+    [obj setObject:cellText forKey:@"name"];
+    [obj setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] forKey:@"user"];
+
+    [obj saveOnSuccess:^{
+        NSLog(@"saved course to built");
+        [self.navigationController popViewControllerAnimated:YES];
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't add that course"
+                                                        message:@"You already have that course, or check your internet"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller
@@ -120,7 +122,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
     displayCourses = [[courses filteredArrayUsingPredicate:sPredicate] mutableCopy];
     if ([[searchString componentsSeparatedByString: @" "] count] > 1 && ![displayCourses containsObject:searchString]) {
         [displayCourses insertObject:[searchString uppercaseString] atIndex:0];
-        newCourse = true;
     }
     return true;
 }
