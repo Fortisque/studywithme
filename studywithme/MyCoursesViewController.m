@@ -108,6 +108,8 @@
         
         [query whereKey:@"name"
                 equalTo:cellText];
+        
+        [query whereKey:@"user" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"]];
         [query exec:^(QueryResult *result, ResponseType type) {
             BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
             [obj setUid:[[[result getResult] objectAtIndex:0] objectForKey:@"uid"]];
