@@ -48,6 +48,7 @@
 		999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */; };
 		99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BDACB11A83E678003209F7 /* MessagesViewController.m */; };
 		99C332391A83EC8800750A31 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C332381A83EC8800750A31 /* Messages.m */; };
+		99F444A01A84632400DC33D0 /* PinAnnotationPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F4449F1A84632400DC33D0 /* PinAnnotationPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		99BDACB11A83E678003209F7 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		99C332371A83EC8800750A31 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
 		99C332381A83EC8800750A31 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
+		99F4449E1A84632400DC33D0 /* PinAnnotationPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinAnnotationPoint.h; sourceTree = "<group>"; };
+		99F4449F1A84632400DC33D0 /* PinAnnotationPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinAnnotationPoint.m; sourceTree = "<group>"; };
 		C839625EF062CE4DAAB1EDE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +236,8 @@
 				9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */,
 				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
 				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
+				99F4449E1A84632400DC33D0 /* PinAnnotationPoint.h */,
+				99F4449F1A84632400DC33D0 /* PinAnnotationPoint.m */,
 				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
 				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
 				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
@@ -490,6 +495,7 @@
 				99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */,
 				996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */,
 				9960558E19FC225A001216B9 /* LandingViewController.m in Sources */,
+				99F444A01A84632400DC33D0 /* PinAnnotationPoint.m in Sources */,
 				70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */,
 				9960556919FC2003001216B9 /* main.m in Sources */,
 				99C332391A83EC8800750A31 /* Messages.m in Sources */,
@@ -617,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/studywithme",
@@ -625,6 +632,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -634,6 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/studywithme",
@@ -642,6 +651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

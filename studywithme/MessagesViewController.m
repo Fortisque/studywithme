@@ -29,7 +29,7 @@
     
     self.data = [[Messages alloc] init];
     self.data.presenter = self;
-    [self.data loadMessages];
+    [self.data reloadMessages];
     
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
@@ -321,4 +321,7 @@
 }
 
 
+- (IBAction)refreshPressed:(id)sender {
+    [self.data reloadMessages];
+}
 @end

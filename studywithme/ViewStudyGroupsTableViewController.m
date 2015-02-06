@@ -43,7 +43,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"table not listening");
 }
 
 - (void)setUpData:(NSNotification *)notification

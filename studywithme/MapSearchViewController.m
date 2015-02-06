@@ -28,9 +28,7 @@ BOOL done;
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [locationManager requestWhenInUseAuthorization];
-            
+                
     [locationManager startUpdatingLocation];
     _mapView.showsUserLocation = YES;
     

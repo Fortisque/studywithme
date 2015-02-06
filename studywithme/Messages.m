@@ -25,8 +25,9 @@
     return self;
 }
 
-- (void)loadMessages
+- (void)reloadMessages
 {
+    self.messages = [NSMutableArray new];
     BuiltQuery *messageQuery = [BuiltQuery queryWithClassUID:@"message"];
     [messageQuery whereKey:@"study_group" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"study_group_uid"]];
     
