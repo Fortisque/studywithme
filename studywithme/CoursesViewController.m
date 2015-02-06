@@ -19,12 +19,33 @@
 @synthesize courses;
 @synthesize displayCourses;
 
+BOOL newCourse = false;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    courses = [[NSMutableArray alloc] initWithObjects:@"CS61A", @"CS61B", @"CS61C", @"CS161", @"CS169", @"CS170", @"CS188", @"ENGLISH122", @"GERMANR5B", @"MATH54", @"MATH53", nil];
+    [self setCourses];
+}
+
+- (void)setCourses
+{
+    courses = [NSMutableArray array];
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
-    // Do any additional setup after loading the view.
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        // here's the object we just created
+        NSArray *res = [result getResult];
+        
+        for (int i = 0; i < [res count]; i++) {
+            [courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
+        }
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,8 +78,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Display recipe in the table cell
-    
     cell.textLabel.text = [displayCourses objectAtIndex:indexPath.row];
     
     return cell;
@@ -73,19 +92,19 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellText = cell.textLabel.text;
     
-    BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
-    [obj setObject:cellText
-            forKey:@"name"];
+    if (newCourse) {
+        BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
+        [obj setObject:cellText forKey:@"name"];
 
-    [obj saveOnSuccess:^{
-        NSLog(@"saved course to built");
-        [self.navigationController popViewControllerAnimated:YES];
-    } onError:^(NSError *error) {
-        // there was an error in creating the object
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", error.userInfo);
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+        [obj saveOnSuccess:^{
+            NSLog(@"saved course to built");
+        } onError:^(NSError *error) {
+            // there was an error in creating the object
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller
@@ -96,6 +115,10 @@ shouldReloadTableForSearchString:(NSString *)searchString
     NSPredicate *sPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", searchString];
     
     displayCourses = [[courses filteredArrayUsingPredicate:sPredicate] mutableCopy];
+    if ([[searchString componentsSeparatedByString: @" "] count] > 1 && ![displayCourses containsObject:searchString]) {
+        [displayCourses insertObject:[searchString uppercaseString] atIndex:0];
+        newCourse = true;
+    }
     return true;
 }
 

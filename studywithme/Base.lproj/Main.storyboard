@@ -656,7 +656,7 @@ Me!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jdz-R5-Mbs">
+                            <searchBar contentMode="redraw" placeholder="Ex: CS 61A" translatesAutoresizingMaskIntoConstraints="NO" id="Jdz-R5-Mbs">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>

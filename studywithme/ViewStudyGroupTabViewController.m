@@ -20,13 +20,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _courses = [NSMutableArray array];
-    
     [self setCourses];
 }
 
 - (void)setCourses
 {
+    _courses = [NSMutableArray array];
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     
     [query exec:^(QueryResult *result, ResponseType type) {
@@ -62,8 +61,7 @@
 {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
     
-    [query whereKey:@"course"
-        containedIn:_courses];
+    [query whereKey:@"course" containedIn:_courses];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
