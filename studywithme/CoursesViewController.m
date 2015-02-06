@@ -95,6 +95,7 @@ BOOL newCourse = false;
     if (newCourse) {
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
         [obj setObject:cellText forKey:@"name"];
+        [obj setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] forKey:@"user"];
 
         [obj saveOnSuccess:^{
             NSLog(@"saved course to built");

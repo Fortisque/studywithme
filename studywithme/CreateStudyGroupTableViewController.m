@@ -32,6 +32,7 @@
 
 - (void)queryCourses {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
+    [query whereKey:@"user" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"]];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
