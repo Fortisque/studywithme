@@ -23,7 +23,6 @@
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -183,27 +182,9 @@ Me!</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWy-jq-Zby">
                                 <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztG-Xz-7AO">
-                                        <rect key="frame" x="37" y="126" width="300" height="50"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Ie9-sj-NwM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                        <state key="normal" title="I Want to Study!">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="OgH-D6-9he" kind="push" id="zg6-9H-U3I"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAM-yy-NwN">
-                                        <rect key="frame" x="37" y="62" width="300" height="50"/>
+                                        <rect key="frame" x="37" y="37" width="300" height="100"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="u4U-qo-9wN"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                         <state key="normal" title="My Classes">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -214,11 +195,8 @@ Me!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c05-bV-5c8">
-                                        <rect key="frame" x="37" y="190" width="300" height="50"/>
+                                        <rect key="frame" x="37" y="170" width="300" height="100"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="a5u-6j-sIk"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                         <state key="normal" title="View Study Groups">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,28 +209,23 @@ Me!</string>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="c05-bV-5c8" secondAttribute="centerX" id="1wY-aa-jxv"/>
-                                    <constraint firstItem="ztG-Xz-7AO" firstAttribute="width" secondItem="FAM-yy-NwN" secondAttribute="width" id="39d-OA-YDO"/>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="top" secondItem="ztG-Xz-7AO" secondAttribute="bottom" constant="14" id="6Fc-sW-Pjd"/>
-                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="leading" secondItem="XWy-jq-Zby" secondAttribute="leading" constant="37" id="Nyb-pb-Xt2"/>
-                                    <constraint firstItem="ztG-Xz-7AO" firstAttribute="top" secondItem="FAM-yy-NwN" secondAttribute="bottom" constant="14" id="O1x-aE-rLG"/>
-                                    <constraint firstItem="ztG-Xz-7AO" firstAttribute="width" secondItem="c05-bV-5c8" secondAttribute="width" id="Rm1-LF-Xo8"/>
-                                    <constraint firstAttribute="trailing" secondItem="FAM-yy-NwN" secondAttribute="trailing" constant="38" id="VnZ-gN-pNK"/>
-                                    <constraint firstAttribute="centerY" secondItem="ztG-Xz-7AO" secondAttribute="centerY" constant="2.5" id="npr-pv-0Ki"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="centerX" secondItem="XWy-jq-Zby" secondAttribute="centerX" id="AAA-Vt-TRC"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="trailing" secondItem="FAM-yy-NwN" secondAttribute="trailing" id="KXa-8t-52f"/>
+                                    <constraint firstAttribute="bottom" secondItem="c05-bV-5c8" secondAttribute="bottom" constant="37" id="QZd-a5-Mvz"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="height" secondItem="FAM-yy-NwN" secondAttribute="height" id="VIk-kb-WWx"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="top" secondItem="FAM-yy-NwN" secondAttribute="bottom" constant="33" id="Ylp-CM-O8O"/>
+                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="leading" secondItem="XWy-jq-Zby" secondAttribute="leading" constant="37" id="Zde-Ys-is9"/>
+                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="top" secondItem="XWy-jq-Zby" secondAttribute="top" constant="37" id="bDc-cy-sN4"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="leading" secondItem="FAM-yy-NwN" secondAttribute="leading" id="dk4-Zs-wb6"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-K3-NpX">
                                 <rect key="frame" x="-17" y="72" width="409" height="280"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="GdQ-SO-YS9"/>
-                                    <constraint firstAttribute="width" constant="409" id="L49-0K-CKi"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yD-nQV">
                                 <rect key="frame" x="44" y="107" width="288" height="212"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="212" id="BNs-XI-hMw"/>
-                                    <constraint firstAttribute="width" constant="288" id="WM1-ca-noh"/>
+                                    <constraint firstAttribute="height" constant="212" id="fvs-hF-OtK"/>
                                 </constraints>
                                 <string key="text">Study
 With
@@ -263,16 +236,17 @@ Me!</string>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.52941176470588236" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="XWy-jq-Zby" secondAttribute="centerX" id="4Ok-VW-e9q"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="ztG-Xz-7AO" secondAttribute="centerX" constant="0.5" id="5NP-Jj-Kod"/>
-                            <constraint firstItem="VVB-K3-NpX" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="8" id="9t7-CG-eFX"/>
-                            <constraint firstAttribute="centerX" secondItem="2M6-yD-nQV" secondAttribute="centerX" id="AEA-c8-mJ5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XWy-jq-Zby" secondAttribute="trailing" constant="-16" id="BKd-RE-58s"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="8" id="DL4-zK-jzL"/>
-                            <constraint firstAttribute="centerX" secondItem="VVB-K3-NpX" secondAttribute="centerX" id="UZD-9C-UbO"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="FAM-yy-NwN" secondAttribute="centerX" constant="0.5" id="WdH-2q-qiH"/>
-                            <constraint firstItem="d5J-Q8-QVu" firstAttribute="top" secondItem="XWy-jq-Zby" secondAttribute="bottom" id="b6V-Cf-rqY"/>
-                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="-245" id="mZG-pH-nQb"/>
+                            <constraint firstAttribute="trailing" secondItem="XWy-jq-Zby" secondAttribute="trailing" id="FQ9-sc-jQc"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="43" id="LtF-JG-YUP"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="28" id="TtA-Hh-oNj"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="8" symbolic="YES" id="XhE-lf-n72"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="VVB-K3-NpX" secondAttribute="centerX" id="iCe-jm-dWn"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="bottom" secondItem="d5J-Q8-QVu" secondAttribute="top" id="jK6-Lw-XKq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2M6-yD-nQV" secondAttribute="trailing" constant="27" id="mw4-QU-mQT"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leading" id="qjr-fS-Yq7"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="2M6-yD-nQV" secondAttribute="bottom" constant="41" id="rZf-jn-zfw"/>
+                            <constraint firstItem="VVB-K3-NpX" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="-33" id="sZo-iq-VZR"/>
+                            <constraint firstItem="VVB-K3-NpX" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="8" symbolic="YES" id="u0Q-KJ-CTS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="wpk-wG-u27"/>
