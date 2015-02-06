@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *location;
 @property (strong, nonatomic) IBOutlet UIDatePicker *startTime;
 @property (strong, nonatomic) IBOutlet UIDatePicker *endTime;
-@property (strong, nonatomic) IBOutlet UIButton *goButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *goButton;
 
 @property (strong, nonatomic) NSDictionary *studyGroup;
 @property (weak, atomic) ViewStudyGroupTabViewController *presenter;

@@ -22,7 +22,6 @@
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -453,34 +452,6 @@ Me!</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="go" rowHeight="80" id="e5I-Tz-bx6">
-                                        <rect key="frame" x="0.0" y="624" width="375" height="111"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e5I-Tz-bx6" id="0WG-8A-dWO">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEk-UE-oZk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                                    <color key="backgroundColor" red="0.32549019610000002" green="0.51372549020000002" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="30"/>
-                                                    <state key="normal" title="Go!">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="done:" destination="OgH-D6-9he" eventType="touchUpInside" id="sHi-by-SaS"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="zEk-UE-oZk" secondAttribute="bottom" constant="-9" id="3yC-aE-a4H"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zEk-UE-oZk" secondAttribute="trailing" constant="-8" id="DcN-sD-N0a"/>
-                                                <constraint firstAttribute="centerX" secondItem="zEk-UE-oZk" secondAttribute="centerX" id="LRU-pP-GeZ"/>
-                                                <constraint firstItem="zEk-UE-oZk" firstAttribute="top" secondItem="0WG-8A-dWO" secondAttribute="topMargin" constant="-8" id="aa2-Nv-Bej"/>
-                                                <constraint firstItem="zEk-UE-oZk" firstAttribute="leading" secondItem="0WG-8A-dWO" secondAttribute="leadingMargin" constant="-8" id="bBc-li-5yY"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -489,11 +460,17 @@ Me!</string>
                             <outlet property="delegate" destination="OgH-D6-9he" id="jYA-JO-M6r"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fPW-xH-gZT"/>
+                    <navigationItem key="navigationItem" id="fPW-xH-gZT">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="XK0-Zx-cXy">
+                            <connections>
+                                <action selector="done:" destination="OgH-D6-9he" id="02B-Ts-eXY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="endTime" destination="2WK-g3-7sM" id="b54-qk-6s0"/>
-                        <outlet property="goButton" destination="zEk-UE-oZk" id="wx2-wm-crk"/>
+                        <outlet property="goButton" destination="XK0-Zx-cXy" id="3lC-Xg-hFG"/>
                         <outlet property="location" destination="3Nd-sd-P0l" id="ZJ5-yg-Kqm"/>
                         <outlet property="picker" destination="zxs-3B-ZY4" id="vs1-L0-DX5"/>
                         <outlet property="startTime" destination="tdC-6c-m9i" id="68f-WM-Z2h"/>

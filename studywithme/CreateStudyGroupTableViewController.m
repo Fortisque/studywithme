@@ -23,8 +23,6 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    
-    
     [self queryCourses];
     
     if (_studyGroup) {
@@ -86,7 +84,7 @@
     [_startTime setDate:[timeFormatter dateFromString:[_studyGroup objectForKey:@"start_time"]] animated:YES];
     [_endTime setDate:[timeFormatter dateFromString:[_studyGroup objectForKey:@"end_time"]] animated:YES];
     
-    [_goButton setTitle:@"Update!" forState:UIControlStateNormal];
+    _goButton.title = @"Update";
 }
 
 // returns the number of 'columns' to display.
@@ -118,7 +116,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return 4;
 }
 
 
