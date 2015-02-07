@@ -14,17 +14,8 @@
 @interface Messages : NSObject
 
 @property (strong, nonatomic) NSMutableArray *messages;
-
-- (void)addPhotoMediaMessage;
-
-- (void)addLocationMediaMessageCompletion:(JSQLocationMediaItemCompletionBlock)completion;
-
-- (void)addVideoMediaMessage;
-
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
-
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
-
 @property (weak, atomic) MessagesViewController *presenter;
 
 - (void)reloadMessages;

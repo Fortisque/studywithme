@@ -6,11 +6,10 @@
 //  Copyright (c) 2014 ieor190. All rights reserved.
 //
 
-#import "ViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MapStudyGroupViewController : ViewController <CLLocationManagerDelegate, MKMapViewDelegate> {
+@interface MapStudyGroupViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate> {
     CLLocationManager *locationManager;
 }
 

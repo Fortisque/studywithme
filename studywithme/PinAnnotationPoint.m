@@ -10,6 +10,4 @@
 
 @implementation PinAnnotationPoint
 
-@synthesize coordinate;
-
 @end
