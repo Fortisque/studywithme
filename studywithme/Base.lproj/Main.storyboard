@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -344,7 +345,7 @@ Me!</string>
                                                         <outlet property="delegate" destination="OgH-D6-9he" id="Ij5-Hm-hbd"/>
                                                     </connections>
                                                 </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
                                                     <rect key="frame" x="8" y="45" width="30" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -365,13 +366,13 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s17-Yc-Iaq" id="hs9-sm-ijc">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-ux-MUo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-ux-MUo">
                                                     <rect key="frame" x="8" y="10" width="22" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-sd-P0l">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-sd-P0l">
                                                     <rect key="frame" x="29" y="4" width="284" height="41"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <state key="normal" title="Enter Location">
@@ -407,7 +408,7 @@ Me!</string>
                                                         <!--2015-02-03 20:16:47 +0000-->
                                                     </date>
                                                 </datePicker>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
                                                     <rect key="frame" x="8" y="75" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -429,7 +430,7 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-WY-HWo" id="Z3w-oO-z3t">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
                                                     <rect key="frame" x="8" y="75" width="73" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -588,7 +589,7 @@ Me!</string>
             </objects>
             <point key="canvasLocation" x="1914.5" y="1444.5"/>
         </scene>
-        <!--My Courses-->
+        <!--My Classes-->
         <scene sceneID="O2m-ld-o9U">
             <objects>
                 <tableViewController id="lv7-rd-35b" customClass="MyCoursesViewController" sceneMemberID="viewController">
@@ -614,7 +615,7 @@ Me!</string>
                             <outlet property="delegate" destination="lv7-rd-35b" id="XQ0-HW-xhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Courses" id="GzT-0c-z8K">
+                    <navigationItem key="navigationItem" title="My Classes" id="GzT-0c-z8K">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fam-Zo-SE8">
                             <connections>
                                 <segue destination="8je-5d-NbY" kind="push" id="GXw-YM-aME"/>
@@ -626,7 +627,7 @@ Me!</string>
             </objects>
             <point key="canvasLocation" x="1436" y="-350"/>
         </scene>
-        <!--Add Course-->
+        <!--Add Class-->
         <scene sceneID="hvh-VX-kMk">
             <objects>
                 <viewController id="8je-5d-NbY" customClass="CoursesViewController" sceneMemberID="viewController">
@@ -653,7 +654,7 @@ Me!</string>
                             <constraint firstItem="Jdz-R5-Mbs" firstAttribute="leading" secondItem="285-hu-nd8" secondAttribute="leading" id="TBF-lC-buI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Course" id="G5I-4h-qDc"/>
+                    <navigationItem key="navigationItem" title="Add Class" id="G5I-4h-qDc"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="SMn-a0-4de" id="fW3-Qx-bb1"/>
                     </connections>
