@@ -21,10 +21,6 @@
     [super viewDidLoad];
     
     [self queryCourses];
-    
-    if (_studyGroup) {
-        [self updateViewWithStudyGroupInfo];
-    }
 }
 
 - (void)queryCourses {
@@ -43,6 +39,9 @@
         }
         
         [_picker reloadAllComponents];
+        if (_studyGroup) {
+            [self updateViewWithStudyGroupInfo];
+        }
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
