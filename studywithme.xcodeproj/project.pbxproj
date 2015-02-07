@@ -12,6 +12,7 @@
 		70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */; };
 		70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */; };
 		70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */; };
+		84AF90D21A858F65003E9B32 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF90D11A858F65003E9B32 /* Helper.m */; };
 		84D7B3E81A8022D800983028 /* Economica-Bold-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */; };
 		84D7B3E91A8022D800983028 /* Economica-BoldItalic-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */; };
 		84D7B3EA1A8022D800983028 /* Economica-Italic-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E51A8022D800983028 /* Economica-Italic-OTF.otf */; };
@@ -19,7 +20,6 @@
 		84D7B3EC1A8022D800983028 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E71A8022D800983028 /* SIL Open Font License.txt */; };
 		9960556919FC2003001216B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556819FC2003001216B9 /* main.m */; };
 		9960556C19FC2003001216B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556B19FC2003001216B9 /* AppDelegate.m */; };
-		9960556F19FC2003001216B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9960556E19FC2003001216B9 /* ViewController.m */; };
 		9960557219FC2003001216B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9960557019FC2003001216B9 /* Main.storyboard */; };
 		9960557419FC2003001216B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9960557319FC2003001216B9 /* Images.xcassets */; };
 		9960557719FC2003001216B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9960557519FC2003001216B9 /* LaunchScreen.xib */; };
@@ -43,8 +43,7 @@
 		996055D619FC53E6001216B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996055D519FC53E6001216B9 /* MapKit.framework */; };
 		996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055D819FC5449001216B9 /* MapStudyGroupViewController.m */; };
 		996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996055DB19FC786E001216B9 /* MapSearchViewController.m */; };
-		996055DE19FC8573001216B9 /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 996055DD19FC8573001216B9 /* table.png */; };
-		9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */; };
+		9976D7EA1A81BFB80068490C /* ViewStudyGroupTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976D7E91A81BFB80068490C /* ViewStudyGroupTabBarController.m */; };
 		999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */; };
 		99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BDACB11A83E678003209F7 /* MessagesViewController.m */; };
 		99C332391A83EC8800750A31 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C332381A83EC8800750A31 /* Messages.m */; };
@@ -64,12 +63,14 @@
 /* Begin PBXFileReference section */
 		53F505C27F392A3B83AC0213 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5679CE1E930C810E32C4E106 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStudyGroupsTableViewController.h; sourceTree = "<group>"; };
 		70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupsTableViewController.m; sourceTree = "<group>"; };
 		70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyGroupsTableViewCell.h; sourceTree = "<group>"; };
 		70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyGroupsTableViewCell.m; sourceTree = "<group>"; };
 		70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyGroupCell.xib; sourceTree = "<group>"; };
+		84AF90D01A858F65003E9B32 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		84AF90D11A858F65003E9B32 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Bold-OTF.otf"; sourceTree = "<group>"; };
 		84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-BoldItalic-OTF.otf"; sourceTree = "<group>"; };
 		84D7B3E51A8022D800983028 /* Economica-Italic-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Italic-OTF.otf"; sourceTree = "<group>"; };
@@ -80,8 +81,6 @@
 		9960556819FC2003001216B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9960556A19FC2003001216B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9960556B19FC2003001216B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9960556D19FC2003001216B9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9960556E19FC2003001216B9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9960557119FC2003001216B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9960557319FC2003001216B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9960557619FC2003001216B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -113,9 +112,8 @@
 		996055D819FC5449001216B9 /* MapStudyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStudyGroupViewController.m; sourceTree = "<group>"; };
 		996055DA19FC786E001216B9 /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
 		996055DB19FC786E001216B9 /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
-		996055DD19FC8573001216B9 /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
-		9976D7E81A81BFB80068490C /* ViewStudyGroupTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStudyGroupTabViewController.h; sourceTree = "<group>"; };
-		9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupTabViewController.m; sourceTree = "<group>"; };
+		9976D7E81A81BFB80068490C /* ViewStudyGroupTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStudyGroupTabBarController.h; sourceTree = "<group>"; };
+		9976D7E91A81BFB80068490C /* ViewStudyGroupTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStudyGroupTabBarController.m; sourceTree = "<group>"; };
 		999057051A815646003A45B1 /* CreateStudyGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStudyGroupTableViewController.h; sourceTree = "<group>"; };
 		999057061A815646003A45B1 /* CreateStudyGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStudyGroupTableViewController.m; sourceTree = "<group>"; };
 		99BDACB01A83E678003209F7 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
@@ -162,6 +160,49 @@
 			isa = PBXGroup;
 			children = (
 				5679CE1E930C810E32C4E106 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84AF90CD1A856A30003E9B32 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
+				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
+				99F4449E1A84632400DC33D0 /* PinAnnotationPoint.h */,
+				99F4449F1A84632400DC33D0 /* PinAnnotationPoint.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		84AF90CE1A856A39003E9B32 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
+				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
+				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
+				70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */,
+				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		84AF90CF1A858618003E9B32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				996055D519FC53E6001216B9 /* MapKit.framework */,
+				996055D019FC3FB1001216B9 /* Accounts.framework */,
+				996055CE19FC3FAB001216B9 /* Social.framework */,
+				996055CC19FC3FA6001216B9 /* Twitter.framework */,
+				996055CA19FC3FA0001216B9 /* CoreLocation.framework */,
+				996055C819FC3F9A001216B9 /* CoreTelephony.framework */,
+				996055C619FC3F95001216B9 /* CFNetwork.framework */,
+				996055C419FC3F90001216B9 /* SystemConfiguration.framework */,
+				996055C219FC3F87001216B9 /* Security.framework */,
+				996055C019FC3F81001216B9 /* CoreGraphics.framework */,
+				996055BE19FC3F78001216B9 /* QuartzCore.framework */,
+				996055BB19FC3F55001216B9 /* BuiltIO.framework */,
+				996055BA19FC3F55001216B9 /* BuiltIO.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,17 +273,10 @@
 		9934EC361A80A511003BEC97 /* ViewStudyGroup */ = {
 			isa = PBXGroup;
 			children = (
-				9976D7E81A81BFB80068490C /* ViewStudyGroupTabViewController.h */,
-				9976D7E91A81BFB80068490C /* ViewStudyGroupTabViewController.m */,
-				996055D719FC5449001216B9 /* MapStudyGroupViewController.h */,
-				996055D819FC5449001216B9 /* MapStudyGroupViewController.m */,
-				99F4449E1A84632400DC33D0 /* PinAnnotationPoint.h */,
-				99F4449F1A84632400DC33D0 /* PinAnnotationPoint.m */,
-				70D8511319FC31B2005BDE91 /* ViewStudyGroupsTableViewController.h */,
-				70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */,
-				70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */,
-				70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */,
-				70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */,
+				84AF90CE1A856A39003E9B32 /* Table */,
+				84AF90CD1A856A30003E9B32 /* Map */,
+				9976D7E81A81BFB80068490C /* ViewStudyGroupTabBarController.h */,
+				9976D7E91A81BFB80068490C /* ViewStudyGroupTabBarController.m */,
 			);
 			name = ViewStudyGroup;
 			sourceTree = "<group>";
@@ -250,18 +284,6 @@
 		9960555A19FC2003001216B9 = {
 			isa = PBXGroup;
 			children = (
-				996055D519FC53E6001216B9 /* MapKit.framework */,
-				996055D019FC3FB1001216B9 /* Accounts.framework */,
-				996055CE19FC3FAB001216B9 /* Social.framework */,
-				996055CC19FC3FA6001216B9 /* Twitter.framework */,
-				996055CA19FC3FA0001216B9 /* CoreLocation.framework */,
-				996055C819FC3F9A001216B9 /* CoreTelephony.framework */,
-				996055C619FC3F95001216B9 /* CFNetwork.framework */,
-				996055C419FC3F90001216B9 /* SystemConfiguration.framework */,
-				996055C219FC3F87001216B9 /* Security.framework */,
-				996055C019FC3F81001216B9 /* CoreGraphics.framework */,
-				996055BE19FC3F78001216B9 /* QuartzCore.framework */,
-				70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */,
 				9960556519FC2003001216B9 /* studywithme */,
 				9960557F19FC2003001216B9 /* studywithmeTests */,
 				9960556419FC2003001216B9 /* Products */,
@@ -282,13 +304,11 @@
 		9960556519FC2003001216B9 /* studywithme */ = {
 			isa = PBXGroup;
 			children = (
-				996055DD19FC8573001216B9 /* table.png */,
-				996055BA19FC3F55001216B9 /* BuiltIO.bundle */,
-				996055BB19FC3F55001216B9 /* BuiltIO.framework */,
+				84AF90D01A858F65003E9B32 /* Helper.h */,
+				84AF90D11A858F65003E9B32 /* Helper.m */,
+				84AF90CF1A858618003E9B32 /* Frameworks */,
 				9960556A19FC2003001216B9 /* AppDelegate.h */,
 				9960556B19FC2003001216B9 /* AppDelegate.m */,
-				9960556D19FC2003001216B9 /* ViewController.h */,
-				9960556E19FC2003001216B9 /* ViewController.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
 				9934EC311A80A4A2003BEC97 /* Messaging */,
 				9934EC361A80A511003BEC97 /* ViewStudyGroup */,
@@ -306,6 +326,7 @@
 		9960556619FC2003001216B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */,
 				84D7B3E21A8022D800983028 /* economica */,
 				9960556719FC2003001216B9 /* Info.plist */,
 				9960556819FC2003001216B9 /* main.m */,
@@ -432,7 +453,6 @@
 				70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */,
 				84D7B3E91A8022D800983028 /* Economica-BoldItalic-OTF.otf in Resources */,
 				9960557419FC2003001216B9 /* Images.xcassets in Resources */,
-				996055DE19FC8573001216B9 /* table.png in Resources */,
 				84D7B3E81A8022D800983028 /* Economica-Bold-OTF.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,10 +507,10 @@
 				999057071A815646003A45B1 /* CreateStudyGroupTableViewController.m in Sources */,
 				9960559D19FC27B9001216B9 /* CoursesViewController.m in Sources */,
 				996055D919FC5449001216B9 /* MapStudyGroupViewController.m in Sources */,
-				9960556F19FC2003001216B9 /* ViewController.m in Sources */,
+				84AF90D21A858F65003E9B32 /* Helper.m in Sources */,
 				996055D419FC404C001216B9 /* MyCoursesViewController.m in Sources */,
 				9960556C19FC2003001216B9 /* AppDelegate.m in Sources */,
-				9976D7EA1A81BFB80068490C /* ViewStudyGroupTabViewController.m in Sources */,
+				9976D7EA1A81BFB80068490C /* ViewStudyGroupTabBarController.m in Sources */,
 				9960559719FC23F6001216B9 /* LoginViewController.m in Sources */,
 				99BDACB21A83E678003209F7 /* MessagesViewController.m in Sources */,
 				996055DC19FC786E001216B9 /* MapSearchViewController.m in Sources */,

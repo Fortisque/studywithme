@@ -18,25 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self builtUpdateTable];
-    
     self.tableView.allowsSelectionDuringEditing = true;
-    
-    //self.tableView.backgroundColor = [UIColor colorWithRed:254.0/255 green:166.0/255 blue:20.0/255 alpha:1.0];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self setEditing:false];
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self setEditing:false];
     [self builtUpdateTable];
 }
 
@@ -53,16 +41,12 @@
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
+        [Helper alertToCheckInternet];
         NSLog(@"%@", error.userInfo);
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+# pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -88,14 +72,11 @@
     return cell;
 }
 
-
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,30 +87,30 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         NSString *cellText = cell.textLabel.text;
         
-        [query whereKey:@"name"
-                equalTo:cellText];
-        
+        [query whereKey:@"name" equalTo:cellText];
         [query whereKey:@"user" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"]];
         [query exec:^(QueryResult *result, ResponseType type) {
             BuiltObject *obj = [BuiltObject objectWithClassUID:@"course"];
             [obj setUid:[[[result getResult] objectAtIndex:0] objectForKey:@"uid"]];
             
             [obj destroyOnSuccess:^{
-                NSLog(@"delete");
                 [self builtUpdateTable];
             } onError:^(NSError *error) {
                 // there was an error in deleting the object
                 // error.userinfo contains more details regarding the same
+                [Helper alertToCheckInternet];
                 NSLog(@"%@", error.userInfo);
             }];
-            
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
+            [Helper alertToCheckInternet];
             NSLog(@"%@", error.userInfo);
         }];
     }
 }
+
+# pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView isEditing]) {
@@ -138,30 +119,5 @@
         [tableView setEditing:true];
     }
 }
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

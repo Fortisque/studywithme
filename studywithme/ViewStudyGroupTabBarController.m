@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 ieor190. All rights reserved.
 //
 
-#import "ViewStudyGroupTabViewController.h"
+#import "ViewStudyGroupTabBarController.h"
 #import "CreateStudyGroupTableViewController.h"
 #import <BuiltIO/BuiltIO.h>
 
-@interface ViewStudyGroupTabViewController ()
+@interface ViewStudyGroupTabBarController ()
 
 @end
 
-@implementation ViewStudyGroupTabViewController
+@implementation ViewStudyGroupTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,8 +23,7 @@
     [self setCourses];
 }
 
-- (void)setCourses
-{
+- (void)setCourses {
     _courses = [NSMutableArray array];
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];
     [query whereKey:@"user" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"]];
@@ -39,27 +38,17 @@
             [_courses addObject:[[res objectAtIndex:i] objectForKey:@"name"]];
         }
         
+        // Find relevant study groups.
         [self updateBuiltQuery];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
+        [Helper alertToCheckInternet];
         NSLog(@"%@", error.userInfo);
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"addStudyGroup"]) {
-        CreateStudyGroupTableViewController *vc = [segue destinationViewController];
-        vc.presenter = self;
-    }
-}
-
-- (IBAction)addButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:@"addStudyGroup" sender:sender];
-}
-
-- (void)updateBuiltQuery
-{
+- (void)updateBuiltQuery {
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"study_group"];
     
     [query whereKey:@"course" containedIn:_courses];
@@ -78,9 +67,6 @@
     
     [query whereKey:@"end_date" containedIn:@[[dateFormatter stringFromDate:[NSDate date]], [dateFormatter stringFromDate:tomorrow]]];
     [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        // here's the object we just created
         NSArray *results = [result getResult];
         
         NSMutableArray *myStudyGroups = [[NSMutableArray alloc] init];
@@ -95,7 +81,7 @@
             }
             
             NSComparisonResult result = [(NSString *)[studyGroup objectForKey:@"end_time"] compare:[timeFormatter stringFromDate:[NSDate date]]];
-
+            
             if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
                 if (isMine) {
                     [myStudyGroups addObject:studyGroup];
@@ -116,29 +102,28 @@
         _myStudyGroups = [[NSArray alloc] initWithArray:myStudyGroups];
         _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
         
-        NSLog(@"send notification");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
-        
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
+        [Helper alertToCheckInternet];
         NSLog(@"%@", error.userInfo);
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+# pragma mark - Navigation
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"addStudyGroup"]) {
+        CreateStudyGroupTableViewController *vc = [segue destinationViewController];
+        vc.presenter = self;
+    }
 }
-*/
+
+# pragma mark - Action
+
+- (IBAction)addButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"addStudyGroup" sender:sender];
+}
 
 @end

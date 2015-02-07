@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Helper.h"
 
-@interface ViewStudyGroupTabViewController : UITabBarController
+@interface ViewStudyGroupTabBarController : UITabBarController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @property (strong, nonatomic) NSArray* myStudyGroups;

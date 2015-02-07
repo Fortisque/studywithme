@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 ieor190. All rights reserved.
 //
 
-#import "ViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface MapSearchViewController : ViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate> {
+@interface MapSearchViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate> {
     CLLocationManager *locationManager;
 }
 
 @property (strong, nonatomic) IBOutlet UISearchBar *search;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPointAnnotation *pin;
+
 - (IBAction)done:(id)sender;
 
 @end

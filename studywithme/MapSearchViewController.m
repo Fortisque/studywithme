@@ -15,23 +15,21 @@
 
 @implementation MapSearchViewController
 
-BOOL zoomed;
 CLLocation *myLocation;
+
 BOOL done;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    zoomed = false;
     done = false;
 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-                
     [locationManager startUpdatingLocation];
-    _mapView.showsUserLocation = YES;
     
+    _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
     
     _search.delegate = self;
@@ -44,43 +42,36 @@ BOOL done;
     [self.mapView addGestureRecognizer:lpgr];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    NSLog(@"%@", searchText);
+#pragma mark - UISearchBar delegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [[NSUserDefaults standardUserDefaults] setObject:_search.text forKey:@"location"];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    return YES;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *newLocation = [locations lastObject];
-    myLocation = newLocation;
-    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    if (!zoomed) {
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-        [_mapView setRegion:viewRegion animated:YES];
-        zoomed = true;
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    if (!done) {
+        [self geocode];
     }
+}
+
+#pragma mark - CLLocation delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    myLocation = [locations lastObject];
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    [_mapView setRegion:viewRegion animated:YES];
     [locationManager stopUpdatingLocation];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+# pragma mark - Action
 
 - (IBAction)done:(id)sender {
     done = true;
@@ -90,34 +81,29 @@ BOOL done;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
-{
-    return YES;
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) return;
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    [self addPinToMapGivenCoordinate:touchMapCoordinate];
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    if (!done) {
-        [self geocode];
-    }
-}
+# pragma mark - Helpers
 
-- (void)geocode
-{
+- (void)geocode {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
     [geocoder geocodeAddressString:_search.text completionHandler:^(NSArray* placemarks, NSError* error){
-        for (CLPlacemark* aPlacemark in placemarks)
-        {
-            NSLog(@"%@", aPlacemark);
-            // Process the placemark.
-            [self addPinToMapGivenCoordinate:aPlacemark.location.coordinate];
+        if ([placemarks count] != 0) {
+            CLPlacemark* firstPlacemark = [placemarks objectAtIndex:0];
+            [self addPinToMapGivenCoordinate:firstPlacemark.location.coordinate];
         }
     }];
 }
 
-- (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate
-{
+- (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate {
     _pin.coordinate = coordinate;
     NSString *lat = [NSString stringWithFormat:@"%.8f", coordinate.latitude];
     NSString *lng = [NSString stringWithFormat:@"%.8f", coordinate.longitude];
@@ -129,14 +115,4 @@ BOOL done;
     [_mapView addAnnotation:_pin];
 }
 
-- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
-        return;
-    
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
-    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    
-    [self addPinToMapGivenCoordinate:touchMapCoordinate];
-}
 @end

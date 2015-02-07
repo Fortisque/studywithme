@@ -9,7 +9,7 @@
 #import "ViewStudyGroupsTableViewController.h"
 #import "StudyGroupsTableViewCell.h"
 #import <BuiltIO/BuiltIO.h>
-#import "ViewStudyGroupTabViewController.h"
+#import "ViewStudyGroupTabBarController.h"
 
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray *otherStudyGroups;
@@ -19,8 +19,7 @@
 
 @implementation ViewStudyGroupsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -28,76 +27,35 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    [self setUpData:nil];
+    // Listens for notifications from ViewStudyGroupTabBarController to get data.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData) name:@"MyDataChangedNotification" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData:) name:@"MyDataChangedNotification" object:nil];
+    // In case we miss the notification.
+    [self setUpData];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)setUpData:(NSNotification *)notification
-{
-    ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
+- (void)setUpData {
+    ViewStudyGroupTabBarController *tabVC = (ViewStudyGroupTabBarController *)self.tabBarController;
     _otherStudyGroups = tabVC.otherStudyGroups;
     _myStudyGroups = tabVC.myStudyGroups;
     [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    if(indexPath.section == 0) {
-        return YES;
-    }
-    return NO;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-
-        BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
-        [obj setUid:[[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"]];
-        
-        [obj destroyOnSuccess:^{
-            NSLog(@"delete");
-            ViewStudyGroupTabViewController *tabVC = (ViewStudyGroupTabViewController *)self.tabBarController;
-            [tabVC updateBuiltQuery];
-        } onError:^(NSError *error) {
-            // there was an error in deleting the object
-            // error.userinfo contains more details regarding the same
-            NSLog(@"%@", error.userInfo);
-        }];
-    }
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
         return [_myStudyGroups count];
@@ -105,9 +63,7 @@
     return [_otherStudyGroups count];
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *studyGroupCellIdentifier = @"StudyGroupCell";
     
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
@@ -128,7 +84,7 @@
         cell.editButton.hidden = YES;
     }
     
-    if (indexPath.row %2 == 0) {
+    if (indexPath.row % 2 == 0) {
         cell.classNameLabel.backgroundColor = [UIColor colorWithRed:1 green:0.8 blue:0.43 alpha:1.0];
         cell.classNameLabel.textColor = [UIColor blackColor];
     } else {
@@ -151,8 +107,43 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"My study groups";
+    } else {
+        return @"Other study groups";
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Can only edit your own study groups.
+    if(indexPath.section == 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
+        [obj setUid:[[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"]];
+        
+        [obj destroyOnSuccess:^{
+            ViewStudyGroupTabBarController *tabVC = (ViewStudyGroupTabBarController *)self.tabBarController;
+            [tabVC updateBuiltQuery];
+        } onError:^(NSError *error) {
+            // there was an error in deleting the object
+            // error.userinfo contains more details regarding the same
+            [Helper alertToCheckInternet];
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
+}
+
+# pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
 }
 
@@ -161,6 +152,7 @@
     NSString *description = [NSString stringWithFormat:@"%@ - %@", cell.classNameLabel.text, cell.timeLabel.text];
     [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
     NSString *uid;
+    
     if (indexPath.section == 0) {
         uid = [[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
     } else {
@@ -170,14 +162,7 @@
     [self performSegueWithIdentifier: @"messages" sender: self];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return @"My study groups";
-    } else {
-        return @"Other study groups";
-    }
-}
+# pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"create"]) {
@@ -185,7 +170,7 @@
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
         
-        vc.presenter = (ViewStudyGroupTabViewController *)self.tabBarController;
+        vc.presenter = (ViewStudyGroupTabBarController *)self.tabBarController;
         if (indexPath.section == 0) {
             vc.studyGroup = [_myStudyGroups objectAtIndex:indexPath.row];
         } else {
@@ -194,57 +179,10 @@
     }
 }
 
+# pragma mark - Actions
+
 - (void)editButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"create" sender:sender];
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

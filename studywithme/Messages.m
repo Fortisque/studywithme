@@ -12,8 +12,7 @@
 
 @implementation Messages
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.messages = [NSMutableArray new];
@@ -25,12 +24,12 @@
     return self;
 }
 
-- (void)reloadMessages
-{
+- (void)reloadMessages {
+    // Resets all messages.
     self.messages = [NSMutableArray new];
+    
     BuiltQuery *messageQuery = [BuiltQuery queryWithClassUID:@"message"];
     [messageQuery whereKey:@"study_group" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"study_group_uid"]];
-    
     [messageQuery orderByAscending:@"datetime"];
     
     [messageQuery exec:^(QueryResult *result,  ResponseType type) {
@@ -42,7 +41,6 @@
             NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
             dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
             NSDate *date = [dateFormatter dateFromString:[tmp objectForKey:@"datetime"]];
-            
             
             JSQMessage *message = [[JSQMessage alloc] initWithSenderId:[tmp objectForKey:@"sender_id"]
                                                      senderDisplayName:[tmp objectForKey:@"sender_display_name"]
@@ -63,6 +61,5 @@
         NSLog(@"%@", error.userInfo);
     }];
 }
-
 
 @end
