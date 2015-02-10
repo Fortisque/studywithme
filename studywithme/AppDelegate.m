@@ -44,6 +44,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dataFromNotification" object:nil userInfo:nil];
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -76,16 +78,8 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    if (application.applicationState != UIApplicationStateActive) {
-        // app opened by push notification
-        BuiltEvent *appOpenOnNotification = [[BuiltEvent alloc] init];
-        [appOpenOnNotification setEventUid:@"appOpenedOnReceivingNotification"];
-        
-        // you can set a property wasInactive to YES to differentiate if app was brought to foreground by notification
-        [appOpenOnNotification setProperties:@{@"wasInactive": @"YES"}];
-        
-        BuiltAnalytics *analyticsInstance = [BuiltAnalytics sharedInstance];
-        [analyticsInstance trigger:appOpenOnNotification];
+    if (application.applicationState == UIApplicationStateActive) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dataFromNotification" object:nil userInfo:nil];
     }
 }
 
