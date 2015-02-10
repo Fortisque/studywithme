@@ -46,6 +46,14 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [[NSNotificationCenter defaultCenter] postNotificationName:@"dataFromNotification" object:nil userInfo:nil];
     
+    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+    [installation setObject:[NSNumber numberWithInt:0]
+                     forKey:@"badge"];
+    [installation updateInstallationOnSuccess:^{
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }                                 onError:^(NSError *error) {
+        
+    }];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -81,6 +89,8 @@
     if (application.applicationState == UIApplicationStateActive) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"dataFromNotification" object:nil userInfo:nil];
     }
+    
+    NSLog(@"%@", userInfo);
 }
 
 @end

@@ -119,7 +119,7 @@ Built.Extension.beforeSave('message', function(request, response) {
                 function unique(arr) {
                   var hash = {}, result = [];
                   for ( var i = 0, l = arr.length; i < l; ++i ) {
-                    if ( !hash.hasOwnProperty(arr[i]) ) { //it works with objects! in FF, at least
+                    if ( !hash.hasOwnProperty(arr[i]) ) {
                       hash[ arr[i] ] = true;
                       result.push(arr[i]);
                     }
