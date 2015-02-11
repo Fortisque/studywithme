@@ -134,7 +134,18 @@
      *  The other label text delegate methods should follow a similar pattern.
      */
     JSQMessage *message = [self.data.messages objectAtIndex:indexPath.item];
-    return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+    NSAttributedString *timeStamp = [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+    
+    if (indexPath.item > 0) {
+        JSQMessage *previousMessage = [self.data.messages objectAtIndex:indexPath.item-1];
+        NSAttributedString *previousTimeStamp = [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:previousMessage.date];
+        
+        if ([timeStamp isEqualToAttributedString:previousTimeStamp]) {
+            return nil;
+        }
+    }
+    
+    return timeStamp;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
@@ -220,6 +231,17 @@
      *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
      *  The other label height delegate methods should follow similarly
      */
+
+    if (indexPath.item > 0) {
+        JSQMessage *message = [self.data.messages objectAtIndex:indexPath.item];
+        JSQMessage *previousMessage = [self.data.messages objectAtIndex:indexPath.item-1];
+        NSAttributedString *timeStamp = [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+        NSAttributedString *previousTimeStamp = [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:previousMessage.date];
+        
+        if ([timeStamp isEqualToAttributedString:previousTimeStamp]) {
+            return 0.0f;
+        }
+    }
     return kJSQMessagesCollectionViewCellLabelHeightDefault;
 }
 
