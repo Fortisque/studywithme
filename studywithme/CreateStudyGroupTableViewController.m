@@ -35,6 +35,11 @@
         _courses = [result getResult];
         _coursesArray = [[NSMutableArray alloc] init];
         
+        if ([_courses count] == 0) {
+            [Helper alertWithTitle:@"Add some classes first" andMessage:@"You need to add a class before you can create study groups"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
         for (int i = 0; i < [_courses count]; i++) {
             [_coursesArray addObject:[[_courses objectAtIndex:i] objectForKey:@"name"]];
         }
