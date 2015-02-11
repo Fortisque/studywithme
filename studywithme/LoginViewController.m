@@ -13,6 +13,9 @@
 
 @end
 
+CGFloat keyboardHeight;
+bool keyboardActive;
+
 @implementation LoginViewController
 
 - (void)viewDidLoad {
@@ -48,23 +51,26 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-CGFloat keyboardHeight;
-
 - (void)keyboardWasShown:(NSNotification *)notification
 {
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    CGRect frameRect = self.view.frame;
-    keyboardHeight = keyboardSize.height;
-    frameRect.origin.y = frameRect.origin.y - keyboardHeight;
-    self.view.frame = frameRect;
+    if(!keyboardActive) {
+        CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+        
+        CGRect frameRect = self.view.frame;
+        keyboardHeight = keyboardSize.height;
+        frameRect.origin.y = frameRect.origin.y - keyboardHeight;
+        self.view.frame = frameRect;
+    }
+    keyboardActive = true;
 }
 
 - (void) keyboardWillHide:(NSNotification *)notification {
-    
-    CGRect frameRect = self.view.frame;
-    frameRect.origin.y = frameRect.origin.y + keyboardHeight;
-    self.view.frame = frameRect;
+    if (keyboardActive) {
+        CGRect frameRect = self.view.frame;
+        frameRect.origin.y = frameRect.origin.y + keyboardHeight;
+        self.view.frame = frameRect;
+    }
+    keyboardActive = false;
 }
 
 # pragma mark - Textfield delegate
