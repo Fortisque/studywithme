@@ -55,11 +55,14 @@ bool keyboardActive;
 
 - (void)keyboardWasShown:(NSNotification *)notification
 {
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    NSLog(@"%f", keyboardSize.height);
     
     CGRect frameRect = self.view.frame;
     frameRect.origin.y = originalHeight - keyboardSize.height;
     self.view.frame = frameRect;
+    NSLog(@"shown");
 }
 
 - (void) keyboardWillHide:(NSNotification *)notification {
