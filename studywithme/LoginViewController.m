@@ -13,7 +13,7 @@
 
 @end
 
-CGFloat keyboardHeight;
+CGFloat originalHeight;
 bool keyboardActive;
 
 @implementation LoginViewController
@@ -24,6 +24,8 @@ bool keyboardActive;
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+    
+    originalHeight = self.view.frame.origin.y;
     
     _usernameField.delegate = self;
     _passwordField.delegate = self;
@@ -53,24 +55,17 @@ bool keyboardActive;
 
 - (void)keyboardWasShown:(NSNotification *)notification
 {
-    if(!keyboardActive) {
-        CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-        
-        CGRect frameRect = self.view.frame;
-        keyboardHeight = keyboardSize.height;
-        frameRect.origin.y = frameRect.origin.y - keyboardHeight;
-        self.view.frame = frameRect;
-    }
-    keyboardActive = true;
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGRect frameRect = self.view.frame;
+    frameRect.origin.y = originalHeight - keyboardSize.height;
+    self.view.frame = frameRect;
 }
 
 - (void) keyboardWillHide:(NSNotification *)notification {
-    if (keyboardActive) {
-        CGRect frameRect = self.view.frame;
-        frameRect.origin.y = frameRect.origin.y + keyboardHeight;
-        self.view.frame = frameRect;
-    }
-    keyboardActive = false;
+    CGRect frameRect = self.view.frame;
+    frameRect.origin.y = originalHeight;
+    self.view.frame = frameRect;
 }
 
 # pragma mark - Textfield delegate
