@@ -83,6 +83,7 @@
     if (defaultCell == nil) {
         defaultCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellIdentifier];
         defaultCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        defaultCell.textLabel.numberOfLines = 2;
     }
     
     NSDictionary *data;
