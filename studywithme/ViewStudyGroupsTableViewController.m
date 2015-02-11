@@ -58,13 +58,20 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
+        if ([_myStudyGroups count] == 0) {
+            return 1;
+        }
         return [_myStudyGroups count];
+    }
+    if ([_otherStudyGroups count] == 0) {
+        return 1;
     }
     return [_otherStudyGroups count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *studyGroupCellIdentifier = @"StudyGroupCell";
+    static NSString *defaultCellIdentifier = @"DefaultCell";
     
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
     
@@ -73,13 +80,26 @@
         cell = [nib objectAtIndex:0];
     }
     
+    UITableViewCell *defaultCell = [tableView dequeueReusableCellWithIdentifier:defaultCellIdentifier];
+    if (defaultCell == nil) {
+        defaultCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellIdentifier];
+    }
+    
     NSDictionary *data;
     
     if (indexPath.section == 0) {
+        if ([_myStudyGroups count] == 0) {
+            defaultCell.textLabel.text = @"You haven't created any study groups yet.";
+            return defaultCell;
+        }
         data = [_myStudyGroups objectAtIndex:indexPath.row];
         cell.editButton.hidden = NO;
         [cell.editButton addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     } else {
+        if ([_otherStudyGroups count] == 0) {
+            defaultCell.textLabel.text = @"There are no study groups happening now.";
+            return defaultCell;
+        }
         data = [_otherStudyGroups objectAtIndex:indexPath.row];
         cell.editButton.hidden = YES;
     }
