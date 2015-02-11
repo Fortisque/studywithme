@@ -97,7 +97,7 @@
         [cell.editButton addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         if ([_otherStudyGroups count] == 0) {
-            defaultCell.textLabel.text = @"There are no study groups happening now.";
+            defaultCell.textLabel.text = @"No other study groups are happening now.";
             return defaultCell;
         }
         data = [_otherStudyGroups objectAtIndex:indexPath.row];
