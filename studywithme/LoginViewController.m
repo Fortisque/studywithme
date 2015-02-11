@@ -30,14 +30,44 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-# pragma makr - Textfield delegate
+CGFloat keyboardHeight;
+
+- (void)keyboardWasShown:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGRect frameRect = self.view.frame;
+    keyboardHeight = keyboardSize.height;
+    frameRect.origin.y = frameRect.origin.y - keyboardHeight;
+    self.view.frame = frameRect;
+}
+
+- (void) keyboardWillHide:(NSNotification *)notification {
+    
+    CGRect frameRect = self.view.frame;
+    frameRect.origin.y = frameRect.origin.y + keyboardHeight;
+    self.view.frame = frameRect;
+}
+
+# pragma mark - Textfield delegate
 
 -(void) dismissKeyboard:(id)sender {
     [self.view endEditing:YES];

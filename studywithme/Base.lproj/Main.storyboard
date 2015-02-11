@@ -53,6 +53,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-8B-BRp">
+                                <rect key="frame" x="-17" y="72" width="408" height="280"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="3oY-QA-Nnb"/>
+                                    <constraint firstAttribute="width" constant="408" id="NdO-fm-8wL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-zn-9DE" userLabel="Study With Me!">
+                                <rect key="frame" x="43" y="112" width="288" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="wYS-0n-g5l"/>
+                                    <constraint firstAttribute="height" constant="212" id="wmQ-zk-zN0"/>
+                                </constraints>
+                                <string key="text">Study
+With
+Me!</string>
+                                <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="50"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHh-ca-noN">
                                 <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                                 <subviews>
@@ -115,26 +135,6 @@
                                     <constraint firstItem="jP4-aJ-UrU" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="top" constant="19" id="tjx-oT-5xT"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-8B-BRp">
-                                <rect key="frame" x="-17" y="72" width="408" height="280"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="3oY-QA-Nnb"/>
-                                    <constraint firstAttribute="width" constant="408" id="NdO-fm-8wL"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-zn-9DE" userLabel="Study With Me!">
-                                <rect key="frame" x="43" y="112" width="288" height="212"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="wYS-0n-g5l"/>
-                                    <constraint firstAttribute="height" constant="212" id="wmQ-zk-zN0"/>
-                                </constraints>
-                                <string key="text">Study
-With
-Me!</string>
-                                <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="50"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.53333333333333333" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -158,6 +158,7 @@ Me!</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="passwordField" destination="a6Q-0G-fMr" id="jzg-p0-6RJ"/>
+                        <outlet property="signinView" destination="KHh-ca-noN" id="DGk-SP-EXp"/>
                         <outlet property="usernameField" destination="jP4-aJ-UrU" id="lCF-pL-JM9"/>
                         <segue destination="Wou-G8-Hkh" kind="push" identifier="success" id="3tx-ev-mB3"/>
                     </connections>
@@ -332,31 +333,31 @@ Me!</string>
                         <sections>
                             <tableViewSection id="09h-Ru-1nL">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="picker" rowHeight="120" id="xGg-Ct-rOp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="picker" rowHeight="115" id="xGg-Ct-rOp">
                                         <rect key="frame" x="0.0" y="64" width="375" height="111"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGg-Ct-rOp" id="aIc-Tm-0qH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
+                                                    <rect key="frame" x="8" y="0.0" width="30" height="29"/>
+                                                    <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <pickerView contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="zxs-3B-ZY4">
-                                                    <rect key="frame" x="47" y="-22" width="320" height="162"/>
+                                                    <rect key="frame" x="46" y="-66" width="320" height="162"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="OgH-D6-9he" id="22F-vv-08C"/>
                                                         <outlet property="delegate" destination="OgH-D6-9he" id="Ij5-Hm-hbd"/>
                                                     </connections>
                                                 </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
-                                                    <rect key="frame" x="8" y="45" width="30" height="29"/>
-                                                    <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rKU-ME-zA6" firstAttribute="leading" secondItem="aIc-Tm-0qH" secondAttribute="leadingMargin" id="6g9-iP-abv"/>
-                                                <constraint firstAttribute="centerY" secondItem="rKU-ME-zA6" secondAttribute="centerY" id="OxW-Zs-smN"/>
-                                                <constraint firstAttribute="centerY" secondItem="zxs-3B-ZY4" secondAttribute="centerY" id="PMp-IT-bwv"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zxs-3B-ZY4" secondAttribute="trailing" id="Wu8-ym-fye"/>
+                                                <constraint firstAttribute="centerY" secondItem="rKU-ME-zA6" secondAttribute="centerY" constant="42.75" id="OxW-Zs-smN"/>
+                                                <constraint firstAttribute="centerY" secondItem="zxs-3B-ZY4" secondAttribute="centerY" constant="42.25" id="PMp-IT-bwv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zxs-3B-ZY4" secondAttribute="trailing" constant="1" id="Wu8-ym-fye"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -684,7 +685,7 @@ Me!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Nhk-pe-3sd"/>
+        <segue reference="7pa-Cp-AYZ"/>
         <segue reference="0eT-vd-tEx"/>
     </inferredMetricsTieBreakers>
 </document>

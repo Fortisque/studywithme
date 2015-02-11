@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NE STUD C169" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-nb-Vo5">
-                        <rect key="frame" x="0.0" y="-1" width="123" height="120"/>
+                        <rect key="frame" x="0.0" y="-1" width="123" height="121"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="123" id="Iza-Bl-Cqn"/>
                         </constraints>
@@ -43,9 +43,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkR-g5-H3O">
-                        <rect key="frame" x="333" y="8" width="24" height="23"/>
+                        <rect key="frame" x="327" y="8" width="30" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="24" id="5pe-Td-knK"/>
+                            <constraint firstAttribute="width" constant="30" id="5pe-Td-knK"/>
                         </constraints>
                         <state key="normal" backgroundImage="pen">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,7 +57,7 @@
                     <constraint firstItem="RFy-nb-Vo5" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="-9" id="2lK-SM-ta3"/>
                     <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="RFy-nb-Vo5" secondAttribute="trailing" constant="8" id="A0H-Em-zTB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RFy-nb-Vo5" secondAttribute="bottom" constant="-8" id="Dts-lB-Vf4"/>
-                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="kkR-g5-H3O" secondAttribute="bottom" constant="30" id="FaG-Kl-Grt"/>
+                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="kkR-g5-H3O" secondAttribute="bottom" constant="25" id="FaG-Kl-Grt"/>
                     <constraint firstAttribute="trailing" secondItem="NA1-DH-pP2" secondAttribute="trailing" id="QeU-8a-t0H"/>
                     <constraint firstItem="kkR-g5-H3O" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" id="UhU-BN-gkH"/>
                     <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="47i-8M-yjX" secondAttribute="leading" id="WzA-do-ut3"/>
