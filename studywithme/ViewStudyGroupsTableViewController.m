@@ -74,7 +74,6 @@
     static NSString *defaultCellIdentifier = @"DefaultCell";
     
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
-    
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:studyGroupCellIdentifier owner:self options:nil];
         cell = [nib objectAtIndex:0];
@@ -83,6 +82,7 @@
     UITableViewCell *defaultCell = [tableView dequeueReusableCellWithIdentifier:defaultCellIdentifier];
     if (defaultCell == nil) {
         defaultCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellIdentifier];
+        defaultCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     NSDictionary *data;
@@ -137,7 +137,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Can only edit your own study groups.
-    if(indexPath.section == 0) {
+    if([_myStudyGroups count] != 0 && indexPath.section == 0) {
         return YES;
     }
     return NO;
@@ -168,6 +168,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.tableView cellForRowAtIndexPath:indexPath].selectionStyle == UITableViewCellSelectionStyleNone) {
+        return;
+    }
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     NSString *description = [NSString stringWithFormat:@"%@ - %@", cell.classNameLabel.text, cell.timeLabel.text];
     [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
