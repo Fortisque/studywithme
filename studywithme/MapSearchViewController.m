@@ -8,6 +8,7 @@
 
 #import "MapSearchViewController.h"
 #define METERS_PER_MILE 1609.344
+#import "CreateStudyGroupTableViewController.h"
 
 @interface MapSearchViewController ()
 
@@ -45,7 +46,6 @@ BOOL done;
 #pragma mark - UISearchBar delegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [[NSUserDefaults standardUserDefaults] setObject:_search.text forKey:@"location"];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -68,16 +68,26 @@ BOOL done;
     myLocation = [locations lastObject];
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     [_mapView setRegion:viewRegion animated:YES];
+    
+    [self addPinToMapGivenCoordinate:myLocation.coordinate];
+    [self reverseGeocodeGivenLocation:myLocation];
+    
     [locationManager stopUpdatingLocation];
+}
+
+#pragma mark - MKMapView delegate
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    [self addPinToMapGivenCoordinate:mapView.centerCoordinate];
+    [self reverseGeocodeGivenCoordinate:mapView.centerCoordinate];
 }
 
 # pragma mark - Action
 
 - (IBAction)done:(id)sender {
-    done = true;
-    if (_pin.coordinate.latitude == 0) {
-        [self addPinToMapGivenCoordinate:myLocation.coordinate];
-    }
+    _presenter.coordinate = _pin.coordinate;
+    [_presenter.location setTitle:_search.text forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -88,6 +98,7 @@ BOOL done;
     CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
     [self addPinToMapGivenCoordinate:touchMapCoordinate];
+    [self reverseGeocodeGivenCoordinate:touchMapCoordinate];
 }
 
 # pragma mark - Helpers
@@ -95,7 +106,7 @@ BOOL done;
 - (void)geocode {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
-    [geocoder geocodeAddressString:_search.text completionHandler:^(NSArray* placemarks, NSError* error){
+    [geocoder geocodeAddressString:[_search.text stringByAppendingString:@" berkeley"] completionHandler:^(NSArray* placemarks, NSError* error){
         if ([placemarks count] != 0) {
             CLPlacemark* firstPlacemark = [placemarks objectAtIndex:0];
             [self addPinToMapGivenCoordinate:firstPlacemark.location.coordinate];
@@ -103,12 +114,26 @@ BOOL done;
     }];
 }
 
+- (void)reverseGeocodeGivenCoordinate:(CLLocationCoordinate2D)coordinate {
+    [self reverseGeocodeGivenLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude]];
+}
+
+- (void)reverseGeocodeGivenLocation:(CLLocation *)location {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    CLGeocodeCompletionHandler handler = ^(NSArray *placemark, NSError *err) {
+        if ([placemark count] != 0) {
+            CLPlacemark *firstPlacemark = placemark[0];
+            _search.text = firstPlacemark.name;
+        }
+
+    };
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:handler];
+}
+
 - (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate {
     _pin.coordinate = coordinate;
-    NSString *lat = [NSString stringWithFormat:@"%.8f", coordinate.latitude];
-    NSString *lng = [NSString stringWithFormat:@"%.8f", coordinate.longitude];
-    [[NSUserDefaults standardUserDefaults] setObject:lat forKey:@"latitude"];
-    [[NSUserDefaults standardUserDefaults] setObject:lng forKey:@"longitude"];
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     [_mapView setRegion:viewRegion animated:YES];

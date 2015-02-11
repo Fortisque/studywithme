@@ -8,6 +8,7 @@
 
 #import "CreateStudyGroupTableViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import "MapSearchViewController.h"
 
 @interface CreateStudyGroupTableViewController ()
 
@@ -52,11 +53,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
-        
-    if (str) {
-        [_location setTitle:str forState:UIControlStateNormal];
-    }
 }
 
 - (void)updateViewWithStudyGroupInfo {
@@ -70,8 +66,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:[_studyGroup objectForKey:@"location"] forKey:@"location"];
     [_location setTitle:[_studyGroup objectForKey:@"location"] forState:UIControlStateNormal];
     
-    [[NSUserDefaults standardUserDefaults] setObject:[[_studyGroup objectForKey:@"__loc"] objectAtIndex:0] forKey:@"longitude"];
-    [[NSUserDefaults standardUserDefaults] setObject:[[_studyGroup objectForKey:@"__loc"] objectAtIndex:1] forKey:@"latitude"];
+    
+    double longitude =  [[[_studyGroup objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
+    double latitude =  [[[_studyGroup objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
+    
+    _coordinate = CLLocationCoordinate2DMake(longitude, latitude);
         
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
@@ -116,7 +115,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"]) {
+    if (!_coordinate.longitude) {
         [Helper alertWithMessage:@"Please set a location for your study group"];
         return;
     }
@@ -124,8 +123,8 @@
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"study_group"];
     
     // create a location object
-    BuiltLocation *loc = [BuiltLocation locationWithLongitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"] doubleValue]
-                                                  andLatitude:[[[NSUserDefaults standardUserDefaults] objectForKey:@"latitude"] doubleValue]];
+    BuiltLocation *loc = [BuiltLocation locationWithLongitude:_coordinate.longitude
+                                                  andLatitude:_coordinate.latitude];
     if (_studyGroup != nil) {
         [obj setUid: [_studyGroup objectForKey:@"uid"]];
     }
@@ -172,6 +171,15 @@
         [Helper alertWithMessage:@"Couldn't save, make sure all fields are filled"];
         [_goButton setEnabled:YES];
     }];
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"map_search"]) {
+        MapSearchViewController *vc = [segue destinationViewController];
+        vc.presenter = self;
+    }
 }
 
 @end
