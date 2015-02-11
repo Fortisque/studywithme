@@ -304,20 +304,19 @@
 		9960556519FC2003001216B9 /* studywithme */ = {
 			isa = PBXGroup;
 			children = (
-				84AF90D01A858F65003E9B32 /* Helper.h */,
-				84AF90D11A858F65003E9B32 /* Helper.m */,
-				84AF90CF1A858618003E9B32 /* Frameworks */,
+				9960557319FC2003001216B9 /* Images.xcassets */,
 				9960556A19FC2003001216B9 /* AppDelegate.h */,
 				9960556B19FC2003001216B9 /* AppDelegate.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				84AF90D01A858F65003E9B32 /* Helper.h */,
+				84AF90D11A858F65003E9B32 /* Helper.m */,
 				9934EC311A80A4A2003BEC97 /* Messaging */,
 				9934EC361A80A511003BEC97 /* ViewStudyGroup */,
 				9934EC351A80A4E2003BEC97 /* Courses */,
 				9934EC321A80A4B6003BEC97 /* Login */,
 				9934EC341A80A4CF003BEC97 /* CreateStudyGroup */,
 				9934EC331A80A4C3003BEC97 /* Landing */,
-				9960557319FC2003001216B9 /* Images.xcassets */,
-				9960557519FC2003001216B9 /* LaunchScreen.xib */,
+				84AF90CF1A858618003E9B32 /* Frameworks */,
 				9960556619FC2003001216B9 /* Supporting Files */,
 			);
 			path = studywithme;
@@ -326,6 +325,7 @@
 		9960556619FC2003001216B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9960557519FC2003001216B9 /* LaunchScreen.xib */,
 				70D8511119FC2AA4005BDE91 /* Default-568h@2x.png */,
 				84D7B3E21A8022D800983028 /* economica */,
 				9960556719FC2003001216B9 /* Info.plist */,

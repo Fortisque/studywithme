@@ -37,6 +37,22 @@
     self.inputToolbar.contentView.leftBarButtonItem = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"dataFromNotification" object:nil];
+    [super viewDidAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)refreshData
+{
+    [self.data reloadMessages];
+}
+
 #pragma mark - JSQMessagesViewController method overrides
 
 - (void)didPressSendButton:(UIButton *)button

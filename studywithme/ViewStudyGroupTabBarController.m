@@ -23,6 +23,16 @@
     [self setCourses];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setCourses) name:@"dataFromNotification" object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setCourses {
     _courses = [NSMutableArray array];
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"course"];

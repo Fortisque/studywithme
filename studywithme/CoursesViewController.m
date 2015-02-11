@@ -92,8 +92,8 @@
 shouldReloadTableForSearchString:(NSString *)searchString {
     NSPredicate *sPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", searchString];
     _displayCourses = [[_courses filteredArrayUsingPredicate:sPredicate] mutableCopy];
-    
-    if ([[searchString componentsSeparatedByString: @" "] count] > 1 && ![_displayCourses containsObject:searchString]) {
+
+    if ([[searchString componentsSeparatedByString: @" "] count] > 1 && ![_displayCourses containsObject:[searchString uppercaseString]]) {
         [_displayCourses insertObject:[searchString uppercaseString] atIndex:0];
     }
     return true;

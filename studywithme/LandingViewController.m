@@ -10,7 +10,9 @@
 #import <BuiltIO/BuiltIO.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LandingViewController ()
+@interface LandingViewController () {
+    CLLocationManager *locationManager;
+}
 
 @end
 
@@ -19,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
     }
