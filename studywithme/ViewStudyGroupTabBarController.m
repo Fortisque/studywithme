@@ -85,6 +85,7 @@
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *studyGroup = [results objectAtIndex:i];
             BOOL isMine = false;
+            BOOL shouldAdd = false;
             
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] isEqualToString:[studyGroup objectForKey:@"app_user_object_uid"]]) {
                 isMine = true;
@@ -93,18 +94,20 @@
             NSComparisonResult result = [(NSString *)[studyGroup objectForKey:@"end_time"] compare:[timeFormatter stringFromDate:[NSDate date]]];
             
             if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
+                // If the study group lasts until tomorrow then it is happening today
+                shouldAdd = true;
+            } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
+                if (result == NSOrderedDescending) {
+                    // Otherwise make sure the study group hasn't already ended
+                    shouldAdd = true;
+                }
+            }
+            
+            if (shouldAdd) {
                 if (isMine) {
                     [myStudyGroups addObject:studyGroup];
                 } else {
                     [otherStudyGroups addObject:studyGroup];
-                }
-            } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                if (result == NSOrderedDescending) {
-                    if (isMine) {
-                        [myStudyGroups addObject:studyGroup];
-                    } else {
-                        [otherStudyGroups addObject:studyGroup];
-                    }
                 }
             }
         }
