@@ -12,6 +12,7 @@
 		70D8511519FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511419FC31B2005BDE91 /* ViewStudyGroupsTableViewController.m */; };
 		70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */; };
 		70D8511A19FC34CC005BDE91 /* StudyGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */; };
+		8451B8961AAD0C7400D0D7DC /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8451B8951AAD0C7400D0D7DC /* FeedbackViewController.m */; };
 		84AF90D21A858F65003E9B32 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF90D11A858F65003E9B32 /* Helper.m */; };
 		84D7B3E81A8022D800983028 /* Economica-Bold-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */; };
 		84D7B3E91A8022D800983028 /* Economica-BoldItalic-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7B3E41A8022D800983028 /* Economica-BoldItalic-OTF.otf */; };
@@ -69,6 +70,8 @@
 		70D8511619FC33EE005BDE91 /* StudyGroupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyGroupsTableViewCell.h; sourceTree = "<group>"; };
 		70D8511719FC33EE005BDE91 /* StudyGroupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyGroupsTableViewCell.m; sourceTree = "<group>"; };
 		70D8511919FC34CC005BDE91 /* StudyGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyGroupCell.xib; sourceTree = "<group>"; };
+		8451B8941AAD0C7400D0D7DC /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		8451B8951AAD0C7400D0D7DC /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		84AF90D01A858F65003E9B32 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		84AF90D11A858F65003E9B32 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		84D7B3E31A8022D800983028 /* Economica-Bold-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Economica-Bold-OTF.otf"; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 				5679CE1E930C810E32C4E106 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8451B8971AAD0C7C00D0D7DC /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				8451B8951AAD0C7400D0D7DC /* FeedbackViewController.m */,
+				8451B8941AAD0C7400D0D7DC /* FeedbackViewController.h */,
+			);
+			name = Feedback;
 			sourceTree = "<group>";
 		};
 		84AF90CD1A856A30003E9B32 /* Map */ = {
@@ -308,6 +320,7 @@
 				9960556A19FC2003001216B9 /* AppDelegate.h */,
 				9960556B19FC2003001216B9 /* AppDelegate.m */,
 				9960557019FC2003001216B9 /* Main.storyboard */,
+				8451B8971AAD0C7C00D0D7DC /* Feedback */,
 				84AF90D01A858F65003E9B32 /* Helper.h */,
 				84AF90D11A858F65003E9B32 /* Helper.m */,
 				9934EC311A80A4A2003BEC97 /* Messaging */,
@@ -520,6 +533,7 @@
 				9960556919FC2003001216B9 /* main.m in Sources */,
 				99C332391A83EC8800750A31 /* Messages.m in Sources */,
 				70D8511819FC33EE005BDE91 /* StudyGroupsTableViewCell.m in Sources */,
+				8451B8961AAD0C7400D0D7DC /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
