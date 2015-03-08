@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Helper.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *usernameField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
-@property (strong, nonatomic) IBOutlet UIView *signinView;
-
-- (IBAction)login:(id)sender;
-- (IBAction)register:(id)sender;
+@interface LoginViewController : UIViewController <UITextFieldDelegate, UIWebViewDelegate>
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end

@@ -1,6 +1,27 @@
 var config = require('./config.js');
 Built.initialize('blte1163927e03db5d1', 'studywithme');
 
+Built.setMasterKey(config.masterKey()); // necessary for our API to work
+Built.Extension.define('login', function(request, response) {
+  var username = request.params.username;
+  // our query for an existing user with the username
+  var query = new Built.Query('built_io_application_user');
+  query.where('username', username);
+  Built.User.generateAuthtoken(
+    query,
+    true,
+    // create or update users with the following profile
+    {
+      email: username + "@berkeley.edu"
+    }
+  )
+  .then(function(res) {
+    return response.success(res)
+  }, function(res) {
+    return response.error('error', res)
+  });
+});
+
 Built.Extension.beforeSave('study_group', function(request, response) {
 
   var creator_uid = request.object.get('app_user_object_uid');

@@ -30,6 +30,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [super viewWillAppear:animated];
+    
+    // Set to 0 badges on every landing page view
+    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+    [installation setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] forKey:@"app_user_object_uid"];
+    [installation setObject:[NSNumber numberWithInt:0]
+                     forKey:@"badge"];
+    [installation updateInstallationOnSuccess:^{
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        NSLog(@"CLEARED BADGES");
+    }                                 onError:^(NSError *error) {
+        
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
