@@ -19,10 +19,12 @@
 CLLocation *myLocation;
 
 BOOL done;
+BOOL addedPinBasedOnLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     done = false;
+    addedPinBasedOnLocation = false;
 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -67,13 +69,18 @@ BOOL done;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     myLocation = [locations lastObject];
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
     
-    [self addPinToMapGivenCoordinate:myLocation.coordinate];
-    [self reverseGeocodeGivenLocation:myLocation];
-    
-    [locationManager stopUpdatingLocation];
+    CLLocation * newLocation = [locations lastObject];
+    if (newLocation.horizontalAccuracy < 0) {
+        return;
+    }
+    NSTimeInterval interval = [newLocation.timestamp timeIntervalSinceNow];
+    // Only use noncached data for the zoom. Only zoom in and place the pin once.
+    if (abs(interval)<30 && !addedPinBasedOnLocation) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+        [_mapView setRegion:viewRegion animated:YES];
+        addedPinBasedOnLocation = true;
+    }
 }
 
 #pragma mark - MKMapView delegate
@@ -109,9 +116,10 @@ BOOL done;
     
     [geocoder geocodeAddressString:[_search.text stringByAppendingString:@" Berkeley"] completionHandler:^(NSArray* placemarks, NSError* error){
         if ([placemarks count] != 0) {
-            NSLog(@"%@", placemarks);
             CLPlacemark* firstPlacemark = [placemarks objectAtIndex:0];
             [self addPinToMapGivenCoordinate:firstPlacemark.location.coordinate];
+            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(firstPlacemark.location.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+            [_mapView setRegion:viewRegion animated:YES];
         }
     }];
 }
@@ -137,8 +145,8 @@ BOOL done;
 - (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate {
     _pin.coordinate = coordinate;
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
+    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    //[_mapView setRegion:viewRegion animated:YES];
     [_mapView addAnnotation:_pin];
 }
 
