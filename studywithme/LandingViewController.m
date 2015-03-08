@@ -32,14 +32,13 @@
     [super viewWillAppear:animated];
     
     // Set to 0 badges on every landing page view
-    
-    BuiltUser *user = [BuiltUser currentUser];
     BuiltInstallation *installation = [BuiltInstallation currentInstallation];
-    [installation setObject:[user objectForKey:@"uid"] forKey:@"app_user_object_uid"];
+    [installation setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] forKey:@"app_user_object_uid"];
     [installation setObject:[NSNumber numberWithInt:0]
                      forKey:@"badge"];
     [installation updateInstallationOnSuccess:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        NSLog(@"CLEARED BADGES");
     }                                 onError:^(NSError *error) {
         
     }];
