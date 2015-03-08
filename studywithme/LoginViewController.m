@@ -185,15 +185,6 @@ bool keyboardActive;
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
-    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
-    [installation setObject:[user objectForKey:@"uid"] forKey:@"app_user_object_uid"];
-    [installation setObject:[NSNumber numberWithInt:0]
-                     forKey:@"badge"];
-    [installation updateInstallationOnSuccess:^{
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    }                                 onError:^(NSError *error) {
-        
-    }];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self performSegueWithIdentifier:@"success" sender:self];
