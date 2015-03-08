@@ -83,7 +83,12 @@
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
-        [Helper alertWithTitle:@"Could not add course" andMessage:@"Either you already have that course, or your internet connection is down."];
+        if ([[error.userInfo objectForKey:@"error_code"] intValue] == 119) {
+            [Helper alertWithTitle:@"Could not add course" andMessage:@"You have already added that course!"];
+        } else {
+            [Helper alertToCheckInternet];
+        }
+        
         NSLog(@"%@", error.userInfo);
     }];
 }
