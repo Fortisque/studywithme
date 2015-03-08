@@ -18,10 +18,6 @@
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
-            <string>Economica-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -76,90 +72,39 @@ Me!</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHh-ca-noN">
                                 <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXW-6X-6cP">
-                                        <rect key="frame" x="37" y="114" width="300" height="50"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="bWH-Cn-r2I"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="login:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QNm-Or-PLY"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jP4-aJ-UrU">
-                                        <rect key="frame" x="37" y="19" width="300" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="mfk-H6-uOX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a6Q-0G-fMr">
-                                        <rect key="frame" x="37" y="57" width="300" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="5yn-ZL-m0t"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCk-XL-w2y">
-                                        <rect key="frame" x="37" y="179" width="300" height="50"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="ygU-nX-IML"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                        <state key="normal" title="Register">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="register:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UKq-8B-4L4"/>
-                                        </connections>
-                                    </button>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7G-ha-HQb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </webView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="SCk-XL-w2y" firstAttribute="top" secondItem="DXW-6X-6cP" secondAttribute="bottom" constant="15" id="SNZ-B7-xxF"/>
-                                    <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="jP4-aJ-UrU" secondAttribute="width" id="WpQ-yM-c6S"/>
-                                    <constraint firstItem="DXW-6X-6cP" firstAttribute="top" secondItem="a6Q-0G-fMr" secondAttribute="bottom" constant="27" id="ZlI-dE-tNQ"/>
-                                    <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="DXW-6X-6cP" secondAttribute="width" id="a27-92-Tht"/>
-                                    <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="SCk-XL-w2y" secondAttribute="width" id="dHY-5y-0I8"/>
-                                    <constraint firstItem="a6Q-0G-fMr" firstAttribute="top" secondItem="jP4-aJ-UrU" secondAttribute="bottom" constant="8" symbolic="YES" id="jvr-dx-JiJ"/>
-                                    <constraint firstItem="jP4-aJ-UrU" firstAttribute="leading" secondItem="KHh-ca-noN" secondAttribute="leading" constant="37" id="m7V-by-ibK"/>
-                                    <constraint firstItem="jP4-aJ-UrU" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="top" constant="19" id="tjx-oT-5xT"/>
+                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="top" id="71J-6G-K0Z"/>
+                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="leading" secondItem="KHh-ca-noN" secondAttribute="leading" id="EXN-bz-ySL"/>
+                                    <constraint firstAttribute="trailing" secondItem="M7G-ha-HQb" secondAttribute="trailing" id="KPH-EZ-e4M"/>
+                                    <constraint firstAttribute="bottom" secondItem="M7G-ha-HQb" secondAttribute="bottom" id="R2p-Ji-5BB"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.53333333333333333" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="centerX" secondItem="jP4-aJ-UrU" secondAttribute="centerX" id="1wn-Cb-GLD"/>
                             <constraint firstAttribute="centerX" secondItem="X1K-8B-BRp" secondAttribute="centerX" id="6q1-SB-7cM"/>
                             <constraint firstAttribute="centerX" secondItem="KHh-ca-noN" secondAttribute="centerX" id="A7Z-xm-MyZ"/>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="centerX" secondItem="a6Q-0G-fMr" secondAttribute="centerX" id="K4f-vl-ta1"/>
                             <constraint firstItem="X1K-8B-BRp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Nhy-yA-c33"/>
                             <constraint firstItem="KHh-ca-noN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="OHt-q0-757"/>
                             <constraint firstItem="X1K-8B-BRp" firstAttribute="leading" secondItem="d4d-zn-9DE" secondAttribute="trailing" constant="-348" id="On2-N7-Glj"/>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="centerX" secondItem="SCk-XL-w2y" secondAttribute="centerX" id="QVI-ex-abM"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="bottom" id="Z6P-s8-7Dj"/>
                             <constraint firstAttribute="centerX" secondItem="d4d-zn-9DE" secondAttribute="centerX" id="ZfM-Wl-NPW"/>
                             <constraint firstItem="KHh-ca-noN" firstAttribute="top" secondItem="X1K-8B-BRp" secondAttribute="bottom" constant="8" id="dt4-jY-cHz"/>
                             <constraint firstItem="d4d-zn-9DE" firstAttribute="top" secondItem="X1K-8B-BRp" secondAttribute="bottom" constant="-240" id="lh7-ut-Ck9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KHh-ca-noN" secondAttribute="trailing" constant="-16" id="uaw-rd-pfX"/>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="centerX" secondItem="DXW-6X-6cP" secondAttribute="centerX" id="zjn-1y-6vz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bPS-1c-D4l"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="passwordField" destination="a6Q-0G-fMr" id="jzg-p0-6RJ"/>
                         <outlet property="signinView" destination="KHh-ca-noN" id="DGk-SP-EXp"/>
-                        <outlet property="usernameField" destination="jP4-aJ-UrU" id="lCF-pL-JM9"/>
+                        <outlet property="webView" destination="M7G-ha-HQb" id="buM-um-GWe"/>
                         <segue destination="Wou-G8-Hkh" kind="push" identifier="success" id="3tx-ev-mB3"/>
                     </connections>
                 </viewController>

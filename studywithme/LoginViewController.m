@@ -10,7 +10,8 @@
 #import <BuiltIO/BuiltIO.h>
 
 @interface LoginViewController ()
-
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
 @end
 
 CGFloat originalHeight;
@@ -30,11 +31,59 @@ bool keyboardActive;
     _usernameField.delegate = self;
     _passwordField.delegate = self;
     _usernameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    
+    _webView.delegate = self;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSData *urlData = [request HTTPBody];
+    if (urlData) {
+        NSString *urlString=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSMutableDictionary *queryStringDictionary = [[NSMutableDictionary alloc] init];
+        NSArray *urlComponents = [urlString componentsSeparatedByString:@"&"];
+        for (NSString *keyValuePair in urlComponents)
+        {
+            NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
+            NSString *key = [[pairComponents firstObject] stringByRemovingPercentEncoding];
+            NSString *value = [[pairComponents lastObject] stringByRemovingPercentEncoding];
+            
+            [queryStringDictionary setObject:value forKey:key];
+        }
+        
+        _username = [queryStringDictionary objectForKey:@"username"];
+        _password = [queryStringDictionary objectForKey:@"password"];
+    }
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    NSString *result = [webView stringByEvaluatingJavaScriptFromString:
+           @"document.body.innerHTML"];
+    if ([result containsString:@"Log In Successful"]) {
+        [webView stringByEvaluatingJavaScriptFromString:@"document.location.href = '/cas/logout';"];
+        webView.hidden = YES;
+        [BuiltExtension  executeWithName:@"login"
+                                    data:@{@"username": _username}
+                               onSuccess:^(id response) {
+                                   // response will contain the response of the extension method
+                                   // here, the response is the user profile, with the authtoken
+                                   [self successfullyLoggedIn:response];
+                               } onError:^(NSError *error) {
+                                   // error block in case of any error
+                                   NSLog(@"%@", error);
+                               }];
+        
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    _webView.hidden = NO;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
@@ -136,20 +185,11 @@ bool keyboardActive;
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
-    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
-    [installation setObject:user.uid forKey:@"app_user_object_uid"];
-    [installation setObject:[NSNumber numberWithInt:0]
-                     forKey:@"badge"];
-    [installation updateInstallationOnSuccess:^{
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    }                                 onError:^(NSError *error) {
-        
-    }];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self performSegueWithIdentifier:@"success" sender:self];
-    [[NSUserDefaults standardUserDefaults] setObject:_usernameField.text forKey:@"username"];
-    [[NSUserDefaults standardUserDefaults] setObject:user.uid forKey:@"uid"];
+    [[NSUserDefaults standardUserDefaults] setObject:_username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setObject:[user objectForKey:@"uid"] forKey:@"uid"];
 }
 
 @end
