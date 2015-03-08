@@ -61,7 +61,8 @@ bool keyboardActive;
                                onSuccess:^(id response) {
                                    // response will contain the response of the extension method
                                    // here, the response is the user profile, with the authtoken
-                                   
+                                   BuiltUser *user = [[BuiltUser user] initWithUserDict:response];
+                                   [BuiltUser setCurrentUser:user];
                                    [self successfullyLoggedIn:response];
                                } onError:^(NSError *error) {
                                    // error block in case of any error
