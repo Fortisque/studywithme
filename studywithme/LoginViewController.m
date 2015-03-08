@@ -33,10 +33,6 @@ bool keyboardActive;
     _usernameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     
     _webView.delegate = self;
-    
-    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login?"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:request];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -64,7 +60,8 @@ bool keyboardActive;
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *result = [webView stringByEvaluatingJavaScriptFromString:
            @"document.body.innerHTML"];
-    if ([result containsString:@"success"]) {
+    if ([result containsString:@"Log In Successful"]) {
+        [webView stringByEvaluatingJavaScriptFromString:@"document.location.href = '/cas/logout';"];
         webView.hidden = YES;
         [BuiltExtension  executeWithName:@"login"
                                     data:@{@"username": _username}
@@ -83,6 +80,10 @@ bool keyboardActive;
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    _webView.hidden = NO;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
