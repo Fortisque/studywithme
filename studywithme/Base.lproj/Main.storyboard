@@ -8,7 +8,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Economica-Bold-OTF.otf">
             <string>Economica-Bold</string>
-            <string>Economica-Bold</string>
         </mutableArray>
         <mutableArray key="Economica-Regular-OTF.otf">
             <string>Economica-Regular</string>
@@ -37,7 +36,7 @@
             </objects>
             <point key="canvasLocation" x="-237" y="362"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Log In-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="LoginViewController" sceneMemberID="viewController">
@@ -49,61 +48,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-8B-BRp">
-                                <rect key="frame" x="-17" y="72" width="408" height="280"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="3oY-QA-Nnb"/>
-                                    <constraint firstAttribute="width" constant="408" id="NdO-fm-8wL"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-zn-9DE" userLabel="Study With Me!">
-                                <rect key="frame" x="43" y="112" width="288" height="212"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="wYS-0n-g5l"/>
-                                    <constraint firstAttribute="height" constant="212" id="wmQ-zk-zN0"/>
-                                </constraints>
-                                <string key="text">Study
-With
-Me!</string>
-                                <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="50"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHh-ca-noN">
-                                <rect key="frame" x="0.0" y="360" width="375" height="307"/>
-                                <subviews>
-                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7G-ha-HQb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </webView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="top" id="71J-6G-K0Z"/>
-                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="leading" secondItem="KHh-ca-noN" secondAttribute="leading" id="EXN-bz-ySL"/>
-                                    <constraint firstAttribute="trailing" secondItem="M7G-ha-HQb" secondAttribute="trailing" id="KPH-EZ-e4M"/>
-                                    <constraint firstAttribute="bottom" secondItem="M7G-ha-HQb" secondAttribute="bottom" id="R2p-Ji-5BB"/>
-                                </constraints>
-                            </view>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7G-ha-HQb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.53333333333333333" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="X1K-8B-BRp" secondAttribute="centerX" id="6q1-SB-7cM"/>
-                            <constraint firstAttribute="centerX" secondItem="KHh-ca-noN" secondAttribute="centerX" id="A7Z-xm-MyZ"/>
-                            <constraint firstItem="X1K-8B-BRp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Nhy-yA-c33"/>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="OHt-q0-757"/>
-                            <constraint firstItem="X1K-8B-BRp" firstAttribute="leading" secondItem="d4d-zn-9DE" secondAttribute="trailing" constant="-348" id="On2-N7-Glj"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="bottom" id="Z6P-s8-7Dj"/>
-                            <constraint firstAttribute="centerX" secondItem="d4d-zn-9DE" secondAttribute="centerX" id="ZfM-Wl-NPW"/>
-                            <constraint firstItem="KHh-ca-noN" firstAttribute="top" secondItem="X1K-8B-BRp" secondAttribute="bottom" constant="8" id="dt4-jY-cHz"/>
-                            <constraint firstItem="d4d-zn-9DE" firstAttribute="top" secondItem="X1K-8B-BRp" secondAttribute="bottom" constant="-240" id="lh7-ut-Ck9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KHh-ca-noN" secondAttribute="trailing" constant="-16" id="uaw-rd-pfX"/>
+                            <constraint firstItem="M7G-ha-HQb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="TGn-Tw-Htn"/>
+                            <constraint firstAttribute="trailing" secondItem="M7G-ha-HQb" secondAttribute="trailing" id="iF5-Su-0Ro"/>
+                            <constraint firstItem="M7G-ha-HQb" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="plg-45-dam"/>
+                            <constraint firstItem="M7G-ha-HQb" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="tSd-3D-F5U"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bPS-1c-D4l"/>
+                    <navigationItem key="navigationItem" title="Log In" id="bPS-1c-D4l"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="signinView" destination="KHh-ca-noN" id="DGk-SP-EXp"/>
                         <outlet property="webView" destination="M7G-ha-HQb" id="buM-um-GWe"/>
                         <segue destination="Wou-G8-Hkh" kind="push" identifier="success" id="3tx-ev-mB3"/>
                     </connections>
@@ -348,18 +308,18 @@ Me!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9XN-6M-uR8" id="6gQ-kX-nYL">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
-                                                    <rect key="frame" x="97" y="9" width="320" height="162"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="444687407.278566">
-                                                        <!--2015-02-03 20:16:47 +0000-->
-                                                    </date>
-                                                </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
                                                     <rect key="frame" x="8" y="75" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
+                                                    <rect key="frame" x="97" y="9" width="320" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="444687407.278566">
+                                                        <!--2015-02-03 20:16:47 +0000-->
+                                                    </date>
+                                                </datePicker>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="atv-Hz-FO4" secondAttribute="centerY" id="6vQ-8h-t6Q"/>
