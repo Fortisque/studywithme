@@ -122,9 +122,17 @@ Me!</string>
                                             <action selector="register:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UKq-8B-4L4"/>
                                         </connections>
                                     </button>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7G-ha-HQb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </webView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="top" secondItem="KHh-ca-noN" secondAttribute="top" id="71J-6G-K0Z"/>
+                                    <constraint firstItem="M7G-ha-HQb" firstAttribute="leading" secondItem="KHh-ca-noN" secondAttribute="leading" id="EXN-bz-ySL"/>
+                                    <constraint firstAttribute="trailing" secondItem="M7G-ha-HQb" secondAttribute="trailing" id="KPH-EZ-e4M"/>
+                                    <constraint firstAttribute="bottom" secondItem="M7G-ha-HQb" secondAttribute="bottom" id="R2p-Ji-5BB"/>
                                     <constraint firstItem="SCk-XL-w2y" firstAttribute="top" secondItem="DXW-6X-6cP" secondAttribute="bottom" constant="15" id="SNZ-B7-xxF"/>
                                     <constraint firstItem="a6Q-0G-fMr" firstAttribute="width" secondItem="jP4-aJ-UrU" secondAttribute="width" id="WpQ-yM-c6S"/>
                                     <constraint firstItem="DXW-6X-6cP" firstAttribute="top" secondItem="a6Q-0G-fMr" secondAttribute="bottom" constant="27" id="ZlI-dE-tNQ"/>
@@ -160,6 +168,7 @@ Me!</string>
                         <outlet property="passwordField" destination="a6Q-0G-fMr" id="jzg-p0-6RJ"/>
                         <outlet property="signinView" destination="KHh-ca-noN" id="DGk-SP-EXp"/>
                         <outlet property="usernameField" destination="jP4-aJ-UrU" id="lCF-pL-JM9"/>
+                        <outlet property="webView" destination="M7G-ha-HQb" id="buM-um-GWe"/>
                         <segue destination="Wou-G8-Hkh" kind="push" identifier="success" id="3tx-ev-mB3"/>
                     </connections>
                 </viewController>

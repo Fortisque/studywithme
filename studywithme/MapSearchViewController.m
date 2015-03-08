@@ -58,6 +58,7 @@ BOOL done;
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     if (!done) {
+        NSLog(@"GEOCODE");
         [self geocode];
     }
 }
@@ -106,8 +107,9 @@ BOOL done;
 - (void)geocode {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
-    [geocoder geocodeAddressString:[_search.text stringByAppendingString:@" berkeley"] completionHandler:^(NSArray* placemarks, NSError* error){
+    [geocoder geocodeAddressString:[_search.text stringByAppendingString:@" Berkeley"] completionHandler:^(NSArray* placemarks, NSError* error){
         if ([placemarks count] != 0) {
+            NSLog(@"%@", placemarks);
             CLPlacemark* firstPlacemark = [placemarks objectAtIndex:0];
             [self addPinToMapGivenCoordinate:firstPlacemark.location.coordinate];
         }
