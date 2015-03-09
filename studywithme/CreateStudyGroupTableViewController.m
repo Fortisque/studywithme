@@ -152,6 +152,12 @@
     [obj setObject:[timeFormatter stringFromDate:_endTime.date]
             forKey:@"end_time"];
     
+    // timeinverval is seconds
+    if (abs([_endTime.date timeIntervalSinceDate:_startTime.date]) < 15 * 60) {
+        [Helper alertWithMessage:@"Study group needs to last for at least 15 minutes"];
+        return;
+    }
+    
     // if studying past midnight
     if ([_endTime.date timeIntervalSinceDate:_startTime.date] > 0) {
         [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"end_date"];
