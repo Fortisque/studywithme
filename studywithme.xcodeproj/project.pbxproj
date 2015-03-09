@@ -420,7 +420,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = ieor190;
+				ORGANIZATIONNAME = "StudyWithMe!";
 				TargetAttributes = {
 					9960556219FC2003001216B9 = {
 						CreatedOnToolsVersion = 6.1;

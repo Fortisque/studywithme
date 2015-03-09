@@ -1,14 +1,7 @@
-//
-//  MapSearchViewController.m
-//  studywithme
-//
-//  Created by Kevin Casey on 10/25/14.
-//  Copyright (c) 2014 ieor190. All rights reserved.
-//
-
 #import "MapSearchViewController.h"
-#define METERS_PER_MILE 1609.344
 #import "CreateStudyGroupTableViewController.h"
+
+#define METERS_PER_MILE 1609.344
 
 @interface MapSearchViewController ()
 
