@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _feedbackTextView.layer.cornerRadius = 5;
+    _feedbackTextView.layer.borderColor = [[UIColor colorWithRed:0.35 green:0.54 blue:0.83 alpha:1.0] CGColor];
+    _feedbackTextView.layer.borderWidth = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +36,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)onSubmit:(id)sender {
+}
 
 @end

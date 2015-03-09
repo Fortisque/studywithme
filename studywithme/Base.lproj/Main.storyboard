@@ -9,7 +9,11 @@
         <mutableArray key="Economica-Bold-OTF.otf">
             <string>Economica-Bold</string>
         </mutableArray>
+        <mutableArray key="Economica-Italic-OTF.otf">
+            <string>Economica-Italic</string>
+        </mutableArray>
         <mutableArray key="Economica-Regular-OTF.otf">
+            <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
             <string>Economica-Regular</string>
@@ -84,30 +88,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We would love your feedback on the app! Let us know what you like and how we can improve :)" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-ms-5ic">
-                                <rect key="frame" x="10" y="72" width="356" height="90"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We would love your feedback on the app! Let us know what you think!" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-ms-5ic">
+                                <rect key="frame" x="27" y="81" width="319" height="58"/>
+                                <fontDescription key="fontDescription" name="Economica-Italic" family="Economica" pointSize="25"/>
+                                <color key="textColor" red="0.34509803919999998" green="0.52941176469999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-eI-KJn">
-                                <rect key="frame" x="10" y="170" width="348" height="540"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-eI-KJn">
+                                <rect key="frame" x="27" y="157" width="319" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XN4-ms-5ic" secondAttribute="trailing" constant="13" id="9eH-ym-Gpl"/>
+                            <constraint firstItem="Va4-sB-WPB" firstAttribute="top" secondItem="5xs-eI-KJn" secondAttribute="bottom" constant="69" id="NRR-zC-nWl"/>
+                            <constraint firstItem="5xs-eI-KJn" firstAttribute="top" secondItem="XN4-ms-5ic" secondAttribute="bottom" constant="18" id="Sz9-C9-imA"/>
+                            <constraint firstItem="XN4-ms-5ic" firstAttribute="leading" secondItem="Mhe-hH-GgT" secondAttribute="leadingMargin" constant="11" id="qKa-yX-WwB"/>
+                            <constraint firstItem="5xs-eI-KJn" firstAttribute="leading" secondItem="Mhe-hH-GgT" secondAttribute="leadingMargin" constant="11" id="rXD-8z-UzX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5xs-eI-KJn" secondAttribute="trailing" constant="13" id="xYO-ic-j5H"/>
+                            <constraint firstItem="XN4-ms-5ic" firstAttribute="top" secondItem="1W3-k5-tpW" secondAttribute="bottom" constant="17" id="zjX-qb-UZO"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Feedback" id="due-Fq-d8B"/>
+                    <navigationItem key="navigationItem" title="Feedback" id="due-Fq-d8B">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="iHg-tZ-IEL">
+                            <connections>
+                                <action selector="onSubmit:" destination="X6k-mF-c3r" id="ebi-cg-0Tb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="feedbackTextView" destination="5xs-eI-KJn" id="2f6-wK-uso"/>
+                        <outlet property="submitButton" destination="iHg-tZ-IEL" id="cN4-gu-R4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fj2-NX-jPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="907.5" y="-402.5"/>
         </scene>
-        <!--Welcome-->
+        <!--Landing View Controller-->
         <scene sceneID="PYa-So-Qan">
             <objects>
                 <viewController id="Wou-G8-Hkh" customClass="LandingViewController" sceneMemberID="viewController">
@@ -160,10 +182,10 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-K3-NpX">
-                                <rect key="frame" x="-17" y="72" width="409" height="280"/>
+                                <rect key="frame" x="-16" y="53" width="409" height="280"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yD-nQV">
-                                <rect key="frame" x="44" y="107" width="288" height="212"/>
+                                <rect key="frame" x="43" y="87" width="288" height="212"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="fvs-hF-OtK"/>
                                 </constraints>
@@ -177,20 +199,27 @@ Me!</string>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.52941176470588236" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XWy-jq-Zby" secondAttribute="trailing" id="FQ9-sc-jQc"/>
-                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="43" id="LtF-JG-YUP"/>
-                            <constraint firstItem="2M6-yD-nQV" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="28" id="TtA-Hh-oNj"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="8" symbolic="YES" id="XhE-lf-n72"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="VVB-K3-NpX" secondAttribute="centerX" id="iCe-jm-dWn"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="23" id="LtF-JG-YUP"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="27" id="TtA-Hh-oNj"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="27" id="XhE-lf-n72"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="VVB-K3-NpX" secondAttribute="centerX" constant="-1" id="iCe-jm-dWn"/>
                             <constraint firstItem="XWy-jq-Zby" firstAttribute="bottom" secondItem="d5J-Q8-QVu" secondAttribute="top" id="jK6-Lw-XKq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2M6-yD-nQV" secondAttribute="trailing" constant="27" id="mw4-QU-mQT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2M6-yD-nQV" secondAttribute="trailing" constant="28" id="mw4-QU-mQT"/>
                             <constraint firstItem="XWy-jq-Zby" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leading" id="qjr-fS-Yq7"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="2M6-yD-nQV" secondAttribute="bottom" constant="41" id="rZf-jn-zfw"/>
-                            <constraint firstItem="VVB-K3-NpX" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="-33" id="sZo-iq-VZR"/>
-                            <constraint firstItem="VVB-K3-NpX" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="8" symbolic="YES" id="u0Q-KJ-CTS"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="2M6-yD-nQV" secondAttribute="bottom" constant="61" id="rZf-jn-zfw"/>
+                            <constraint firstItem="VVB-K3-NpX" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="-32" id="sZo-iq-VZR"/>
+                            <constraint firstItem="VVB-K3-NpX" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="-11" id="u0Q-KJ-CTS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="wpk-wG-u27">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="8GX-R3-5FL">
+                    <navigationItem key="navigationItem" id="wpk-wG-u27">
+                        <barButtonItem key="leftBarButtonItem" image="logout" id="uli-Ai-pMd">
+                            <color key="tintColor" red="0.97254901959999995" green="0.75294117650000003" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="Wou-G8-Hkh" id="Wp4-YZ-BRH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="feedback" id="8GX-R3-5FL">
+                            <color key="tintColor" red="0.97254901959999995" green="0.75294117650000003" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="X6k-mF-c3r" kind="push" id="NQD-ee-Tjx"/>
                             </connections>
@@ -622,7 +651,9 @@ Me!</string>
     </scenes>
     <resources>
         <image name="bubble" width="2100" height="1500"/>
+        <image name="feedback" width="32" height="32"/>
         <image name="list" width="32" height="32"/>
+        <image name="logout" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -25,10 +25,15 @@
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
     }
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [super viewWillAppear:animated];
     
     // Set to 0 badges on every landing page view
@@ -44,8 +49,8 @@
     }];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+- (IBAction)logout:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
