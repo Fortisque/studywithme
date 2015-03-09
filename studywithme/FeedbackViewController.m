@@ -7,6 +7,7 @@
 //
 
 #import "FeedbackViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface FeedbackViewController ()
 
@@ -38,6 +39,16 @@
 */
 
 - (IBAction)onSubmit:(id)sender {
+    [BuiltExtension  executeWithName:@"sendFeedback"
+                                data:@{@"feedback": _feedbackTextView.text, @"from": [[BuiltUser currentUser] objectForKey:@"email"]}
+                           onSuccess:^(id response) {
+                               // response will contain the response of the extension method
+                               // here, the response is the user profile, with the authtoken
+                               
+                           } onError:^(NSError *error) {
+                               // error block in case of any error
+                               NSLog(@"%@", error);
+                           }];
 }
 
 @end

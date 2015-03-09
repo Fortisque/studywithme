@@ -22,6 +22,35 @@ Built.Extension.define('login', function(request, response) {
   });
 });
 
+Built.Extension.define('sendFeedback', function(request, response) {
+  var feedback = request.params.feedback;
+  var from = request.params.from;
+
+  var params = {
+      "key": config.mandrill_api_key(),
+      "message": {
+          "from_email":from,
+          "to":[{"email":"kacasey@berkeley.edu"}],
+          "subject": "Sending a text email from the Mandrill API",
+          "text": feedback
+      }
+  };
+
+  Built.Extension.http.post({
+    url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+    data: params,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).
+  success(function(httpResponse) {
+    console.log('Feedback email sent');
+  }).
+  error(function(httpResponse) {
+    console.log('Uh oh, the mandrill made a boo-boo with status: ' + httpResponse.statusCode);
+  });
+});
+
 Built.Extension.beforeSave('study_group', function(request, response) {
 
   var creator_uid = request.object.get('app_user_object_uid');

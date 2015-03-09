@@ -170,8 +170,8 @@
 		8451B8971AAD0C7C00D0D7DC /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				8451B8951AAD0C7400D0D7DC /* FeedbackViewController.m */,
 				8451B8941AAD0C7400D0D7DC /* FeedbackViewController.h */,
+				8451B8951AAD0C7400D0D7DC /* FeedbackViewController.m */,
 			);
 			name = Feedback;
 			sourceTree = "<group>";
