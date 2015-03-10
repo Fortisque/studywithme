@@ -1,14 +1,20 @@
 #import <MapKit/MapKit.h>
+#import "SPGooglePlacesAutocomplete.h"
 
 @class CreateStudyGroupTableViewController;
 
-@interface MapSearchViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate> {
+@interface MapSearchViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
+    NSArray *searchResultPlaces;
+    SPGooglePlacesAutocompleteQuery *searchQuery;
+    MKPointAnnotation *selectedPlaceAnnotation;
+    
+    BOOL shouldBeginEditing;
     CLLocationManager *locationManager;
 }
 
 @property (strong, nonatomic) IBOutlet UISearchBar *search;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) MKPointAnnotation *pin;
+@property (strong, nonatomic) CLLocation *location;
 
 @property (weak, nonatomic) CreateStudyGroupTableViewController *presenter;
 

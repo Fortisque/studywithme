@@ -1,47 +1,141 @@
 #import "MapSearchViewController.h"
 #import "CreateStudyGroupTableViewController.h"
 
-#define METERS_PER_MILE 1609.344
-
 @interface MapSearchViewController ()
 
 @end
 
 @implementation MapSearchViewController
 
-CLLocation *myLocation;
-
-BOOL done;
-BOOL addedPinBasedOnLocation;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    done = false;
-    addedPinBasedOnLocation = false;
-
+    searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@"AIzaSyAsBLEGYoII6fWXcRUS9XanIYlK8aBAfnk"];
+    shouldBeginEditing = YES;
+    
+    _mapView.showsUserLocation = YES;
+    _mapView.delegate = self;
+    _search.delegate = self;
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+}
+
+#pragma mark - CLLocation delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation * myLocation = [locations lastObject];
+    if (myLocation.horizontalAccuracy < 0) {
+        return;
+    }
+    NSTimeInterval interval = [myLocation.timestamp timeIntervalSinceNow];
     
-    _mapView.showsUserLocation = YES;
-    _mapView.delegate = self;
+    if (abs(interval) < 30) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 1000, 1000);
+        [_mapView setRegion:viewRegion animated:YES];
+        [self reverseGeocodeGivenCoordinate:myLocation.coordinate];
+        [locationManager stopUpdatingLocation];
+    }
+}
+
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [searchResultPlaces count];
+}
+
+- (SPGooglePlacesAutocompletePlace *)placeAtIndexPath:(NSIndexPath *)indexPath {
+    return searchResultPlaces[indexPath.row];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"SPGooglePlacesAutocompleteCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
     
-    _search.delegate = self;
+    cell.textLabel.font = [UIFont fontWithName:@"GillSans" size:16.0];
+    cell.textLabel.text = [self placeAtIndexPath:indexPath].name;
+    return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)recenterMapToPlacemark:(CLPlacemark *)placemark {
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
     
-    _pin = [[MKPointAnnotation alloc] init];
+    span.latitudeDelta = 0.02;
+    span.longitudeDelta = 0.02;
     
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0; //user needs to press for 1 seconds
-    [self.mapView addGestureRecognizer:lpgr];
+    region.span = span;
+    region.center = placemark.location.coordinate;
+    
+    [self.mapView setRegion:region];
+}
+
+- (void)addPlacemarkAnnotationToMap:(CLPlacemark *)placemark addressString:(NSString *)address {
+    [self.mapView removeAnnotation:selectedPlaceAnnotation];
+    
+    selectedPlaceAnnotation = [[MKPointAnnotation alloc] init];
+    selectedPlaceAnnotation.coordinate = placemark.location.coordinate;
+    selectedPlaceAnnotation.title = address;
+    [self.mapView addAnnotation:selectedPlaceAnnotation];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SPGooglePlacesAutocompletePlace *place = [self placeAtIndexPath:indexPath];
+    [place resolveToPlacemark:^(CLPlacemark *placemark, NSString *addressString, NSError *error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not map selected Place"
+                                                            message:error.localizedDescription
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        } else if (placemark) {
+            [self addPlacemarkAnnotationToMap:placemark addressString:addressString];
+            [self recenterMapToPlacemark:placemark];
+            // ref: https://github.com/chenyuan/SPGooglePlacesAutocomplete/issues/10
+            [self.searchDisplayController setActive:NO];
+            [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:indexPath animated:NO];
+            _search.text = addressString;
+            _location = placemark.location;
+        }
+    }];
+}
+
+#pragma mark UISearchDisplayDelegate
+
+- (void)handleSearchForSearchString:(NSString *)searchString {
+    searchQuery.location = self.mapView.userLocation.coordinate;
+    searchQuery.input = searchString;
+    [searchQuery fetchPlaces:^(NSArray *places, NSError *error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not fetch Places"
+                                                            message:error.localizedDescription
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            searchResultPlaces = places;
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+    }];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self handleSearchForSearchString:searchString];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
 }
 
 #pragma mark - UISearchBar delegate
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
@@ -51,71 +145,40 @@ BOOL addedPinBasedOnLocation;
     return YES;
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    if (!done) {
-        NSLog(@"GEOCODE");
-        [self geocode];
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (![searchBar isFirstResponder]) {
+        // User tapped the 'clear' button.
+        shouldBeginEditing = NO;
+        [self.searchDisplayController setActive:NO];
+        [self.mapView removeAnnotation:selectedPlaceAnnotation];
     }
 }
 
-#pragma mark - CLLocation delegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    myLocation = [locations lastObject];
-    
-    CLLocation * newLocation = [locations lastObject];
-    if (newLocation.horizontalAccuracy < 0) {
-        return;
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    if (shouldBeginEditing) {
+        // Animate in the table view.
+        NSTimeInterval animationDuration = 0.3;
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:animationDuration];
+        self.searchDisplayController.searchResultsTableView.alpha = 0.75;
+        [UIView commitAnimations];
+        
+        [self.searchDisplayController.searchBar setShowsCancelButton:YES animated:YES];
     }
-    NSTimeInterval interval = [newLocation.timestamp timeIntervalSinceNow];
-    // Only use noncached data for the zoom. Only zoom in and place the pin once.
-    if (abs(interval)<30 && !addedPinBasedOnLocation) {
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-        [_mapView setRegion:viewRegion animated:YES];
-        addedPinBasedOnLocation = true;
-    }
-}
-
-#pragma mark - MKMapView delegate
-
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
-    [self addPinToMapGivenCoordinate:mapView.centerCoordinate];
-    [self reverseGeocodeGivenCoordinate:mapView.centerCoordinate];
+    BOOL boolToReturn = shouldBeginEditing;
+    shouldBeginEditing = YES;
+    return boolToReturn;
 }
 
 # pragma mark - Action
 
 - (IBAction)done:(id)sender {
-    _presenter.coordinate = _pin.coordinate;
+    _presenter.coordinate = _location.coordinate;
     [_presenter.location setTitle:_search.text forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) return;
-    
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
-    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    
-    [self addPinToMapGivenCoordinate:touchMapCoordinate];
-    [self reverseGeocodeGivenCoordinate:touchMapCoordinate];
-}
-
-# pragma mark - Helpers
-
-- (void)geocode {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-    [geocoder geocodeAddressString:[_search.text stringByAppendingString:@" Berkeley"] completionHandler:^(NSArray* placemarks, NSError* error){
-        if ([placemarks count] != 0) {
-            CLPlacemark* firstPlacemark = [placemarks objectAtIndex:0];
-            [self addPinToMapGivenCoordinate:firstPlacemark.location.coordinate];
-            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(firstPlacemark.location.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-            [_mapView setRegion:viewRegion animated:YES];
-        }
-    }];
-}
+# pragma mark - Helper
 
 - (void)reverseGeocodeGivenCoordinate:(CLLocationCoordinate2D)coordinate {
     [self reverseGeocodeGivenLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude]];
@@ -128,19 +191,14 @@ BOOL addedPinBasedOnLocation;
         if ([placemark count] != 0) {
             CLPlacemark *firstPlacemark = placemark[0];
             _search.text = firstPlacemark.name;
+            _location = firstPlacemark.location;
+            [self addPlacemarkAnnotationToMap:firstPlacemark addressString:firstPlacemark.name];
+            [self recenterMapToPlacemark:firstPlacemark];
         }
-
+        
     };
     
     [geocoder reverseGeocodeLocation:location completionHandler:handler];
-}
-
-- (void)addPinToMapGivenCoordinate:(CLLocationCoordinate2D)coordinate {
-    _pin.coordinate = coordinate;
-    
-    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    //[_mapView setRegion:viewRegion animated:YES];
-    [_mapView addAnnotation:_pin];
 }
 
 @end

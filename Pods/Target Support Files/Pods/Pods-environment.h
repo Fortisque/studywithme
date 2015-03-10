@@ -18,3 +18,9 @@
 #define COCOAPODS_VERSION_MINOR_JSQSystemSoundPlayer 0
 #define COCOAPODS_VERSION_PATCH_JSQSystemSoundPlayer 1
 
+// SPGooglePlacesAutocomplete
+#define COCOAPODS_POD_AVAILABLE_SPGooglePlacesAutocomplete
+#define COCOAPODS_VERSION_MAJOR_SPGooglePlacesAutocomplete 1
+#define COCOAPODS_VERSION_MINOR_SPGooglePlacesAutocomplete 0
+#define COCOAPODS_VERSION_PATCH_SPGooglePlacesAutocomplete 4
+
