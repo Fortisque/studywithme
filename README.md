@@ -1,19 +1,8 @@
-studywithme
+StudyWithMe!
 ======
+iPhone app designed to allow students to broadcast and find current study groups. Uses built.io for the backend. The layout is optimized for iPhone 6 simulator and ios 7.0. 
 
-Third place in the Code 4 Cal Hackathon.
-
-Time: 10/26/14 - 10 hrs
-
-Continued for 
-
-Time: ~30 hrs from 2/1/2015 - 2/6/2015
-
-iPhone app designed to allow students to broadcast and find current study groups.
-
-Should work out of the box. The layout is optimized for iPhone 6 simulator and ios 7.0.
-
-Uses built.io for the backend.
+Third place in the Code 4 Cal Hackathon and first place in the STC Mobile App Competition.
 
 Features
 ---------------------
