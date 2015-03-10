@@ -112,7 +112,11 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"end_date"]]) {
-         cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"start_date"]]) {
+            cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        } else {
+            cell.timeLabel.text = [NSString stringWithFormat:@"%@ (-1) to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        }
     } else {
         cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@ (+1)", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     }
