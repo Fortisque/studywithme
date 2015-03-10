@@ -28,9 +28,11 @@
                            onSuccess:^(id response) {
                                // response will contain the response of the extension method
                                // here, the response is the user profile, with the authtoken
-                               
+                               [Helper alertWithTitle:@"Yay!" andMessage:@"Thank you for your feedback!"];
+                               _feedbackTextView.text = @"";
                            } onError:^(NSError *error) {
                                // error block in case of any error
+                               [Helper alertToCheckInternet];
                                NSLog(@"%@", error);
                            }];
 }
