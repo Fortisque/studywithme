@@ -8,62 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-JSQSystemSoundPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-SPGooglePlacesAutocomplete.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>19998B735235F2971C60B1B5</key>
+		<key>064CAC08E4E74560593641C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B46C4BC93FC921C610191F1</key>
+		<key>25685D6605E9FF7F21D6B335</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54E4B18A434A9DCAAB1C218B</key>
+		<key>8D9EB7084230A9FCDC463408</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86188ECEE2192B5E71DB6ABF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E87D58F396931F6FB960DE0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D04032BF7B6F9CECFCE7C717</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1705EDC04AD174F59761FBF</key>
+		<key>DB2D269422E1E576D783389C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
