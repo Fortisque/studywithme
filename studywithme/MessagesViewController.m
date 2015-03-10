@@ -42,7 +42,9 @@
 
 - (void)refreshData
 {
+    NSLog(@"REFRESHING DATA");
     [self.data reloadMessages];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - JSQMessagesViewController method overrides
@@ -96,6 +98,9 @@
 #pragma mark - JSQMessages CollectionView DataSource
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if([self.data.messages count] == 0) {
+        return nil;
+    }
     return [self.data.messages objectAtIndex:indexPath.item];
 }
 
@@ -170,6 +175,7 @@
 #pragma mark - UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"%d", [self.data.messages count]);
     return [self.data.messages count];
 }
 

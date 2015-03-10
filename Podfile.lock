@@ -13,4 +13,4 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
   SPGooglePlacesAutocomplete: 6352d38dedf40ccac6d728fa50c50fd370d183b9
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.1
