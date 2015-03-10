@@ -29,3 +29,8 @@ TODO
 ----------------------
   - Pull the students course schedule automatically
   - Show only nearby study groups, or restrict all study groups to within Berkeley.
+
+CREDITS
+----------------------
+  - [SPGooglePlacesAutocomplete](https://github.com/chenyuan/SPGooglePlacesAutocomplete) for the Maps autocomplete
+  - [JSQMessagesViewController](https://github.com/jessesquires/JSQMessagesViewController) for the Messages
