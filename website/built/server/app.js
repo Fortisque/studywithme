@@ -31,7 +31,7 @@ Built.Extension.define('sendFeedback', function(request, response) {
       "message": {
           "from_email":from,
           "to":[{"email":"kacasey@berkeley.edu"}],
-          "subject": "Sending a text email from the Mandrill API",
+          "subject": "Feedback for StudyWithMe",
           "text": feedback
       }
   };
