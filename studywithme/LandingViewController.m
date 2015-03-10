@@ -42,7 +42,27 @@
 }
 
 - (IBAction)logout:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Logout"
+                          message: @"Are you sure you want to logout?"
+                          delegate: nil
+                          cancelButtonTitle:@"Cancel"
+                          otherButtonTitles:@"Confirm", nil];
+    alert.delegate = self;
+    [alert show];
+}
+
+#pragma mark - Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            break;
+        case 1:
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        default:
+            break;
+    }
 }
 
 @end

@@ -23,18 +23,22 @@
 #pragma mark - Action
 
 - (IBAction)onSubmit:(id)sender {
-    [BuiltExtension  executeWithName:@"sendFeedback"
-                                data:@{@"feedback": _feedbackTextView.text, @"from": [[BuiltUser currentUser] objectForKey:@"email"]}
-                           onSuccess:^(id response) {
-                               // response will contain the response of the extension method
-                               // here, the response is the user profile, with the authtoken
-                               [Helper alertWithTitle:@"Yay!" andMessage:@"Thank you for your feedback!"];
-                               _feedbackTextView.text = @"";
-                           } onError:^(NSError *error) {
-                               // error block in case of any error
-                               [Helper alertToCheckInternet];
-                               NSLog(@"%@", error);
-                           }];
+    if (_feedbackTextView.text.length == 0) {
+        [Helper alertWithTitle:@"No Message" andMessage:@"Cannot submit without a message!"];
+    } else {
+        [BuiltExtension  executeWithName:@"sendFeedback"
+                                    data:@{@"feedback": _feedbackTextView.text, @"from": [[BuiltUser currentUser] objectForKey:@"email"]}
+                               onSuccess:^(id response) {
+                                   // response will contain the response of the extension method
+                                   // here, the response is the user profile, with the authtoken
+                                   [Helper alertWithTitle:@"Yay!" andMessage:@"Thank you for your feedback!"];
+                                   _feedbackTextView.text = @"";
+                               } onError:^(NSError *error) {
+                                   // error block in case of any error
+                                   [Helper alertToCheckInternet];
+                                   NSLog(@"%@", error);
+                               }];
+    }
 }
 
 @end
