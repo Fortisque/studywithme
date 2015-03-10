@@ -46,13 +46,13 @@ bool keyboardActive;
     NSString *result = [webView stringByEvaluatingJavaScriptFromString:
            @"document.body.innerHTML"];
     if ([result containsString:@"Log In Successful"]) {
-        [webView stringByEvaluatingJavaScriptFromString:@"document.location.href = '/cas/logout';"];
         webView.hidden = YES;
         [BuiltExtension  executeWithName:@"login"
                                     data:@{@"username": _username}
                                onSuccess:^(id response) {
                                    // response will contain the response of the extension method
                                    // here, the response is the user profile, with the authtoken
+                                   [_webView stringByEvaluatingJavaScriptFromString:@"document.location.href = '/cas/logout';"];
                                    BuiltUser *user = [[BuiltUser user] initWithUserDict:response];
                                    [BuiltUser setCurrentUser:user];
                                    [self successfullyLoggedIn:response];
@@ -65,8 +65,8 @@ bool keyboardActive;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     _webView.hidden = NO;
+    [super viewWillAppear:animated];
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];

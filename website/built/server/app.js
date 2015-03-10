@@ -30,7 +30,7 @@ Built.Extension.define('sendFeedback', function(request, response) {
       "key": config.mandrill_api_key(),
       "message": {
           "from_email":from,
-          "to":[{"email":"kacasey@berkeley.edu"}],
+          "to":[{"email":"kacasey@berkeley.edu", "name": "Kevin Casey"}, {"email": "alicejliu@berkeley.edu", "name": "Alice Liu"}],
           "subject": "Feedback for StudyWithMe",
           "text": feedback
       }
