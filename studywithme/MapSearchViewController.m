@@ -77,6 +77,19 @@
     [self.mapView setRegion:region];
 }
 
+- (void)recenterMapToLocation:(CLLocation *)location {
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    
+    span.latitudeDelta = 0.02;
+    span.longitudeDelta = 0.02;
+    
+    region.span = span;
+    region.center = location.coordinate;
+    
+    [self.mapView setRegion:region];
+}
+
 - (void)addPlacemarkAnnotationToMap:(CLPlacemark *)placemark addressString:(NSString *)address {
     [self.mapView removeAnnotation:selectedPlaceAnnotation];
     
@@ -86,9 +99,22 @@
     [self.mapView addAnnotation:selectedPlaceAnnotation];
 }
 
+- (void)addPlacemarkLocationToMap:(CLLocation *)location addressString:(NSString *)address {
+    [self.mapView removeAnnotation:selectedPlaceAnnotation];
+    
+    selectedPlaceAnnotation = [[MKPointAnnotation alloc] init];
+    selectedPlaceAnnotation.coordinate = location.coordinate;
+    selectedPlaceAnnotation.title = address;
+    [self.mapView addAnnotation:selectedPlaceAnnotation];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     SPGooglePlacesAutocompletePlace *place = [self placeAtIndexPath:indexPath];
-    [place resolveToPlacemark:^(CLPlacemark *placemark, NSString *addressString, NSError *error) {
+    
+    SPGooglePlacesPlaceDetailQuery *query = [[SPGooglePlacesPlaceDetailQuery alloc] initWithApiKey:@"AIzaSyAsBLEGYoII6fWXcRUS9XanIYlK8aBAfnk"];
+    query.reference = place.reference;
+    [query fetchPlaceDetail:^(NSDictionary *placeDictionary, NSError *error) {
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not map selected Place"
                                                             message:error.localizedDescription
@@ -96,22 +122,30 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil, nil];
             [alert show];
-        } else if (placemark) {
-            [self addPlacemarkAnnotationToMap:placemark addressString:addressString];
-            [self recenterMapToPlacemark:placemark];
+        } else {
+            NSString *addressString = placeDictionary[@"name"];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:[placeDictionary[@"geometry"][@"location"][@"lat"] doubleValue] longitude:[placeDictionary[@"geometry"][@"location"][@"lng"] doubleValue]];
+            
+            [self addPlacemarkLocationToMap:location addressString:addressString];
+            [self recenterMapToLocation:location];
             // ref: https://github.com/chenyuan/SPGooglePlacesAutocomplete/issues/10
             [self.searchDisplayController setActive:NO];
             [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:indexPath animated:NO];
             _search.text = addressString;
-            _location = placemark.location;
+            _location = location;
         }
     }];
+    
 }
 
 #pragma mark UISearchDisplayDelegate
 
 - (void)handleSearchForSearchString:(NSString *)searchString {
     searchQuery.location = self.mapView.userLocation.coordinate;
+    if (searchQuery.location.latitude != 0.0) {
+        // Restrict to within 1000 meters, this is Berkeley.
+        searchQuery.radius = 1000;
+    }
     searchQuery.input = searchString;
     [searchQuery fetchPlaces:^(NSArray *places, NSError *error) {
         if (error) {

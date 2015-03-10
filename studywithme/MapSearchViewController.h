@@ -1,5 +1,6 @@
 #import <MapKit/MapKit.h>
 #import "SPGooglePlacesAutocomplete.h"
+#import "SPGooglePlacesPlaceDetailQuery.h"
 
 @class CreateStudyGroupTableViewController;
 
