@@ -65,9 +65,20 @@ bool keyboardActive;
     }
 }
 
+- (void)webView:(UIWebView *)webViewfail didFailLoadWithError:(NSError *)error {
+    [Helper alertToCheckInternet];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     _webView.hidden = NO;
     [super viewWillAppear:animated];
+    [self webViewConnectToCalnet];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
+}
+
+- (void)webViewConnectToCalnet
+{
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
