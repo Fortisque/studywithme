@@ -58,6 +58,7 @@ bool keyboardActive;
                                    [self successfullyLoggedIn:response];
                                } onError:^(NSError *error) {
                                    // error block in case of any error
+                                   [Helper alertToCheckInternet];
                                    NSLog(@"%@", error);
                                }];
         
