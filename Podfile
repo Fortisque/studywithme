@@ -3,3 +3,4 @@
 
 pod 'JSQMessagesViewController' 
 pod 'SPGooglePlacesAutocomplete'
+pod 'SWTableViewCell', '~> 0.3.7'

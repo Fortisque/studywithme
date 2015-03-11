@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -24,31 +24,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bechtel Libraray" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-DH-pP2">
-                        <rect key="frame" x="105" y="23" width="214" height="38"/>
-                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bechtel Libraray" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-DH-pP2">
+                        <rect key="frame" x="131" y="20" width="234" height="36"/>
+                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NE STUD C169" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-nb-Vo5">
-                        <rect key="frame" x="0.0" y="-1" width="97" height="123"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NE STUD C169" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-nb-Vo5">
+                        <rect key="frame" x="0.0" y="-1" width="123" height="123"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="123" id="Iza-Bl-Cqn"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="20"/>
+                        <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkR-g5-H3O">
-                        <rect key="frame" x="327" y="46" width="30" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="5pe-Td-knK"/>
-                        </constraints>
-                        <state key="normal" backgroundImage="pen">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10:00-11:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47i-8M-yjX">
-                        <rect key="frame" x="105" y="61" width="214" height="34"/>
-                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="20"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00-11:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47i-8M-yjX">
+                        <rect key="frame" x="131" y="66" width="234" height="31"/>
+                        <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -56,31 +47,24 @@
                     <constraint firstItem="RFy-nb-Vo5" firstAttribute="leading" secondItem="uCC-3w-5eb" secondAttribute="leading" id="0Pm-pS-bYr"/>
                     <constraint firstItem="RFy-nb-Vo5" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="-9" id="2lK-SM-ta3"/>
                     <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="RFy-nb-Vo5" secondAttribute="trailing" constant="8" id="A0H-Em-zTB"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="RFy-nb-Vo5" secondAttribute="bottom" constant="-8" id="Dts-lB-Vf4"/>
-                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="kkR-g5-H3O" secondAttribute="bottom" constant="-13" id="FaG-Kl-Grt"/>
-                    <constraint firstAttribute="trailing" secondItem="NA1-DH-pP2" secondAttribute="trailing" constant="46" id="QeU-8a-t0H"/>
-                    <constraint firstItem="kkR-g5-H3O" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="38" id="UhU-BN-gkH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RFy-nb-Vo5" secondAttribute="bottom" constant="-11" id="Dts-lB-Vf4"/>
+                    <constraint firstAttribute="trailing" secondItem="NA1-DH-pP2" secondAttribute="trailing" id="QeU-8a-t0H"/>
                     <constraint firstItem="NA1-DH-pP2" firstAttribute="leading" secondItem="47i-8M-yjX" secondAttribute="leading" id="WzA-do-ut3"/>
-                    <constraint firstItem="NA1-DH-pP2" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="16" id="fbj-s7-bB4"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="47i-8M-yjX" secondAttribute="bottom" constant="17" id="gIv-LY-a1U"/>
-                    <constraint firstItem="kkR-g5-H3O" firstAttribute="trailing" secondItem="uCC-3w-5eb" secondAttribute="trailingMargin" id="k0q-kg-XH1"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="NA1-DH-pP2" secondAttribute="bottom" constant="49" id="lmQ-h2-Keg"/>
+                    <constraint firstItem="NA1-DH-pP2" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="12" id="fbj-s7-bB4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="47i-8M-yjX" secondAttribute="bottom" constant="14" id="gIv-LY-a1U"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="NA1-DH-pP2" secondAttribute="bottom" constant="55" id="lmQ-h2-Keg"/>
                     <constraint firstItem="NA1-DH-pP2" firstAttribute="trailing" secondItem="47i-8M-yjX" secondAttribute="trailing" id="pdy-QC-N9S"/>
-                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="53" id="sOS-17-TBI"/>
+                    <constraint firstItem="47i-8M-yjX" firstAttribute="top" secondItem="uCC-3w-5eb" secondAttribute="topMargin" constant="58" id="sOS-17-TBI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="classNameLabel" destination="RFy-nb-Vo5" id="yNq-s7-nDy"/>
-                <outlet property="editButton" destination="kkR-g5-H3O" id="S3Y-e7-SsX"/>
                 <outlet property="locationLabel" destination="NA1-DH-pP2" id="TxQ-RX-WGY"/>
                 <outlet property="timeLabel" destination="47i-8M-yjX" id="fQn-fQ-P5y"/>
             </connections>
-            <point key="canvasLocation" x="292.5" y="126"/>
+            <point key="canvasLocation" x="292.5" y="116"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="pen" width="256" height="256"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
