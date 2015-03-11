@@ -1,6 +1,7 @@
 #import "Messages.h"
 #import "MessagesViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import "Helper.h"
 
 @implementation Messages
 
@@ -44,12 +45,7 @@
         
         [self.presenter finishReceivingMessageAnimated:YES];
     } onError:^(NSError *error,  ResponseType type) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't retrieve messages"
-                                                        message:@"Check your internet connection and try again"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [Helper alertToCheckInternet];
         NSLog(@"%@", error.userInfo);
     }];
 }
