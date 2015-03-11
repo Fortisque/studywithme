@@ -43,7 +43,7 @@
 
 - (void)refreshData
 {
-    [self.data reloadMessages];
+    [self.data loadNewMessages];
     [self.collectionView reloadData];
 }
 

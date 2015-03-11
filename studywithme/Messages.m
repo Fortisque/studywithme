@@ -17,9 +17,9 @@
     return self;
 }
 
-- (void)reloadMessages {
+- (void)loadNewMessages {
     // Resets all messages.
-    self.messages = [NSMutableArray new];
+    // self.messages = [NSMutableArray new];
     
     BuiltQuery *messageQuery = [BuiltQuery queryWithClassUID:@"message"];
     [messageQuery whereKey:@"study_group" equalTo:[_presenter.studyGroup objectForKey:@"uid"]];
@@ -40,7 +40,9 @@
                                                                   date:date
                                                                   text:[tmp objectForKey:@"message"]];
             
-            [self.messages addObject:message];
+            if ([self.messages indexOfObject:message] == NSNotFound) {
+                [self.messages addObject:message];
+            }
         }
         
         [self.presenter finishReceivingMessageAnimated:YES];
