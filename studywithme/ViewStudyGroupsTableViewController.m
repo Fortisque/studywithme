@@ -131,8 +131,10 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+// prevent cell(s) from displaying left/right utility buttons
+- (BOOL)swipeableTableViewCell:(SWTableViewCell *)cell canSwipeToState:(SWCellState)state {
     // Can only edit your own study groups.
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if([_myStudyGroups count] != 0 && indexPath.section == 0) {
         return YES;
     }
