@@ -9,8 +9,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.allowsSelectionDuringEditing = true;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,6 +58,7 @@
     }
     
     cell.textLabel.text = [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -99,16 +98,6 @@
             [Helper alertToCheckInternet];
             NSLog(@"%@", error.userInfo);
         }];
-    }
-}
-
-# pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([tableView isEditing]) {
-        [tableView setEditing:false];
-    } else {
-        [tableView setEditing:true];
     }
 }
 
