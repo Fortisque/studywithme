@@ -9,10 +9,9 @@ Features
   - Login through CalNet
   - Add/Remove classes
   - Create a study group by specifying the course, time, and location
-  - Show all relevant study groups that are currently happening or about to happen in a table or map view
+  - View all relevant study groups that are currently happening or about to happen in a table or map view
   - Messaging for each study group
-  - Notifications for relevant study groups when created
-  - Notifications for messages
+  - Notifications for relevant study groups and messages
 
 TODO
 ----------------------
