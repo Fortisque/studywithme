@@ -113,12 +113,12 @@
     
     if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"end_date"]]) {
         if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"start_date"]]) {
-            cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+            cell.timeLabel.text = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
         } else {
-            cell.timeLabel.text = [NSString stringWithFormat:@"%@ (-1) to %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+            cell.timeLabel.text = [NSString stringWithFormat:@"%@ (-1) - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
         }
     } else {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@ (+1)", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        cell.timeLabel.text = [NSString stringWithFormat:@"%@ - %@ (+1)", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     }
     
     return cell;
@@ -169,7 +169,7 @@
         return;
     }
     StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    NSString *description = [NSString stringWithFormat:@"%@ - %@", cell.classNameLabel.text, cell.timeLabel.text];
+    NSString *description = [NSString stringWithFormat:@"%@ from %@", cell.classNameLabel.text, cell.timeLabel.text];
     [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
     NSString *uid;
     

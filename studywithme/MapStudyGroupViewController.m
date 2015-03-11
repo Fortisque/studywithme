@@ -69,7 +69,7 @@
             
         PinAnnotationPoint *point = [[PinAnnotationPoint alloc] init];
         point.coordinate = location;
-        point.title = [NSString stringWithFormat:@"%@ (%@ - %@)", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        point.title = [NSString stringWithFormat:@"%@ from %@ - %@", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
         point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
         point.uid = [data objectForKey:@"uid"];
         
