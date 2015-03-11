@@ -33,6 +33,7 @@
                                    // here, the response is the user profile, with the authtoken
                                    [Helper alertWithTitle:@"Yay!" andMessage:@"Thank you for your feedback!"];
                                    _feedbackTextView.text = @"";
+                                   [_feedbackTextView resignFirstResponder];
                                } onError:^(NSError *error) {
                                    // error block in case of any error
                                    [Helper alertToCheckInternet];

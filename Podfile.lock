@@ -16,4 +16,4 @@ SPEC CHECKSUMS:
   SPGooglePlacesAutocomplete: 6352d38dedf40ccac6d728fa50c50fd370d183b9
   SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.1
