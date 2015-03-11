@@ -21,7 +21,7 @@
     self.messages = [NSMutableArray new];
     
     BuiltQuery *messageQuery = [BuiltQuery queryWithClassUID:@"message"];
-    [messageQuery whereKey:@"study_group" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"study_group_uid"]];
+    [messageQuery whereKey:@"study_group" equalTo:[_presenter.studyGroup objectForKey:@"uid"]];
     [messageQuery orderByAscending:@"datetime"];
     
     [messageQuery exec:^(QueryResult *result,  ResponseType type) {

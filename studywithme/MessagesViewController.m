@@ -11,7 +11,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [[NSUserDefaults standardUserDefaults] objectForKey:@"study_group_title"];
+    self.title = [NSString stringWithFormat:@"%@ from %@ to %@", [self.studyGroup objectForKey:@"course"], [self.studyGroup objectForKey:@"start_time"], [self.studyGroup objectForKey:@"end_time"]];
     
     /**
      *  You MUST set your senderId and display name
@@ -43,7 +43,6 @@
 
 - (void)refreshData
 {
-    NSLog(@"REFRESHING DATA");
     [self.data reloadMessages];
     [self.collectionView reloadData];
 }
@@ -83,7 +82,7 @@
             forKey:@"sender_id"];
     [obj setObject:senderDisplayName
             forKey:@"sender_display_name"];
-    [obj setReference:[[NSUserDefaults standardUserDefaults] objectForKey:@"study_group_uid"]
+    [obj setReference:[self.studyGroup objectForKey:@"uid"]
                forKey:@"study_group"];
     [obj saveOnSuccess:^{
         [self.data.messages addObject:message];
@@ -176,7 +175,6 @@
 #pragma mark - UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"%d", [self.data.messages count]);
     return [self.data.messages count];
 }
 

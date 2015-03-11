@@ -10,6 +10,7 @@
 #import <BuiltIO/BuiltIO.h>
 #import "ViewStudyGroupTabBarController.h"
 #import "PinAnnotationPoint.h"
+#import "MessagesViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -61,17 +62,17 @@
     NSArray *newArray=[_otherStudyGroups arrayByAddingObjectsFromArray:_myStudyGroups];
     
     for (int i = 0; i < [newArray count]; i++) {
-        NSDictionary *data = [newArray objectAtIndex:i];
+        NSDictionary *studyGroupData = [newArray objectAtIndex:i];
         
         CLLocationCoordinate2D location;
-        location.longitude = [[[data objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
-        location.latitude = [[[data objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
+        location.longitude = [[[studyGroupData objectForKey:@"__loc"] objectAtIndex:0] doubleValue];
+        location.latitude = [[[studyGroupData objectForKey:@"__loc"] objectAtIndex:1] doubleValue];
             
         PinAnnotationPoint *point = [[PinAnnotationPoint alloc] init];
         point.coordinate = location;
-        point.title = [NSString stringWithFormat:@"%@ from %@ to %@", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
-        point.subtitle = [NSString stringWithFormat:@"%@", [data objectForKey:@"location"]];
-        point.uid = [data objectForKey:@"uid"];
+        point.title = [NSString stringWithFormat:@"%@ from %@ to %@", [studyGroupData objectForKey:@"course"], [studyGroupData objectForKey:@"start_time"], [studyGroupData objectForKey:@"end_time"]];
+        point.subtitle = [NSString stringWithFormat:@"%@", [studyGroupData objectForKey:@"location"]];
+        point.studyGroup = studyGroupData;
         
         [_mapView addAnnotation:point];
     }
@@ -104,10 +105,17 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
     PinAnnotationPoint *pin = (PinAnnotationPoint *)view.annotation;
-    [[NSUserDefaults standardUserDefaults] setObject:pin.title forKey:@"study_group_title"];
-    [[NSUserDefaults standardUserDefaults] setObject:pin.uid forKey:@"study_group_uid"];
-    
-    [self performSegueWithIdentifier:@"messages" sender:self];
+    [self performSegueWithIdentifier:@"messages" sender:pin];
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"messages"]) {
+        PinAnnotationPoint *pin = (PinAnnotationPoint *) sender;
+        MessagesViewController *controller = (MessagesViewController *)segue.destinationViewController;
+        controller.studyGroup = pin.studyGroup;
+    }
 }
 
 # pragma mark - CLLocation delegate
