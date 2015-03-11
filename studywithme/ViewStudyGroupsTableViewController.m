@@ -193,17 +193,22 @@
     if ([self.tableView cellForRowAtIndexPath:indexPath].selectionStyle == UITableViewCellSelectionStyleNone) {
         return;
     }
-    StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    NSString *description = [NSString stringWithFormat:@"%@ from %@", cell.classNameLabel.text, cell.timeLabel.text];
-    [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
+    
     NSString *uid;
+    NSDictionary *data;
     
     if (indexPath.section == 0) {
         uid = [[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
+        data = [_myStudyGroups objectAtIndex:indexPath.row];
     } else {
         uid = [[_otherStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
+        data = [_otherStudyGroups objectAtIndex:indexPath.row];
     }
+    
+    NSString *description = [NSString stringWithFormat:@"%@ from %@ to %@", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+    [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
     [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"study_group_uid"];
+    
     [self performSegueWithIdentifier: @"messages" sender: self];
 }
 
