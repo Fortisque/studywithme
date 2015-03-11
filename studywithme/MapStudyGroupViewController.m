@@ -114,9 +114,20 @@ calloutAccessoryControlTapped:(UIControl *)control {
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
-    [locationManager stopUpdatingLocation];
+    NSTimeInterval interval = [newLocation.timestamp timeIntervalSinceNow];
+    
+    // Don't use cached data.
+    if (abs(interval) < 30) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+        [_mapView setRegion:viewRegion animated:YES];
+        // Give the device 1 second to normalize its location before telling it to stop zooming
+        // in on current location.
+        [NSTimer scheduledTimerWithTimeInterval:1.0
+                                         target:locationManager
+                                       selector:@selector(stopUpdatingLocation)
+                                       userInfo:nil
+                                        repeats:NO];
+    }
 }
 
 @end
