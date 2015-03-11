@@ -45,9 +45,11 @@ Built.Extension.define('sendFeedback', function(request, response) {
   }).
   success(function(httpResponse) {
     console.log('Feedback email sent');
+    return response.success(httpResponse);
   }).
   error(function(httpResponse) {
     console.log('Uh oh, the mandrill made a boo-boo with status: ' + httpResponse.statusCode);
+    return response.error('error', httpResponse);
   });
 });
 
