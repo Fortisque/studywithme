@@ -3,6 +3,7 @@
 #import "ViewStudyGroupsTableViewController.h"
 #import "StudyGroupsTableViewCell.h"
 #import "ViewStudyGroupTabBarController.h"
+#import "MessagesViewController.h"
 
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray *otherStudyGroups;
@@ -174,7 +175,7 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.40f green:0.60f blue:0.89f alpha:1.0]
+     [UIColor colorWithRed:0.35 green:0.54 blue:0.83 alpha:1.0]
                                                 title:@"Edit"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
@@ -206,8 +207,6 @@
     }
     
     NSString *description = [NSString stringWithFormat:@"%@ from %@ to %@", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
-    [[NSUserDefaults standardUserDefaults] setObject:description forKey:@"study_group_title"];
-    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"study_group_uid"];
     
     [self performSegueWithIdentifier: @"messages" sender: self];
 }
@@ -226,6 +225,17 @@
         } else {
             vc.studyGroup = [_otherStudyGroups objectAtIndex:indexPath.row];
         }
+    } else if ([segue.identifier isEqualToString:@"messages"]) {
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        NSDictionary *studyGroupData;
+        if (indexPath.section == 0) {
+            studyGroupData = [_myStudyGroups objectAtIndex:indexPath.row];
+        } else {
+            studyGroupData = [_otherStudyGroups objectAtIndex:indexPath.row];
+        }
+        
+        MessagesViewController *controller = (MessagesViewController *)segue.destinationViewController;
+        controller.studyGroup = studyGroupData;
     }
 }
 

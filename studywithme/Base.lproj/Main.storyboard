@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Economica-Bold-OTF.otf">
+            <string>Economica-Bold</string>
             <string>Economica-Bold</string>
         </mutableArray>
         <mutableArray key="Economica-Italic-OTF.otf">
@@ -144,7 +145,7 @@
                                 <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAM-yy-NwN">
-                                        <rect key="frame" x="37" y="37" width="300" height="100"/>
+                                        <rect key="frame" x="37" y="37" width="301" height="100"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                         <state key="normal" title="My Classes">
@@ -156,7 +157,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c05-bV-5c8">
-                                        <rect key="frame" x="37" y="170" width="300" height="100"/>
+                                        <rect key="frame" x="36.5" y="170" width="301" height="100"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
                                         <state key="normal" title="View Study Groups">
@@ -170,24 +171,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="centerX" secondItem="XWy-jq-Zby" secondAttribute="centerX" id="AAA-Vt-TRC"/>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="trailing" secondItem="FAM-yy-NwN" secondAttribute="trailing" id="KXa-8t-52f"/>
-                                    <constraint firstAttribute="bottom" secondItem="c05-bV-5c8" secondAttribute="bottom" constant="37" id="QZd-a5-Mvz"/>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="height" secondItem="FAM-yy-NwN" secondAttribute="height" id="VIk-kb-WWx"/>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="top" secondItem="FAM-yy-NwN" secondAttribute="bottom" constant="33" id="Ylp-CM-O8O"/>
-                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="leading" secondItem="XWy-jq-Zby" secondAttribute="leading" constant="37" id="Zde-Ys-is9"/>
-                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="top" secondItem="XWy-jq-Zby" secondAttribute="top" constant="37" id="bDc-cy-sN4"/>
-                                    <constraint firstItem="c05-bV-5c8" firstAttribute="leading" secondItem="FAM-yy-NwN" secondAttribute="leading" id="dk4-Zs-wb6"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="top" secondItem="FAM-yy-NwN" secondAttribute="bottom" constant="33" id="FRK-d2-itk"/>
+                                    <constraint firstAttribute="bottom" secondItem="c05-bV-5c8" secondAttribute="bottom" constant="37" id="Mmp-SS-B9s"/>
+                                    <constraint firstAttribute="centerX" secondItem="c05-bV-5c8" secondAttribute="centerX" id="Mxi-ET-QQ6"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="height" secondItem="FAM-yy-NwN" secondAttribute="height" id="PYi-uB-dtE"/>
+                                    <constraint firstAttribute="centerX" secondItem="FAM-yy-NwN" secondAttribute="centerX" id="QUg-dD-z3y"/>
+                                    <constraint firstAttribute="trailing" secondItem="FAM-yy-NwN" secondAttribute="trailing" constant="37" id="bR5-xh-AFg"/>
+                                    <constraint firstItem="c05-bV-5c8" firstAttribute="width" secondItem="FAM-yy-NwN" secondAttribute="width" id="elS-TK-Mrl"/>
+                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="top" secondItem="XWy-jq-Zby" secondAttribute="top" constant="37" id="kVS-15-mId"/>
+                                    <constraint firstItem="FAM-yy-NwN" firstAttribute="leading" secondItem="XWy-jq-Zby" secondAttribute="leading" constant="37" id="wst-UW-x6y"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-K3-NpX">
                                 <rect key="frame" x="-16" y="53" width="409" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="FKZ-aD-ZsF"/>
+                                    <constraint firstAttribute="width" constant="409" id="ZW0-Ts-Kzr"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yD-nQV">
                                 <rect key="frame" x="43" y="87" width="288" height="212"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="212" id="fvs-hF-OtK"/>
-                                </constraints>
                                 <string key="text">Study
 With
 Me!</string>
@@ -197,17 +200,16 @@ Me!</string>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.52941176470588236" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XWy-jq-Zby" secondAttribute="trailing" id="FQ9-sc-jQc"/>
-                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="23" id="LtF-JG-YUP"/>
-                            <constraint firstItem="2M6-yD-nQV" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="27" id="TtA-Hh-oNj"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="27" id="XhE-lf-n72"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="VVB-K3-NpX" secondAttribute="centerX" constant="-1" id="iCe-jm-dWn"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="bottom" secondItem="d5J-Q8-QVu" secondAttribute="top" id="jK6-Lw-XKq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2M6-yD-nQV" secondAttribute="trailing" constant="28" id="mw4-QU-mQT"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leading" id="qjr-fS-Yq7"/>
-                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="2M6-yD-nQV" secondAttribute="bottom" constant="61" id="rZf-jn-zfw"/>
-                            <constraint firstItem="VVB-K3-NpX" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="-32" id="sZo-iq-VZR"/>
-                            <constraint firstItem="VVB-K3-NpX" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="-11" id="u0Q-KJ-CTS"/>
+                            <constraint firstItem="VVB-K3-NpX" firstAttribute="centerX" secondItem="XWy-jq-Zby" secondAttribute="centerX" constant="1" id="8Oe-0O-NgU"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="bottom" secondItem="d5J-Q8-QVu" secondAttribute="top" id="9FB-Gs-rsZ"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="top" secondItem="5bB-xO-Frw" secondAttribute="bottom" constant="23" id="A9C-gw-QG7"/>
+                            <constraint firstAttribute="trailing" secondItem="XWy-jq-Zby" secondAttribute="trailing" id="CbH-wZ-SiH"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="VVB-K3-NpX" secondAttribute="bottom" constant="27" id="G0y-gi-7N5"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="centerX" secondItem="2M6-yD-nQV" secondAttribute="centerX" id="OdH-AJ-nAu"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leading" id="Ttr-Ir-xaw"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="leading" secondItem="nm4-x6-TsK" secondAttribute="leadingMargin" constant="27" id="ZhR-qb-dc8"/>
+                            <constraint firstItem="XWy-jq-Zby" firstAttribute="top" secondItem="2M6-yD-nQV" secondAttribute="bottom" constant="61" id="iat-sH-5q8"/>
+                            <constraint firstItem="2M6-yD-nQV" firstAttribute="centerY" secondItem="VVB-K3-NpX" secondAttribute="centerY" id="x0C-DJ-NmW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wpk-wG-u27">
@@ -581,19 +583,27 @@ Me!</string>
         <scene sceneID="O2m-ld-o9U">
             <objects>
                 <tableViewController id="lv7-rd-35b" customClass="MyCoursesViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iIP-TS-PWz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iIP-TS-PWz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="course" id="pkl-K3-Hwb">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="course" textLabel="TdP-8q-aNq" rowHeight="120" style="IBUITableViewCellStyleDefault" id="pkl-K3-Hwb">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pkl-K3-Hwb" id="hpO-e3-6ei">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="CS 61A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TdP-8q-aNq">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="25"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
@@ -674,7 +684,7 @@ Me!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7pa-Cp-AYZ"/>
+        <segue reference="Nhk-pe-3sd"/>
         <segue reference="0eT-vd-tEx"/>
     </inferredMetricsTieBreakers>
 </document>

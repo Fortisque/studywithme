@@ -9,8 +9,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.allowsSelectionDuringEditing = true;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,8 +58,20 @@
     }
     
     cell.textLabel.text = [[_myCourses objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row % 2 == 0) {
+        cell.contentView.backgroundColor = [UIColor colorWithRed:1 green:0.8 blue:0.43 alpha:1.0];
+        cell.textLabel.textColor = [UIColor blackColor];
+    } else {
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.35 green:0.54 blue:0.83 alpha:1.0];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
 }
 
 // Override to support conditional editing of the table view.
@@ -99,16 +109,6 @@
             [Helper alertToCheckInternet];
             NSLog(@"%@", error.userInfo);
         }];
-    }
-}
-
-# pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([tableView isEditing]) {
-        [tableView setEditing:false];
-    } else {
-        [tableView setEditing:true];
     }
 }
 
