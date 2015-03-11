@@ -36,7 +36,15 @@
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(myLocation.coordinate, 1000, 1000);
         [_mapView setRegion:viewRegion animated:YES];
         [self reverseGeocodeGivenCoordinate:myLocation.coordinate];
-        [locationManager stopUpdatingLocation];
+        
+        // Give the devise 1 second to normalize its location before halting. Everytime we get an updated location
+        // it throws down the pin and zooms, so we can't keep updating too long in case the user wants to specify
+        // and address
+        [NSTimer scheduledTimerWithTimeInterval:1.0
+                                         target:locationManager
+                                       selector:@selector(stopUpdatingLocation)
+                                       userInfo:nil
+                                        repeats:NO];
     }
 }
 
