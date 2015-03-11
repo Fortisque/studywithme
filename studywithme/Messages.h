@@ -10,6 +10,7 @@
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
 @property (weak, atomic) MessagesViewController *presenter;
 
+- (void)reloadMessages;
 - (void)loadNewMessages;
 
 @end
