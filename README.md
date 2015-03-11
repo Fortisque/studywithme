@@ -23,3 +23,4 @@ CREDITS
 ----------------------
   - [SPGooglePlacesAutocomplete](https://github.com/chenyuan/SPGooglePlacesAutocomplete) for the Maps autocomplete
   - [JSQMessagesViewController](https://github.com/jessesquires/JSQMessagesViewController) for the Messages
+  - [SWTableViewCell](https://github.com/CEWendel/SWTableViewCell) for the swipeable cells
