@@ -5,7 +5,8 @@
 @interface LoginViewController ()
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
-@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIWebView *loginWebView;
+@property (strong, nonatomic) UIWebView *logoutWebView;
 @end
 
 @implementation LoginViewController
@@ -48,37 +49,44 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSString *result = [webView stringByEvaluatingJavaScriptFromString:
-           @"document.body.innerHTML"];
-    if ([result containsString:@"Log In Successful"]) {
-        [BuiltExtension  executeWithName:@"login"
-                                    data:@{@"username": _username}
-                               onSuccess:^(id response) {
-                                   // response will contain the response of the extension method
-                                   // here, the response is the user profile, with the authtoken
-                                   [_webView stringByEvaluatingJavaScriptFromString:@"document.location.href = '/cas/logout';"];
-                                   BuiltUser *user = [[BuiltUser user] initWithUserDict:response];
-                                   [BuiltUser setCurrentUser:user];
-                                   [self successfullyLoggedIn:response];
-                               } onError:^(NSError *error) {
-                                   // error block in case of any error
-                                   [Helper alertToCheckInternet];
-                                   NSLog(@"%@", error);
-                               }];
-        
+    if (webView == _loginWebView) {
+        [self showWebView];
+        NSString *result = [webView stringByEvaluatingJavaScriptFromString:
+                            @"document.body.innerHTML"];
+        if ([result containsString:@"Log In Successful"]) {
+            [BuiltExtension  executeWithName:@"login"
+                                        data:@{@"username": _username}
+                                   onSuccess:^(id response) {
+                                       // response will contain the response of the extension method
+                                       // here, the response is the user profile, with the authtoken
+                                       BuiltUser *user = [[BuiltUser user] initWithUserDict:response];
+                                       [BuiltUser setCurrentUser:user];
+                                       [self successfullyLoggedIn:response];
+                                       [self logout];
+                                   } onError:^(NSError *error) {
+                                       // error block in case of any error
+                                       [Helper alertToCheckInternet];
+                                       NSLog(@"%@", error);
+                                   }];
+            
+        }
     }
 }
 
 - (void)webView:(UIWebView *)webViewfail didFailLoadWithError:(NSError *)error {
     [Helper alertToCheckInternet];
-    [self hideWebView];
 }
 
-- (void)webViewConnectToCalnet {
+- (void)webViewConnectToCalnetLogin {
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:request];
-    [self showWebView];
+    [_loginWebView loadRequest:request];
+}
+
+- (void)webViewConnectToCalnetLogout {
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/logout"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [_logoutWebView loadRequest:request];
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
@@ -90,15 +98,25 @@
 #pragma mark - Action
 
 - (IBAction)loginPressed:(id)sender {
-    if (!_webView) {
-        _webView = [[UIWebView alloc]initWithFrame:self.view.frame];
-        _webView.delegate = self;
-        [self.view addSubview:_webView];
+    if (!_loginWebView) {
+        _loginWebView = [[UIWebView alloc]initWithFrame:self.view.frame];
+        _loginWebView.delegate = self;
     }
     
-    [self webViewConnectToCalnet];
+    [self webViewConnectToCalnetLogin];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnetLogin) name:@"dataFromNotification" object:nil];
+}
+
+- (void)logout {
+    if (!_logoutWebView) {
+        _logoutWebView = [[UIWebView alloc]initWithFrame:self.view.frame];
+        _logoutWebView.delegate = self;
+    }
+    
+    [self webViewConnectToCalnetLogout];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnetLogout) name:@"dataFromNotification" object:nil];
 }
 
 #pragma mark - Helper
@@ -109,14 +127,14 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self action:@selector(hideWebView)];
     self.navigationController.navigationBar.translucent = NO;
-    _webView.hidden = NO;
+    [self.view addSubview:_loginWebView];
 }
 
 - (void)hideWebView {
     self.navigationItem.title = @"";
     self.navigationItem.leftBarButtonItem = nil;
     [Helper setHeaderToBeTransparentForNavigationController:self.navigationController];
-    _webView.hidden = YES;
+    [_loginWebView removeFromSuperview];
 }
 
 @end
