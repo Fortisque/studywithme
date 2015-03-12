@@ -16,8 +16,12 @@
     _webView.delegate = self;
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self hideWebView];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSData *urlData = [request HTTPBody];
     if (urlData) {
         NSString *urlString=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
@@ -39,10 +43,11 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self showWebView];
     NSString *result = [webView stringByEvaluatingJavaScriptFromString:
            @"document.body.innerHTML"];
     if ([result containsString:@"Log In Successful"]) {
-        webView.hidden = YES;
+        [self showWebView];
         [BuiltExtension  executeWithName:@"login"
                                     data:@{@"username": _username}
                                onSuccess:^(id response) {
@@ -85,10 +90,23 @@
 #pragma mark - Action
 
 - (IBAction)loginPressed:(id)sender {
-    _webView.hidden = NO;
     [self webViewConnectToCalnet];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
+}
+
+#pragma mark - Helper
+
+- (void)showWebView {
+    _webView.hidden = NO;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self action:@selector(hideWebView)];
+}
+
+- (void)hideWebView {
+    _webView.hidden = YES;
+    self.navigationItem.leftBarButtonItem = nil;
 }
 
 @end
