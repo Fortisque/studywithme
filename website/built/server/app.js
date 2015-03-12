@@ -12,6 +12,7 @@ Built.Extension.define('login', function(request, response) {
     true,
     // create or update users with the following profile
     {
+      username: username,
       email: username + "@berkeley.edu"
     }
   )
