@@ -618,13 +618,7 @@ Me!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="L0d-lS-Ucj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="zLK-LC-F6j">
-                            <connections>
-                                <action selector="refreshPressed:" destination="I64-Kx-v7h" id="28u-nG-tQg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="L0d-lS-Ucj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVJ-FA-29F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

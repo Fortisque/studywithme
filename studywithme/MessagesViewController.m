@@ -29,20 +29,17 @@
     self.inputToolbar.contentView.leftBarButtonItem = nil;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"dataFromNotification" object:nil];
     [super viewDidAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)refreshData
-{
+- (void)refreshData {
     [self.data loadNewMessages];
     [self.collectionView reloadData];
 }
@@ -265,12 +262,6 @@
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath {
     return 0.0f;
-}
-
-# pragma mark - Actions
-
-- (IBAction)refreshPressed:(id)sender {
-    [self refreshData];
 }
 
 @end
