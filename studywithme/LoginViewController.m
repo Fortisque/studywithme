@@ -1,21 +1,17 @@
-#import "LoginViewController.h"
 #import <BuiltIO/BuiltIO.h>
+
+#import "LoginViewController.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 @end
 
-CGFloat originalHeight;
-bool keyboardActive;
-
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    originalHeight = self.view.frame.origin.y;
     
     _webView.delegate = self;
 }
@@ -77,8 +73,7 @@ bool keyboardActive;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
 }
 
-- (void)webViewConnectToCalnet
-{
+- (void)webViewConnectToCalnet {
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
@@ -90,7 +85,6 @@ bool keyboardActive;
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
-    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self performSegueWithIdentifier:@"success" sender:self];
     [[NSUserDefaults standardUserDefaults] setObject:_username forKey:@"username"];

@@ -1,4 +1,5 @@
 #import <MapKit/MapKit.h>
+
 #import "SPGooglePlacesAutocomplete.h"
 #import "SPGooglePlacesPlaceDetailQuery.h"
 
@@ -16,7 +17,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *search;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocation *location;
-
 @property (weak, nonatomic) CreateStudyGroupTableViewController *presenter;
 
 - (IBAction)done:(id)sender;

@@ -29,7 +29,6 @@
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-
     
     // Set to 0 badges on every landing page view
     BuiltInstallation *installation = [BuiltInstallation currentInstallation];
@@ -44,8 +43,7 @@
     }];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     // Translucent doesn't look good on other controllers
     self.navigationController.navigationBar.translucent = NO;
 

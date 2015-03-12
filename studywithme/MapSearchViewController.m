@@ -1,5 +1,5 @@
-#import "MapSearchViewController.h"
 #import "CreateStudyGroupTableViewController.h"
+#import "MapSearchViewController.h"
 
 @interface MapSearchViewController ()
 

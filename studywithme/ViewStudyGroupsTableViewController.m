@@ -171,8 +171,7 @@
     }
 }
 
-- (NSArray *)rightButtons
-{
+- (NSArray *)rightButtons {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:0.35 green:0.54 blue:0.83 alpha:1.0]
@@ -194,19 +193,6 @@
     if ([self.tableView cellForRowAtIndexPath:indexPath].selectionStyle == UITableViewCellSelectionStyleNone) {
         return;
     }
-    
-    NSString *uid;
-    NSDictionary *data;
-    
-    if (indexPath.section == 0) {
-        uid = [[_myStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
-        data = [_myStudyGroups objectAtIndex:indexPath.row];
-    } else {
-        uid = [[_otherStudyGroups objectAtIndex:indexPath.row] objectForKey:@"uid"];
-        data = [_otherStudyGroups objectAtIndex:indexPath.row];
-    }
-    
-    NSString *description = [NSString stringWithFormat:@"%@ from %@ to %@", [data objectForKey:@"course"], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     
     [self performSegueWithIdentifier: @"messages" sender: self];
 }

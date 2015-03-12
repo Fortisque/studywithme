@@ -1,11 +1,3 @@
-//
-//  Helper.m
-//  studywithme
-//
-//  Created by Alice Jia Qi Liu on 2/6/15.
-//  Copyright (c) 2015 ieor190. All rights reserved.
-//
-
 #import "Helper.h"
 
 @implementation Helper

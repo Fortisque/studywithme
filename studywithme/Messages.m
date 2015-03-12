@@ -51,7 +51,6 @@
 }
 
 - (void)loadNewMessages {
-    
     BuiltQuery *messageQuery = [BuiltQuery queryWithClassUID:@"message"];
     [messageQuery whereKey:@"study_group" equalTo:[_presenter.studyGroup objectForKey:@"uid"]];
     [messageQuery orderByAscending:@"datetime"];

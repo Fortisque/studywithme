@@ -1,5 +1,6 @@
-#import "MyCoursesViewController.h"
 #import <BuiltIO/BuiltIO.h>
+
+#import "MyCoursesViewController.h"
 
 @interface MyCoursesViewController ()
 @property (strong, nonatomic) NSArray *myCourses;

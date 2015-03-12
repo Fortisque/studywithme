@@ -1,18 +1,9 @@
-//
-//  MapStudyGroupViewController.m
-//  studywithme
-//
-//  Created by Kevin Casey on 10/25/14.
-//  Copyright (c) 2014 ieor190. All rights reserved.
-//
+#import <BuiltIO/BuiltIO.h>
 
 #import "MapStudyGroupViewController.h"
-#import <BuiltIO/BuiltIO.h>
-#import "ViewStudyGroupTabBarController.h"
-#import "PinAnnotationPoint.h"
 #import "MessagesViewController.h"
-
-#define METERS_PER_MILE 1609.344
+#import "PinAnnotationPoint.h"
+#import "ViewStudyGroupTabBarController.h"
 
 @interface MapStudyGroupViewController ()
 @property (nonatomic, strong) NSArray *otherStudyGroups;
@@ -126,7 +117,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
     
     // Don't use cached data.
     if (abs(interval) < 30) {
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 800, 800);
         [_mapView setRegion:viewRegion animated:YES];
         // Give the device 1 second to normalize its location before telling it to stop zooming
         // in on current location.

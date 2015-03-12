@@ -1,6 +1,7 @@
+#import <BuiltIO/BuiltIO.h>
+
 #import "ViewStudyGroupTabBarController.h"
 #import "CreateStudyGroupTableViewController.h"
-#import <BuiltIO/BuiltIO.h>
 
 @interface ViewStudyGroupTabBarController ()
 

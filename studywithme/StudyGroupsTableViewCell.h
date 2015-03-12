@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <SWTableViewCell.h>
+
 #import "CreateStudyGroupTableViewController.h"
 
 @interface StudyGroupsTableViewCell : SWTableViewCell
