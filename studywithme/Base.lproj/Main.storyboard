@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ybx-7o-rF1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -57,14 +57,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="6BR-Hn-JKm">
-                                <rect key="frame" x="-17" y="78" width="409" height="280"/>
+                                <rect key="frame" x="-17" y="108.5" width="409" height="280"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="409" id="TOK-ob-M8W"/>
                                     <constraint firstAttribute="height" constant="280" id="XN0-eb-8WZ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="YCo-YE-9v9">
-                                <rect key="frame" x="45" y="137" width="285" height="173"/>
+                                <rect key="frame" x="45" y="167.5" width="285" height="172.5"/>
                                 <string key="text">Study
 With
 Me!</string>
@@ -72,13 +72,13 @@ Me!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Studying Made Easy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybl-Pf-KqA">
-                                <rect key="frame" x="65" y="366" width="245" height="35"/>
+                                <rect key="frame" x="65" y="396.5" width="245" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Economica-Italic" family="Economica" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0B9-fe-V3t">
-                                <rect key="frame" x="41" y="418" width="293" height="80"/>
+                                <rect key="frame" x="41" y="448" width="293" height="80"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="5D2-cA-btp"/>
@@ -105,7 +105,7 @@ Me!</string>
                             <constraint firstAttribute="centerX" secondItem="Ybl-Pf-KqA" secondAttribute="centerX" id="dju-o3-6XA"/>
                             <constraint firstAttribute="centerX" secondItem="YCo-YE-9v9" secondAttribute="centerX" id="fZq-2e-UfW"/>
                             <constraint firstItem="YCo-YE-9v9" firstAttribute="top" secondItem="6BR-Hn-JKm" secondAttribute="bottom" constant="-221" id="he3-cP-wDi"/>
-                            <constraint firstAttribute="centerY" secondItem="Ybl-Pf-KqA" secondAttribute="centerY" constant="-50" id="qzI-hx-U1A"/>
+                            <constraint firstAttribute="centerY" secondItem="Ybl-Pf-KqA" secondAttribute="centerY" constant="-80" id="qzI-hx-U1A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YCo-YE-9v9" secondAttribute="trailing" constant="29" id="tqA-4V-Gsy"/>
                         </constraints>
                     </view>
@@ -224,7 +224,7 @@ Me!</string>
                                     <constraint firstItem="FAM-yy-NwN" firstAttribute="leading" secondItem="XWy-jq-Zby" secondAttribute="leading" constant="37" id="wst-UW-x6y"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-K3-NpX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-K3-NpX">
                                 <rect key="frame" x="-16" y="53" width="410" height="280"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="FKZ-aD-ZsF"/>
@@ -360,7 +360,7 @@ Me!</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-ME-zA6">
                                                     <rect key="frame" x="8" y="0.0" width="30" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <pickerView contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="zxs-3B-ZY4">
@@ -388,7 +388,7 @@ Me!</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-ux-MUo">
                                                     <rect key="frame" x="8" y="10" width="22" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-sd-P0l">
@@ -424,7 +424,7 @@ Me!</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Hz-FO4">
                                                     <rect key="frame" x="8" y="75" width="81" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-6c-m9i">
@@ -452,7 +452,7 @@ Me!</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-2O-pSJ">
                                                     <rect key="frame" x="8" y="75" width="73" height="29"/>
                                                     <fontDescription key="fontDescription" name="Economica-Regular" family="Economica" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2WK-g3-7sM">
@@ -635,7 +635,7 @@ Me!</string>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="CS 61A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TdP-8q-aNq">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Economica-Bold" family="Economica" pointSize="25"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
