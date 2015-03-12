@@ -1,6 +1,4 @@
 #import "LandingViewController.h"
-#import <BuiltIO/BuiltIO.h>
-#import <CoreLocation/CoreLocation.h>
 
 @interface LandingViewController () {
     CLLocationManager *locationManager;
@@ -22,13 +20,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // This page looks good with a see through nav bar.
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    [Helper setHeaderToBeTransparentForNavigationController:self.navigationController];
     
     // Set to 0 badges on every landing page view
     BuiltInstallation *installation = [BuiltInstallation currentInstallation];

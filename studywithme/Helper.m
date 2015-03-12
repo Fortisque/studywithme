@@ -32,4 +32,13 @@
     [alert show];
 }
 
++ (void)setHeaderToBeTransparentForNavigationController: (UINavigationController *)navigationController {
+    [navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    navigationController.navigationBar.shadowImage = [UIImage new];
+    navigationController.navigationBar.translucent = YES;
+    navigationController.view.backgroundColor = [UIColor clearColor];
+    navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+}
+
 @end

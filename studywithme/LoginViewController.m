@@ -5,6 +5,7 @@
 @interface LoginViewController ()
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
+@property (strong, nonatomic) UIWebView *webView;
 @end
 
 @implementation LoginViewController
@@ -12,13 +13,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    _webView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self hideWebView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.translucent = YES;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -43,11 +48,9 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self showWebView];
     NSString *result = [webView stringByEvaluatingJavaScriptFromString:
            @"document.body.innerHTML"];
     if ([result containsString:@"Log In Successful"]) {
-        [self showWebView];
         [BuiltExtension  executeWithName:@"login"
                                     data:@{@"username": _username}
                                onSuccess:^(id response) {
@@ -68,17 +71,14 @@
 
 - (void)webView:(UIWebView *)webViewfail didFailLoadWithError:(NSError *)error {
     [Helper alertToCheckInternet];
+    [self hideWebView];
 }
 
 - (void)webViewConnectToCalnet {
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self showWebView];
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
@@ -90,6 +90,12 @@
 #pragma mark - Action
 
 - (IBAction)loginPressed:(id)sender {
+    if (!_webView) {
+        _webView = [[UIWebView alloc]initWithFrame:self.view.frame];
+        _webView.delegate = self;
+        [self.view addSubview:_webView];
+    }
+    
     [self webViewConnectToCalnet];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
@@ -98,15 +104,21 @@
 #pragma mark - Helper
 
 - (void)showWebView {
-    _webView.hidden = NO;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self action:@selector(hideWebView)];
+    if (loaded) {
+        self.navigationItem.title = @"Login";
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:self action:@selector(hideWebView)];
+        self.navigationController.navigationBar.translucent = NO;
+        _webView.hidden = NO;
+    }
 }
 
 - (void)hideWebView {
-    _webView.hidden = YES;
+    self.navigationItem.title = @"";
     self.navigationItem.leftBarButtonItem = nil;
+    [Helper setHeaderToBeTransparentForNavigationController:self.navigationController];
+    _webView.hidden = YES;
 }
 
 @end
