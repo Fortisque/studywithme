@@ -65,14 +65,6 @@
     [Helper alertToCheckInternet];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    _webView.hidden = NO;
-    [super viewWillAppear:animated];
-    [self webViewConnectToCalnet];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
-}
-
 - (void)webViewConnectToCalnet {
     NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -85,10 +77,18 @@
 }
 
 - (void)successfullyLoggedIn:(BuiltUser *)user {
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self performSegueWithIdentifier:@"success" sender:self];
     [[NSUserDefaults standardUserDefaults] setObject:_username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] setObject:[user objectForKey:@"uid"] forKey:@"uid"];
+}
+
+#pragma mark - Action
+
+- (IBAction)loginPressed:(id)sender {
+    _webView.hidden = NO;
+    [self webViewConnectToCalnet];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewConnectToCalnet) name:@"dataFromNotification" object:nil];
 }
 
 @end
