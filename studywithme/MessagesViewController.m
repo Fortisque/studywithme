@@ -266,4 +266,11 @@
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath {
     return 0.0f;
 }
+
+# pragma mark - Actions
+
+- (IBAction)refreshPressed:(id)sender {
+    [self refreshData];
+}
+
 @end
