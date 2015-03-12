@@ -104,14 +104,12 @@
 #pragma mark - Helper
 
 - (void)showWebView {
-    if (loaded) {
-        self.navigationItem.title = @"Login";
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                                 style:UIBarButtonItemStylePlain
-                                                                                target:self action:@selector(hideWebView)];
-        self.navigationController.navigationBar.translucent = NO;
-        _webView.hidden = NO;
-    }
+    self.navigationItem.title = @"Login";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self action:@selector(hideWebView)];
+    self.navigationController.navigationBar.translucent = NO;
+    _webView.hidden = NO;
 }
 
 - (void)hideWebView {

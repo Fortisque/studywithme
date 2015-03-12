@@ -1,5 +1,7 @@
 #import "JSQMessage.h"
 #import "JSQMessages.h"
+#import <BuiltIO/BuiltIO.h>
+#import "Helper.h"
 
 @class MessagesViewController;
 
@@ -12,5 +14,7 @@
 
 - (void)reloadMessages;
 - (void)loadNewMessages;
+
+- (JSQMessage *)messageGivenBuiltObject:(BuiltObject *)obj;
 
 @end

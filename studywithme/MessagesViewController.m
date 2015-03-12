@@ -21,7 +21,7 @@
     
     self.data = [[Messages alloc] init];
     self.data.presenter = self;
-    [self.data reloadMessages];
+    [self.data loadNewMessages];
     
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
@@ -60,11 +60,6 @@
      */
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                             senderDisplayName:senderDisplayName
-                                                          date:date
-                                                          text:text];
-    
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
     
@@ -82,7 +77,8 @@
     [obj setReference:[self.studyGroup objectForKey:@"uid"]
                forKey:@"study_group"];
     [obj saveOnSuccess:^{
-        [self.data.messages addObject:message];
+        JSQMessage *savedBuiltMessage = [self.data messageGivenBuiltObject:obj];
+        [self.data.messages addObject:savedBuiltMessage];
         [self finishSendingMessageAnimated:YES];
     } onError:^(NSError *error) {
         [Helper alertWithTitle:@"Couldn't send message" andMessage:@"Check your internet connection and try again"];
