@@ -4,7 +4,7 @@
 
 @interface LoginViewController ()
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *calnetCookie;
 @property (strong, nonatomic) UIWebView *loginWebView;
 @property (strong, nonatomic) UIWebView *logoutWebView;
 @end
@@ -43,7 +43,6 @@
         }
         
         _username = [queryStringDictionary objectForKey:@"username"];
-        _password = [queryStringDictionary objectForKey:@"password"];
     }
     return YES;
 }
@@ -54,8 +53,15 @@
         NSString *result = [webView stringByEvaluatingJavaScriptFromString:
                             @"document.body.innerHTML"];
         if ([result containsString:@"Log In Successful"]) {
+            NSHTTPCookie *cookie;
+            NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            for (cookie in [cookieJar cookies]) {
+                if ([[cookie valueForKey:@"name"] isEqualToString:@"CASTGC"]) {
+                    _calnetCookie = [cookie valueForKey:@"value"];
+                }
+            }
             [BuiltExtension  executeWithName:@"login"
-                                        data:@{@"username": _username}
+                                        data:@{@"username": _username, @"calnetCookie": _calnetCookie}
                                    onSuccess:^(id response) {
                                        // response will contain the response of the extension method
                                        // here, the response is the user profile, with the authtoken

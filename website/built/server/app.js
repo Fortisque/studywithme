@@ -2,24 +2,58 @@ var config = require('./config.js');
 Built.initialize('blte1163927e03db5d1', 'studywithme');
 
 Built.setMasterKey(config.masterKey()); // necessary for our API to work
+
 Built.Extension.define('login', function(request, response) {
-  var username = request.params.username;
-  // our query for an existing user with the username
-  var query = new Built.Query('built_io_application_user');
-  query.where('username', username);
-  Built.User.generateAuthtoken(
-    query,
-    true,
-    // create or update users with the following profile
-    {
-      username: username,
-      email: username + "@berkeley.edu"
-    }
-  )
-  .then(function(res) {
-    return response.success(res)
-  }, function(res) {
-    return response.error('error', res)
+  var cookie = request.params.calnetCookie;
+
+  // Log out of calnet to make sure built doesn't save previous session
+  Built.Extension.http.get({
+    url: 'https://auth.berkeley.edu/cas/logout',
+  }).
+  success(function(httpResponse) {
+    // Log into calcentral via calnet.
+    Built.Extension.http.get({
+      url: 'https://auth.berkeley.edu/cas/login?service=https%3A%2F%2Fcalcentral.berkeley.edu%2Fauth%2Fcas%2Fcallback%3Furl%3Dhttps%253A%252F%252Fcalcentral.berkeley.edu%252Facademics',
+      headers: {
+        // Get cookie from ios device. This should be a valid cookie.
+       'Cookie': 'CASTGC=' + cookie
+      }
+    }).
+    success(function(httpResponse) {
+      // If the cookie was valid they won't see a loginForm.
+      if (httpResponse.text.indexOf('loginForm') == -1) {
+        // This is a valid login attempt.
+        var username = request.params.username;
+        // our query for an existing user with the username
+        var query = new Built.Query('built_io_application_user');
+        query.where('username', username);
+        Built.User.generateAuthtoken(
+          query,
+          true,
+          // create or update users with the following profile
+          {
+            username: username,
+            email: username + "@berkeley.edu"
+          }
+        )
+        .then(function(res) {
+          return response.success(res)
+        }, function(res) {
+          return response.error('error', res)
+        });
+      } else {
+        // An invalid cookie was sent to us. Don't login.
+        return response.error('error', httpResponse);
+      };
+    }).
+    error(function(httpResponse) {
+      console.log('Uh oh, the calnet made a boo-boo with status: ' + httpResponse.statusCode);
+      return response.error('error', httpResponse);
+    });
+  }).
+  error(function(httpResponse) {
+    console.log('Uh oh, the calnet made a boo-boo with status: ' + httpResponse.statusCode);
+    return response.error('error', httpResponse);
   });
 });
 
