@@ -51,7 +51,6 @@
                      andPassword:_password
                        OnSuccess:^{
                            [self successfullyLoggedIn:user];
-                           NSLog(@"%@", user);
                        } onError:^(NSError *error) {
                            // login failed
                            // error.userinfo contains more details regarding the same
@@ -78,7 +77,7 @@
                 }
             }
             [BuiltExtension  executeWithName:@"login"
-                                        data:@{@"username": _username, @"calnetCookie": _calnetCookie}
+                                        data:@{@"username": _username, @"calnetCookie": _calnetCookie, @"password": _password}
                                    onSuccess:^(id response) {
                                        // response will contain the response of the extension method
                                        // here, the response is the user profile, with the authtoken
