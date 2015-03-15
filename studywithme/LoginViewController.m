@@ -4,6 +4,7 @@
 
 @interface LoginViewController ()
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *calnetCookie;
 @property (strong, nonatomic) UIWebView *loginWebView;
 @property (strong, nonatomic) UIWebView *logoutWebView;
@@ -43,6 +44,22 @@
         }
         
         _username = [queryStringDictionary objectForKey:@"username"];
+        _password = [queryStringDictionary objectForKey:@"password"];
+        if ([_username isEqualToString:@"dummy@fake.com"]) {
+            BuiltUser *user = [BuiltUser user];
+            [user loginWithEmail:_username
+                     andPassword:_password
+                       OnSuccess:^{
+                           [self successfullyLoggedIn:user];
+                           NSLog(@"%@", user);
+                       } onError:^(NSError *error) {
+                           // login failed
+                           // error.userinfo contains more details regarding the same
+                           [Helper alertWithMessage:[error.userInfo valueForKey:@"error_message"]];
+                           NSLog(@"%@", error.userInfo);
+                       }];
+            return NO;
+        }
     }
     return YES;
 }
