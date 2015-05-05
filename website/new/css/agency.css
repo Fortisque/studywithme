@@ -651,6 +651,14 @@ aside.clients img {
     margin: 50px auto;
 }
 
+section#download {
+    background-color: rgb(254, 209, 54);
+}
+
+section#download img {
+    width: 40%;
+}
+
 section#contact {
     background-color: #222;
     background-image: url(../img/map-image.png);
