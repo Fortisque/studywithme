@@ -27,4 +27,4 @@ CREDITS
   - [SPGooglePlacesAutocomplete](https://github.com/chenyuan/SPGooglePlacesAutocomplete) for the Maps autocomplete
   - [JSQMessagesViewController](https://github.com/jessesquires/JSQMessagesViewController) for the Messages
   - [SWTableViewCell](https://github.com/CEWendel/SWTableViewCell) for the swipeable cells
-  - [Start Bootstrap - Agency](https://github.com/IronSummitMedia/startbootstrap-agency) for the website template - Copyright 2013-2015 Iron Summit Media Strategies, LLC, released under the Apache 2.0 license.
+  - [Start Bootstrap - Agency](https://github.com/IronSummitMedia/startbootstrap-agency) for the website template
