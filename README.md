@@ -4,7 +4,7 @@ iPhone app designed to allow students to broadcast and find current study groups
 
 Third place in the Code 4 Cal Hackathon and first place in the STC Mobile App Competition.
 
-Features
+FEATURES
 ---------------------
   - Login through CalNet
   - Add/Remove classes
