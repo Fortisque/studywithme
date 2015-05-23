@@ -1,6 +1,6 @@
 StudyWithMe!
 ======
-iPhone app designed to allow students to broadcast and find current study groups. Uses built.io for the backend. The layout is optimized for iPhone 6 simulator and ios 7.0. 
+iPhone app designed to allow students to broadcast and find current study groups. Uses built.io for the backend. The layout is optimized for iPhone 6 simulator and ios 7.0. You can download the app [here](https://itunes.apple.com/us/app/studywithme!/id982672000?mt=8)
 
 Third place in the Code 4 Cal Hackathon and first place in the STC Mobile App Competition.
 
@@ -17,6 +17,10 @@ TODO
 ----------------------
   - Pull the students course schedule automatically
   - Show only nearby study groups, or restrict all study groups to within Berkeley.
+
+CREATORS
+----------------------
+StudyWithMe was created by [Kevin Casey](http://www.kacasey.me/) and [Alice Liu](http://www.alicejliu.com/).
 
 CREDITS
 ----------------------
