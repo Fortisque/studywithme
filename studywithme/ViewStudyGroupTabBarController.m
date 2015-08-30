@@ -13,6 +13,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _myStudyGroups = @[];
+    _otherStudyGroups = @[];
+    _futureStudyGroups = @[];
+    
     [self setCourses];
 }
 
@@ -62,51 +66,39 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
     
-    NSDateComponents *dateComponents = [NSDateComponents new];
-    dateComponents.day = 1;
-    NSDate *tomorrow = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
-                                                                    toDate:[NSDate date]
-                                                                   options:0];
-    
-    [query whereKey:@"end_date" containedIn:@[[dateFormatter stringFromDate:[NSDate date]], [dateFormatter stringFromDate:tomorrow]]];
+    [query whereKey:@"end_date" greaterThanOrEqualTo:[dateFormatter stringFromDate:[NSDate date]]];
+    [query orderByAscending:@"start_date"];
     [query exec:^(QueryResult *result, ResponseType type) {
         NSArray *results = [result getResult];
         
         NSMutableArray *myStudyGroups = [[NSMutableArray alloc] init];
         NSMutableArray *otherStudyGroups = [[NSMutableArray alloc] init];
+        NSMutableArray *futureStudyGroups = [[NSMutableArray alloc] init];
         
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *studyGroup = [results objectAtIndex:i];
-            BOOL isMine = false;
-            BOOL shouldAdd = false;
-            
-            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] isEqualToString:[studyGroup objectForKey:@"app_user_object_uid"]]) {
-                isMine = true;
-            }
-            
-            NSComparisonResult result = [(NSString *)[studyGroup objectForKey:@"end_time"] compare:[timeFormatter stringFromDate:[NSDate date]]];
-            
-            if ([[dateFormatter stringFromDate:tomorrow] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                // If the study group lasts until tomorrow then it is happening today
-                shouldAdd = true;
-            } else if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
-                if (result == NSOrderedDescending) {
-                    // Otherwise make sure the study group hasn't already ended
-                    shouldAdd = true;
+            if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"end_date"]]) {
+                NSComparisonResult result = [(NSString *)[studyGroup objectForKey:@"end_time"] compare:[timeFormatter stringFromDate:[NSDate date]]];
+                if (result == NSOrderedAscending) {
+                    // This study group has already ended.
+                    continue;
                 }
             }
             
-            if (shouldAdd) {
-                if (isMine) {
-                    [myStudyGroups addObject:studyGroup];
-                } else {
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"uid"] isEqualToString:[studyGroup objectForKey:@"app_user_object_uid"]]) {
+                [myStudyGroups addObject:studyGroup];
+            } else {
+                if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[studyGroup objectForKey:@"start_date"]]) {
                     [otherStudyGroups addObject:studyGroup];
+                } else {
+                    [futureStudyGroups addObject:studyGroup];
                 }
             }
         }
         
         _myStudyGroups = [[NSArray alloc] initWithArray:myStudyGroups];
         _otherStudyGroups = [[NSArray alloc] initWithArray:otherStudyGroups];
+        _futureStudyGroups = [[NSArray alloc] initWithArray:futureStudyGroups];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MyDataChangedNotification" object:nil userInfo:nil];
     } onError:^(NSError *error, ResponseType type) {

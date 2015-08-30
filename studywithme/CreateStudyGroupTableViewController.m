@@ -150,7 +150,8 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:mm"]; //24hr time format
     
-    [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"start_date"];
+    NSDate *startDate = [[NSDate date] dateByAddingTimeInterval:_dateSegmentControl.selectedSegmentIndex*86400];
+    [obj setObject:[dateFormatter stringFromDate:startDate] forKey:@"start_date"];
     [obj setObject:[timeFormatter stringFromDate:_startTime.date]
             forKey:@"start_time"];
     [obj setObject:[timeFormatter stringFromDate:_endTime.date]
@@ -162,15 +163,13 @@
         return;
     }
     
-    // if studying past midnight
+    
     if ([_endTime.date timeIntervalSinceDate:_startTime.date] > 0) {
-        [obj setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"end_date"];
-    } else {
+        [obj setObject:[dateFormatter stringFromDate:startDate] forKey:@"end_date"];
+    } else { // Studying past midnight
         NSDateComponents *dateComponents = [NSDateComponents new];
         dateComponents.day = 1;
-        NSDate *newDate = [[NSCalendar currentCalendar]dateByAddingComponents:dateComponents
-                                                                       toDate:[NSDate date]
-                                                                      options:0];
+        NSDate *newDate = [startDate dateByAddingTimeInterval:86400];;
         [obj setObject:[dateFormatter stringFromDate:newDate] forKey:@"end_date"];
     }
     

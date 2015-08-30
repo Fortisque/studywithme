@@ -8,6 +8,8 @@
 @interface ViewStudyGroupsTableViewController ()
 @property (strong, nonatomic) NSArray *otherStudyGroups;
 @property (strong, nonatomic) NSArray *myStudyGroups;
+@property (strong, nonatomic) NSArray *futureStudyGroups;
+@property (strong, nonatomic) NSArray *sectionsData;
 
 @end
 
@@ -39,8 +41,10 @@
 
 - (void)setUpData {
     ViewStudyGroupTabBarController *tabVC = (ViewStudyGroupTabBarController *)self.tabBarController;
-    _otherStudyGroups = tabVC.otherStudyGroups;
     _myStudyGroups = tabVC.myStudyGroups;
+    _otherStudyGroups = tabVC.otherStudyGroups;
+    _futureStudyGroups = tabVC.futureStudyGroups;
+    _sectionsData = @[_myStudyGroups, _otherStudyGroups, _futureStudyGroups];
     [self.tableView reloadData];
 }
 
@@ -48,32 +52,26 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (section == 0) {
-        if ([_myStudyGroups count] == 0) {
-            return 1;
-        }
-        return [_myStudyGroups count];
-    }
-    if ([_otherStudyGroups count] == 0) {
-        return 1;
-    }
-    return [_otherStudyGroups count];
+    return MAX(1, [(NSArray *)[_sectionsData objectAtIndex:section] count]);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *studyGroupCellIdentifier = @"StudyGroupCell";
+    NSArray *studyGroups = [_sectionsData objectAtIndex:indexPath.section];
+    if ([studyGroups count] == 0) {
+        return [self createDefaultCellForIndexPath:indexPath tableView:tableView];
+    } else {
+        return [self createStudyGroupCellForIndexPath:indexPath tableView:tableView];
+    }
+}
+
+- (UITableViewCell *)createDefaultCellForIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     static NSString *defaultCellIdentifier = @"DefaultCell";
-    
-    StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
-    
-    cell.rightUtilityButtons = [self rightButtons];
-    cell.delegate = self;
-    
+    // Show default message
     UITableViewCell *defaultCell = [tableView dequeueReusableCellWithIdentifier:defaultCellIdentifier];
     if (defaultCell == nil) {
         defaultCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellIdentifier];
@@ -81,22 +79,27 @@
         defaultCell.textLabel.numberOfLines = 2;
     }
     
-    NSDictionary *data;
-    
     if (indexPath.section == 0) {
-        if ([_myStudyGroups count] == 0) {
-            defaultCell.textLabel.text = @"You haven't created any study groups yet.";
-            return defaultCell;
-        }
-        data = [_myStudyGroups objectAtIndex:indexPath.row];
+        defaultCell.textLabel.text = @"You haven't created any study groups yet.";
+    } else if (indexPath.section == 1) {
+        defaultCell.textLabel.text = @"No other study groups are happening today.";
     } else {
-        if ([_otherStudyGroups count] == 0) {
-            defaultCell.textLabel.text = @"No other study groups are happening now.";
-            return defaultCell;
-        }
-        data = [_otherStudyGroups objectAtIndex:indexPath.row];
+        defaultCell.textLabel.text = @"No upcoming study groups.";
     }
+    return defaultCell;
+
+}
+
+- (StudyGroupsTableViewCell *)createStudyGroupCellForIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    static NSString *studyGroupCellIdentifier = @"StudyGroupCell";
+    StudyGroupsTableViewCell *cell = (StudyGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:studyGroupCellIdentifier];
     
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
+    
+    NSArray *studyGroups = [_sectionsData objectAtIndex:indexPath.section];
+    NSDictionary *data = [studyGroups objectAtIndex:indexPath.row];
+
     if (indexPath.row % 2 == 0) {
         cell.classNameLabel.backgroundColor = [UIColor colorWithRed:1 green:0.8 blue:0.43 alpha:1.0];
         cell.classNameLabel.textColor = [UIColor blackColor];
@@ -111,15 +114,21 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"end_date"]]) {
-        if ([[dateFormatter stringFromDate:[NSDate date]] isEqualToString:[data objectForKey:@"start_date"]]) {
-            cell.timeLabel.text = [NSString stringWithFormat:@"%@ - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
-        } else {
-            cell.timeLabel.text = [NSString stringWithFormat:@"%@ (-1) - %@", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
-        }
+    NSString *dateTimeFormatString;
+    
+    if ([[data objectForKey:@"start_date"] isEqualToString:[data objectForKey:@"end_date"]]) {
+        dateTimeFormatString = @"%@ %@ - %@";
     } else {
-        cell.timeLabel.text = [NSString stringWithFormat:@"%@ - %@ (+1)", [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+        dateTimeFormatString = @"%@ %@ - %@ (+1)";
     }
+    
+    NSDate *startDate = [dateFormatter dateFromString:[data objectForKey:@"start_date"]];
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:startDate];
+    NSInteger day = [components weekday];
+    NSArray *weekdaySymbols = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
+    
+    cell.timeLabel.text = [NSString stringWithFormat:dateTimeFormatString, [weekdaySymbols objectAtIndex:day - 1], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     
     return cell;
 }
@@ -127,8 +136,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return @"My study groups";
+    } else if (section == 1) {
+        return @"Other study groups happening today";
     } else {
-        return @"Other study groups";
+        return @"Upcoming study groups";
     }
 }
 
@@ -200,20 +211,20 @@
 # pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"%@", self.tableView.indexPathForSelectedRow);
+    
     if ([segue.identifier isEqualToString:@"create"]) {
         CreateStudyGroupTableViewController *vc = [segue destinationViewController];
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
         
         vc.presenter = (ViewStudyGroupTabBarController *)self.tabBarController;
-        if (indexPath.section == 0) {
-            vc.studyGroup = [_myStudyGroups objectAtIndex:indexPath.row];
-        } else {
-            vc.studyGroup = [_otherStudyGroups objectAtIndex:indexPath.row];
-        }
+         NSDictionary *studyGroup = [[_sectionsData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        vc.studyGroup = studyGroup;
     } else if ([segue.identifier isEqualToString:@"messages"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         NSDictionary *studyGroupData;
+        
         if (indexPath.section == 0) {
             studyGroupData = [_myStudyGroups objectAtIndex:indexPath.row];
         } else {
