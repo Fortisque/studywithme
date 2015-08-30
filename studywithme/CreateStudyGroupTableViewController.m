@@ -11,7 +11,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self updateSegmentControl];
+    
+    NSDate *currentDate = [NSDate date];
+    [_endTime setDate:[currentDate dateByAddingTimeInterval:3600]];
+    
     [self queryCourses];
+}
+
+- (void)updateSegmentControl {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    NSInteger day = [components weekday];
+    NSArray *array = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
+    for (int i = 0; i < 5; i++) {
+        [_dateSegmentControl setTitle:[array objectAtIndex:(i + day - 1) % 7] forSegmentAtIndex:i];
+    }
 }
 
 - (void)queryCourses {
@@ -100,7 +114,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 # pragma mark - Action

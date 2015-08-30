@@ -9,6 +9,7 @@
 @interface CreateStudyGroupTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UIButton *location;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegmentControl;
 @property (strong, nonatomic) IBOutlet UIDatePicker *startTime;
 @property (strong, nonatomic) IBOutlet UIDatePicker *endTime;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goButton;
