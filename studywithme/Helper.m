@@ -41,4 +41,13 @@
     navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 }
 
++ (NSString *)getShortWeekdayFromDate:(NSDate *)date
+{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:date];
+    NSInteger day = [components weekday];
+    NSArray *weekdaySymbols = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
+    
+    return [weekdaySymbols objectAtIndex:day - 1];
+}
+
 @end

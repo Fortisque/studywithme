@@ -4,10 +4,9 @@
 #import "MessagesViewController.h"
 #import "PinAnnotationPoint.h"
 #import "ViewStudyGroupTabBarController.h"
+#import "Helper.h"
 
 @interface MapStudyGroupViewController ()
-@property (nonatomic, strong) NSArray *otherStudyGroups;
-@property (nonatomic, strong) NSArray *myStudyGroups;
 @end
 
 @implementation MapStudyGroupViewController
@@ -47,10 +46,8 @@
     [self removeAllAnnotationsExceptUserLocation];
     
     ViewStudyGroupTabBarController *tabVC = (ViewStudyGroupTabBarController *)self.tabBarController;
-    _otherStudyGroups = tabVC.otherStudyGroups;
-    _myStudyGroups = tabVC.myStudyGroups;
     
-    NSArray *newArray=[_otherStudyGroups arrayByAddingObjectsFromArray:_myStudyGroups];
+    NSArray *newArray = [[tabVC.myStudyGroups arrayByAddingObjectsFromArray:tabVC.otherStudyGroups] arrayByAddingObjectsFromArray:tabVC.futureStudyGroups];
     
     for (int i = 0; i < [newArray count]; i++) {
         NSDictionary *studyGroupData = [newArray objectAtIndex:i];
@@ -61,7 +58,10 @@
             
         PinAnnotationPoint *point = [[PinAnnotationPoint alloc] init];
         point.coordinate = location;
-        point.title = [NSString stringWithFormat:@"%@ from %@ to %@", [studyGroupData objectForKey:@"course"], [studyGroupData objectForKey:@"start_time"], [studyGroupData objectForKey:@"end_time"]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *startDate = [dateFormatter dateFromString:[studyGroupData objectForKey:@"start_date"]];
+        point.title = [NSString stringWithFormat:@"%@ - %@ %@ to %@", [studyGroupData objectForKey:@"course"], [Helper getShortWeekdayFromDate:startDate], [studyGroupData objectForKey:@"start_time"], [studyGroupData objectForKey:@"end_time"]];
         point.subtitle = [NSString stringWithFormat:@"%@", [studyGroupData objectForKey:@"location"]];
         point.studyGroup = studyGroupData;
         

@@ -7,5 +7,6 @@
 + (void)alertWithTitle:(NSString *)title andMessage:(NSString *)message;
 + (void)alertWithMessage:(NSString *)message;
 + (void)setHeaderToBeTransparentForNavigationController: (UINavigationController *)navigationController;
++ (NSString *)getShortWeekdayFromDate:(NSDate *)date;
 
 @end

@@ -11,7 +11,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [NSString stringWithFormat:@"%@ from %@ to %@", [self.studyGroup objectForKey:@"course"], [self.studyGroup objectForKey:@"start_time"], [self.studyGroup objectForKey:@"end_time"]];
+    self.title = [self.studyGroup objectForKey:@"course"];
     
     /**
      *  You MUST set your senderId and display name

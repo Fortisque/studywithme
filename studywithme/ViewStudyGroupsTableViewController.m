@@ -121,14 +121,10 @@
     } else {
         dateTimeFormatString = @"%@ %@ - %@ (+1)";
     }
-    
+
     NSDate *startDate = [dateFormatter dateFromString:[data objectForKey:@"start_date"]];
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:startDate];
-    NSInteger day = [components weekday];
-    NSArray *weekdaySymbols = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
-    
-    cell.timeLabel.text = [NSString stringWithFormat:dateTimeFormatString, [weekdaySymbols objectAtIndex:day - 1], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
+    cell.timeLabel.text = [NSString stringWithFormat:dateTimeFormatString, [Helper getShortWeekdayFromDate:startDate], [data objectForKey:@"start_time"], [data objectForKey:@"end_time"]];
     
     return cell;
 }
